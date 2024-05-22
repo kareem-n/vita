@@ -1,0 +1,12 @@
+.main{
+  .d-flex{
+    .one{
+      padding: 5px;
+    }
+    .two{
+      width: 100%;
+      padding: 15px;
+      /* padding-left: 90px; */
+    }
+  }
+}

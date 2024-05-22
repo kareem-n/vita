@@ -1,0 +1,62 @@
+nav{
+  height: 90px;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 5;
+  padding-left: 90px;
+  h2{
+    color: var(--main-color);
+    font-weight: 700;
+  }
+  .account{
+    width: 250px;
+    background-color: #000000;
+    border-radius: 50px;
+    color: #fff;
+    padding: 5px;
+    border: 4px solid #28D582;
+    .profile{
+      .search , .arrow{
+        width: 40px;
+        height: 40px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        svg{
+          cursor: pointer;
+        }
+      }
+      .info{
+        position: relative;
+        max-width: 140px;
+        margin-left: 10px;
+        .name_mile{
+          h4 , p{
+            text-decoration: underline;
+          }
+          h4{
+            font-size: 15px;
+            margin-bottom: 10px;
+          }
+          p{
+            font-size: 12px;
+            color: #C5C4C7;
+          }
+        }
+        &::before{
+          content: "";
+          position: absolute;
+          left: -12px;
+          height: 40px;
+          width: 1.5px;
+          background: #3E3E47;
+          top: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+    }
+  }
+}

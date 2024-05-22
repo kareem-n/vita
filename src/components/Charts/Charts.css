@@ -1,0 +1,73 @@
+.Charts{
+  width: calc(100% - 90px);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  margin-top: 94px;
+  margin-left: auto;
+  margin-top: 98px;
+  .head{
+    padding: 30px;
+  }
+  .charts{
+    padding: 20px 100px;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    .chart , .NumChart{
+      padding: 15px;
+      background-color: var(--white-color);
+      border-radius: 20px;
+      .head{
+        padding: 0;
+      }
+    }
+    .chart{
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .head{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        h5{
+          font-weight: 500;
+        }
+        svg{
+          cursor: pointer;
+        }
+      }
+    }
+    .NumChart{
+      .head{
+        display: flex;
+        justify-content: end;
+        margin-bottom: 10px;
+      }
+      .info{
+        .name_date{
+          h2{
+            margin-bottom: 20px;       
+            font-size: 50px;
+          }
+        }
+        .num{
+          width: 100px;
+          height: 100px;
+          border-radius: 50%;
+          border: 7px solid var(--main-color);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+          h2{
+            font-weight: 700;
+            font-size: 28px;
+          }
+          p{
+            font-weight: 400;
+            color: var(--main-color);
+          }
+        }
+      }
+    }
+  }
+}

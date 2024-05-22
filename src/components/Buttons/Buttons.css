@@ -1,0 +1,44 @@
+.button{
+  padding: 10px 45px;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  a{
+    text-decoration: none;
+  }
+  &.login{
+    background-color:  var(--white-color);
+    a{
+      color: var(--black-color);
+    }
+  }
+
+  &.register  , &.InputSubmit{
+    background-color: var(--main-color);
+    a{
+      color: var(--white-color);
+    }
+    input{
+      color: var(--white-color);
+    }
+  }
+
+  input{
+    background: transparent;
+    border: 0;
+    outline: 0;
+  }
+}
+
+.firstBtn , .secondBtn{
+  border: 2px solid var(--black-color);
+  border-radius: 15px;
+  padding: 0px 30px;
+}
+.firstBtn{
+  background: var(--main-color);
+  color: var(--white-color);
+}
+.secondBtn{
+  color: var(--black-color);
+}

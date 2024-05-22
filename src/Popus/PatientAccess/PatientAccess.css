@@ -1,0 +1,42 @@
+.overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    background-color: rgba(49,49,49,0.8);
+    .popup{
+      width: 510px;
+      background: #f2f2f2;
+      border-radius: 20px;
+      padding: 10px;
+      padding-bottom: 30px;
+      .patients{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        padding: 20px 40px;
+        overflow-y: auto;
+        height: 400px;
+        overflow-x: hidden;
+        .patient{
+          background: var(--white-color);
+          border-radius: 10px;
+          padding: 10px;
+          text-decoration: none;
+          display: flex;
+          justify-content: start;
+          gap: 20px;
+          color: var(--black-color);
+          align-items: center;
+          width: 195px;
+          h3{
+            font-size: 17px;
+            margin: 0;
+            font-weight: 600;
+            text-transform: capitalize;
+          }
+        }
+      }
+    }
+  }

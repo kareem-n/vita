@@ -1,0 +1,44 @@
+form{
+  .profileType , .prove_number{
+    label{
+      display: block;
+      color: #586166;
+      font-size: 19px;
+      margin-bottom: 7px;
+      font-weight: 500;
+      line-height: 22px;
+      span{
+        color: #F21D2F;
+      }
+    }
+  }
+  .profileType{
+    margin-bottom: 20px;
+    select{
+      width: 170px;
+      padding: 10px;
+      border: 0;
+      outline: none;
+      background: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      margin-top: 7px;
+      color: #8D9396;
+      font-size: 18px;
+    }
+  }
+  .prove_number{
+    margin: 10px 0;
+    input{
+      width: 100%;
+      border: 1px solid transparent;
+      outline: none;
+      padding: 10px;
+      border-radius: 5px;
+    }
+  }
+  .InputSubmit{
+    width: fit-content;
+    margin: 30px auto 10px;
+  }
+}

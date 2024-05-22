@@ -1,0 +1,66 @@
+.overlay{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  background-color: rgba(49,49,49,0.8);
+  .popup{
+    width: 510px;
+    height: auto !important;
+    background-color: #f2f2f2;
+    border-radius: 20px;
+    padding: 10px;
+    padding-bottom: 10px !important;
+    padding-top: 50px !important;
+    position: relative;
+    overflow: hidden;
+    .DoctorOptions{
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 10px;
+      .option{
+        width: 150px;
+        background: var(--white-color);
+        border-radius: 10px;
+        padding: 25px 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        text-decoration: none;
+        gap: 10px;
+        img{
+          width: 100px;
+          height: 100px;
+        }
+        h3{
+          font-size: 17px;
+          margin-top: 15px;
+          margin-bottom: 0;
+          color: var(--main-color);
+          font-weight: 600;
+          text-transform: capitalize;
+        }
+      }
+    }
+    .close{
+      width: 50px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--main-color);
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-radius: 0px 0px 0 20px;
+      svg{
+        font-size: 18px;
+        color: var(--white-color);
+        cursor: pointer;
+      }
+    }
+  }
+}

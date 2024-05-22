@@ -1,0 +1,145 @@
+.Profile{
+  width: calc(100% - 90px);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  margin-top: 94px;
+  margin-left: auto;
+  .tab-buttons{
+    padding: 0 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 450px;
+    margin-bottom: 20px;
+    button{
+      border: 0;
+      outline: 0;
+      color: #007bff;
+      font-weight: 500;
+      background-color: transparent;
+      width: 125px;
+      position: relative;
+      overflow: hidden;
+      padding: 10px;
+      span{
+        font-size: 14px;
+      }
+    }
+  }
+  .tab-buttons button.active {
+    position: relative;
+    transition: 0.5s all ease-in-out;
+    &::before{
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 2px;
+      background-color: #007bff;
+      top: 90%;
+      transition: 0.5s all ease-in-out;
+      border-radius: 50px;
+    }
+  }
+  .tab-content{
+    padding: 0 90px;
+    .personal_details , .org_1{
+      display: flex;
+      justify-content: start;
+      align-items: start;
+      gap: 70px;
+      .inputImage{
+        cursor: pointer;
+        position: relative;
+        img{
+          width: 180px;
+          height: 180px;
+          border-radius: 50%;
+        }
+        .edit{
+          width: 40px;
+          height: 40px;
+          background: var(--main-color);
+          padding: 10px;
+          position: absolute;
+          right: 0;
+          top: 60%;
+          transform: translateX(6px);
+        }
+      }
+      .formInputs{
+        .inputs_name , .inputs{
+          grid-template-columns: repeat(3,1fr);
+        }
+        .inputs{
+          input{
+            width: 500px !important;
+          }
+        }
+        .ssn_userName , .mob_data , .address_currentPassword , .Bio_NPassword_CPassword{
+          grid-template-columns: repeat(2,1fr);
+          margin-top: 15px;
+          input{
+            width: 500px !important;
+          }
+        }
+        .Bio_NPassword_CPassword{
+          .pass{
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+          }
+        }
+        .textarea{
+          label{
+            display: block;
+            color: #586166;
+            font-size: 16px;
+            margin-bottom: 7px;
+            font-weight: 500;
+            line-height: 22px;
+          }
+          textarea{
+            border: 1px solid transparent;
+            outline: none;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            width: 500px;
+            resize: none;
+            height: 146px;
+          }
+        }
+        .inputs_name , .ssn_userName , .mob_data , .address_currentPassword , .inputs , .Bio_NPassword_CPassword{
+          gap: 20px;
+          .input{
+            label{
+              display: block;
+              color: #586166;
+              font-size: 16px;
+              margin-bottom: 7px;
+              font-weight: 500;
+              line-height: 22px;
+              span{
+                color: #F21D2F;
+              }
+            }
+            input , select{
+              border: 1px solid transparent;
+              outline: none;
+              padding: 10px;
+              margin-bottom: 10px;
+              border-radius: 5px;
+            }
+            input{
+              width: 325px;
+            }
+            select{
+              width: 240px;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+  

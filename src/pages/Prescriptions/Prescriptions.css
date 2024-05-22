@@ -1,0 +1,22 @@
+.prescriptions{
+    width: calc(100% - 90px);
+    border-radius: 10px;
+    background-color: #f5f5f5;
+    margin-top: 94px;
+    margin-left: auto;
+    margin-top: 98px;
+    height: 100vh;
+    .head{
+      padding: 30px;
+    }
+    .prescriptions_Info{
+      grid-template-columns: repeat(6,1fr);
+      gap: 15px;
+      padding: 0 30px;
+      text-align: center;
+      h3{
+        color: var(--black-color);
+        font-size: 18px;
+      }
+    }
+  }

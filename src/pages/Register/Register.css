@@ -1,0 +1,174 @@
+.register{
+  background-color: var(--bg-color);
+  z-index: 1;
+  overflow: hidden;
+  .heading{
+    h1{
+      color: var(--main-color);
+    }
+    p{
+      color: var(--black-color);
+      font-weight: 500;
+    }
+  }
+  form{
+    width: 1000px;
+    margin: auto;
+    p{
+      color: var(--main-color);
+      font-weight: 500;
+    }
+    .inputs_name , .inputs{
+      grid-template-columns: repeat(3,1fr);
+    }
+    .ssn_userName , .mob_data , .password{
+      grid-template-columns: repeat(2,1fr);
+      margin-top: 15px;
+    }
+    .inputs_name , .ssn_userName , .mob_data , .password , .inputs{
+      gap: 20px;
+      .input{
+        label{
+          display: block;
+          color: #586166;
+          font-size: 16px;
+          margin-bottom: 7px;
+          font-weight: 500;
+          line-height: 22px;
+          span{
+            color: #F21D2F;
+          }
+        }
+        input , select{
+          width: 100%;
+          border: 1px solid transparent;
+          outline: none;
+          padding: 10px;
+          margin-bottom: 10px;
+          border-radius: 5px;
+        }
+      }
+    }
+    .button{
+      width: fit-content;
+      display: block;
+      margin: 20px auto 0;
+    }
+  }
+  .vector_1 , .vector_2 , .vector_3 , .vector_4 , .vector_5{
+    position: absolute;
+  }
+  .vector_1{
+    width: 50px;
+    bottom: 23%;
+    left: 5%;
+  }
+  .vector_2{
+    top: 8%;
+    left: 11%;
+    width: 40px;
+  }
+  .vector_3{
+    width: 65px;
+    right: 12%;
+    top: 13%;
+    transform: translate(-50%,-50%);
+  }
+  .vector_4{
+    width: 50px;
+    right: 2%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .circle{
+    position: absolute;
+    border: 1px solid var(--white-color);
+    border-radius: 50%;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    &.one{
+      width: 250px;
+      height: 250px;
+    }
+    &.two{
+      width: 350px;
+      height: 350px;
+    }
+    &.three{
+      width: 450px;
+      height: 450px;
+    }
+    &.four{
+      width: 550px;
+      height: 550px;
+    }
+    &.five{
+      width: 650px;
+      height: 650px;
+    }
+    &.six{
+      width: 750px;
+      height: 750px;
+    }
+  }
+}
+
+@media (max-width:767px) {
+  .register{
+    form{
+      width: fit-content;
+      .inputs_name , .ssn_userName , .mob_data , .password , .inputs{
+        grid-template-columns: revert;
+      }
+      p{
+        text-align: center;
+      }
+    }
+    .vector_1{
+      width: 32px !important;
+      bottom: 28% !important;
+    }
+    .vector_2{
+      top: 5% !important;
+      left: 5% !important;
+    }
+    .vector_3{
+      width: 36px !important;
+      right: 0% !important;
+    }
+    .vector_4{
+      width: 30px !important;
+    }
+  }
+}
+
+@media (max-width:991px) {
+  .register{
+    form{
+      width: fit-content;
+      .inputs_name , .ssn_userName , .mob_data , .password , .inputs{
+        grid-template-columns: repeat(2,1fr);
+      }
+      p{
+        text-align: center;
+      }
+    }
+    .vector_1{
+      width: 32px !important;
+      bottom: 28% !important;
+    }
+    .vector_2{
+      top: 5% !important;
+      left: 5% !important;
+    }
+    .vector_3{
+      width: 36px !important;
+      right: 0% !important;
+    }
+    .vector_4{
+      width: 30px !important;
+    }
+  }
+}
