@@ -18,17 +18,31 @@ import Prescriptions_2 from './pages/Prescriptions_2/Prescriptions_2'
 import AddPrescription from './pages/AddPrescription/AddPrescription'
 import ViewPrescription from './pages/ViewPrescription/ViewPrescription'
 import Profile from './pages/Profile/Profile'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import { setUser } from './redux/slices/UserSlice'
 
 
 function App() {
 
   const { user } = useSelector((state) => state.user);
 
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    if (localStorage.getItem("user")) {
+      dispatch(setUser(localStorage.getItem("user")));
+    }
+
+  }, [])
+
+
 
   return (
     <>
       {/* <AccessPatient/> */}
+
 
       {
         user ? <>

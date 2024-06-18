@@ -5,8 +5,21 @@ import Ellipse from "../../assets/images/Ellipse 1.png";
 import Vector_2 from "../../assets/images/Vector2.png";
 import Vector from "../../assets/images/Vector.png";
 import LoginButton, { RegisterButton } from "../../components/Buttons/Buttons";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { setUser } from "../../redux/slices/UserSlice";
 
 const Home = () => {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    if (localStorage.getItem("user")) {
+      dispatch(setUser(localStorage.getItem("user")));
+    }
+
+  }, [])
   return (
     <>
       <section className="home" id="home">

@@ -1,44 +1,104 @@
 import "./Login.css";
-import { FaUser } from "react-icons/fa";
 import Logo from "../../assets/images/LOGO.png";
 import Ellipse from "../../assets/images/Ellipse 1.png";
 import Vector_2 from "../../assets/images/Vector2.png";
 import Vector from "../../assets/images/Vector.png";
-import LoginButton, { InputSubmit, RegisterButton } from "../../components/Buttons/Buttons";
+import { InputSubmit } from "../../components/Buttons/Buttons";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import Joi from "joi";
+import Loader from "../../components/loader/Loader";
+import { useDispatch } from "react-redux";
+import { setUser } from "../../redux/slices/UserSlice";
+import axios from "axios";
+
 const Login = () => {
-  const navigate = useNavigate()
+
+
+  const navigate = useNavigate();
+
+
   const [loginForm, setLoginForm] = useState({
-    email: '',
+    username: '',
     password: '',
   });
 
-  const [errors, serErrors] = useState({})
-  const handleChange = (e) =>{
-    const {name, value} = e.target;
+
+  const dispatch = useDispatch();
+
+
+  const [exError, setExError] = useState(null);
+  const [errors, setErrors] = useState(null);
+  const [loading, setLoading] = useState(false);
+
+
+
+  const dataValidationSchema = (loginData) => {
+
+
+    const schema = Joi.object({
+      username: Joi.string()
+        .required()
+        .messages({
+          'string.empty': 'username is required',
+        }),
+
+      password: Joi.string()
+        .required()
+        .messages({
+          'string.empty': 'Password is required',
+        }),
+    });
+    return schema.validate(loginData, { abortEarly: false })
+  }
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
     setLoginForm({
-      ...loginForm, [name] : value
+      ...loginForm, [name]: value
     })
   }
 
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
-    const validationErrors = {}
-      if(!loginForm.email.trim()){
-        validationErrors.email = 'Email Is Requried';
-      }
 
-    if(!loginForm.password.trim()){
-      validationErrors.password = 'Password Is Requried'
-    }
-    serErrors(validationErrors);
+    setLoading(true);
+    setErrors(null);
 
-    if(Object.keys(validationErrors).length === 0){
-      navigate('/Main')
+    const dataValidationResult = dataValidationSchema(loginForm);
+
+    if (dataValidationResult.error) {
+      setErrors(dataValidationResult.error.details);
+      setLoading(false);
+
+    } else {
+      axios.post("https://blissful-gentleness-production.up.railway.app/login", loginForm).then(res => {
+        setLoading(false);
+
+        console.log(res.data);
+
+        dispatch(setUser(res.data.token));
+
+        localStorage.setItem("user", res.data.token);
+
+        navigate('/')
+
+
+
+      }).catch(err => {
+        setLoading(false)
+        setExError("username or password is wrong!")
+        console.log(err);
+      })
+
+
     }
+
   }
 
   return (
@@ -52,17 +112,44 @@ const Login = () => {
             <div className="info d-flex">
               <div className="text">
                 <h2>VITA.</h2>
-                <form action="" onSubmit={handleSubmit}>
+                {
+                  exError && <div className="alert alert-danger mt-2">
+                    {exError}
+                  </div>
+                }
+                <form onSubmit={handleSubmit}>
                   <div className="input">
-                    <label htmlFor="email">Email Address <span>*</span></label>
-                    <input type="email" placeholder="Enter Your Email" name="email" onChange={handleChange}/>
-                    {errors.email && <div className='alert alert-danger'>{errors.email}</div>}
+                    <label htmlFor="username">Username<span>*</span></label>
+                    <input type="text" placeholder="user name" name="username" onChange={handleChange} />
+
+                    {
+                      errors && errors.map((err, i) => {
+                        if (err.path[0] === 'username') {
+                          return <div key={i} className="badge text-danger h1">
+                            {err.message}
+                          </div>
+                        }
+                      })
+                    }
+
+
                   </div>
                   <div className="input">
                     <label htmlFor="password">Password  <span>*</span></label>
-                    <input type="password" name="password" id="password" placeholder="Enter Your Password" onChange={handleChange}/>
-                    {errors.password && <div className='alert alert-danger'>{errors.password}</div>}
-                  </div>                  <h6><a href=""> Forgot Password ?</a></h6>
+                    <input type="password" name="password" id="password" placeholder="Enter Your Password" onChange={handleChange} />
+
+                    {
+                      errors && errors.map((err, i) => {
+                        if (err.path[0] === 'password') {
+                          return <div key={i} className="badge text-danger h1">
+                            {err.message}
+                          </div>
+                        }
+                      })
+                    }
+
+                  </div>
+                  <h6><a href=""> Forgot Password ?</a></h6>
                   <div className="d-flex">
                     <InputSubmit>Login</InputSubmit>
                     <span>No Account ? <Link to="/register">Register</Link></span>
@@ -80,6 +167,10 @@ const Login = () => {
           <img src={Vector_2} className="vector_4" />
           <img src={Vector} className="vector_5" />
         </div>
+
+        {
+          loading && <Loader />
+        }
       </section>
     </>
   );
