@@ -3,7 +3,7 @@ import Logo from "../../assets/images/LOGO.png";
 import Ellipse from "../../assets/images/Ellipse 1.png";
 import Vector_2 from "../../assets/images/Vector2.png";
 import Vector from "../../assets/images/Vector.png";
-import { InputSubmit } from "../../components/Buttons/Buttons";
+import { FirstBtn, InputSubmit } from "../../components/Buttons/Buttons";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -149,9 +149,11 @@ const Login = () => {
                     }
 
                   </div>
-                  <h6><a href=""> Forgot Password ?</a></h6>
+                  <h6><a href="">Forgot Password ?</a></h6>
                   <div className="d-flex">
-                    <InputSubmit>Login</InputSubmit>
+                    <div className="">
+                      <InputSubmit>Login</InputSubmit>
+                    </div>
                     <span>No Account ? <Link to="/register">Register</Link></span>
                   </div>
                 </form>
