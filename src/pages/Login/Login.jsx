@@ -88,8 +88,6 @@ const Login = () => {
 
         navigate('/userInfo')
 
-
-
       }).catch(err => {
         setLoading(false)
         setExError("username or password is wrong!")

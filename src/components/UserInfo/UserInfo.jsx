@@ -1,6 +1,22 @@
+import { useDispatch } from 'react-redux';
 import User from '../../assets/images/User.png'
 import './UserInfo.css'
+import { useEffect } from 'react';
+import { setUser } from '../../redux/slices/UserSlice';
 const UserInfo = () => {
+
+  
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    if (localStorage.getItem("user")) {
+      dispatch(setUser(localStorage.getItem("user")));
+    }
+
+  }, [])
+
+
   return (
     <div className='userInfo'>
       <div className="user d-flex justify-content-start gap-3">

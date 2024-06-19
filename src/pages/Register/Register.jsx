@@ -120,7 +120,7 @@ const Register = () => {
           setLoader(false);
           console.log(res);
           localStorage.setItem("user", res.data.token);
-          navigate("/userInfo");
+          navigate("/login");
         }).catch(err => {
           setLoader(false);
           setExErr(err.response.data ? err.response.data : 'something went wrong!')
