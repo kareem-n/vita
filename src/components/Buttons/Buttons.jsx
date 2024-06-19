@@ -19,7 +19,7 @@ const RegisterButton = (props) => {
 
 const InputSubmit = (props) => {
   return (
-    <div className="button InputSubmit m-0 px-5 py-0" onClick={props.hide}>
+    <div className="button InputSubmit " onClick={props.hide}>
       <input type="submit" value={props.children}/>
     </div>
   )

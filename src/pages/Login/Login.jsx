@@ -86,7 +86,7 @@ const Login = () => {
 
         localStorage.setItem("user", res.data.token);
 
-        navigate('/')
+        navigate('/userInfo')
 
 
 

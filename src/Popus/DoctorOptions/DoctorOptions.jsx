@@ -8,57 +8,68 @@ import image_06 from "../../assets/images/Group 1171275811.svg";
 import { Link } from 'react-router-dom';
 import { FaXmark } from "react-icons/fa6";
 import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const DoctorOptions = () => {
-  const [popup , setPopup] = useState(true);
-  const hide = () =>{
+
+
+  const { type } = useSelector(state => state.user);
+
+  const [popup, setPopup] = useState(true);
+  const hide = () => {
     setPopup(false)
   }
-  if(popup){
+  if (popup) {
     document.body.style.overflow = 'hidden'
-  }else{
+  } else {
     document.body.style.overflow = 'auto'
   }
-  
+
   return (
     <>
 
-    {popup && (
+      {popup && (
 
-      <div className='overlay d-flex justify-content-center align-items-center'>
-        <div className="popup">
-          <div className="DoctorOptions">
-            <Link to={""} className="option">
-              <img src={image_01} alt="" />
-              <h3>Close patient</h3>
-            </Link>
-            <Link className="option">
-              <img src={image_02} alt="" />
-              <h3>General info</h3>
-            </Link>
-            <Link className="option">
-              <img src={image_03} alt="" />
-              <h3>Tests</h3>
-            </Link>
-            <Link className="option">
-              <img src={image_04} alt="" />
-              <h3>X-Rays</h3>
-            </Link>
-            <Link className="option">
-              <img src={image_05} alt="" />
-              <h3>Prescriptions</h3>
-            </Link>
-            <Link className="option">
-              <img src={image_06} alt="" />
-              <h3>Add prescription</h3>
-            </Link>
-          </div>
-          <div className="close">
-            <FaXmark onClick={hide}/>
+        <div className='overlay d-flex justify-content-center align-items-center'>
+          <div className="popup">
+            <div className="DoctorOptions">
+              {
+                type === "doctor" && <Link to={""} className="option">
+                  <img src={image_01} alt="" />
+                  <h3>Close patient</h3>
+                </Link>
+              }
+
+              <Link className="option">
+                <img src={image_02} alt="" />
+                <h3>General info</h3>
+              </Link>
+              <Link className="option">
+                <img src={image_03} alt="" />
+                <h3>Tests</h3>
+              </Link>
+              <Link className="option">
+                <img src={image_04} alt="" />
+                <h3>X-Rays</h3>
+              </Link>
+              <Link className="option">
+                <img src={image_05} alt="" />
+                <h3>Prescriptions</h3>
+              </Link>
+              {
+                type === "doctor" && <Link className="option">
+                  <img src={image_06} alt="" />
+                  <h3>Add prescription</h3>
+                </Link>
+              }
+
+            </div>
+            <div className="close">
+              <FaXmark onClick={hide} />
+            </div>
           </div>
         </div>
-      </div>
-    )}
+      )}
     </>
   )
 }

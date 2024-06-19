@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
@@ -25,7 +25,10 @@ import { setUser } from './redux/slices/UserSlice'
 
 function App() {
 
-  const { user } = useSelector((state) => state.user);
+  const nav = useNavigate();
+
+  const { user, type } = useSelector((state) => state.user);
+
 
   const dispatch = useDispatch();
 
@@ -37,12 +40,22 @@ function App() {
 
   }, [])
 
+  useEffect(() => {
+
+    if (type === "doctor") {
+      nav("/noPatient");
+
+    } else if (type === "patient") {
+
+      nav("/userInfo")
+    }
+
+  }, [type])
+
 
 
   return (
     <>
-      {/* <AccessPatient/> */}
-
 
       {
         user ? <>

@@ -10,9 +10,12 @@ import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import DoctorOptions from '../../Popus/DoctorOptions/DoctorOptions';
 import AddProfile from '../../Popus/AddProfile/AddProfile';
+import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
 
+
+  const { type } = useSelector(state => state.user);
 
 
   const [popup, setPopup] = useState(false)
@@ -34,7 +37,7 @@ const Sidebar = () => {
             <img src={Logo} alt="logo" />
           </div>
           <div className="links">
-            <Link to="/NoPatient"><TiHome /></Link>
+            <Link to={type === "doctor" ? "/NoPatient" : '/userInfo'}><TiHome /></Link>
             <Link to="/X_Rays"><FaUser /></Link>
             <Link onClick={showPopup} to="#"><AiOutlineAppstore /></Link>
             <Link to="/waiting_list"><FaTelegramPlane /></Link>

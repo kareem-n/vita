@@ -120,9 +120,7 @@ const Register = () => {
           setLoader(false);
           console.log(res);
           localStorage.setItem("user", res.data.token);
-
-          navigate("/");
-
+          navigate("/userInfo");
         }).catch(err => {
           setLoader(false);
           setExErr(err.response.data ? err.response.data : 'something went wrong!')
@@ -143,17 +141,17 @@ const Register = () => {
             <p>Fill the information carefully </p>
           </div>
 
-          
+
 
           <form onSubmit={handleSubmit}>
 
-          {
-            exErr && <div className="alert alert-danger">
-              {
-                exErr
-              }
-            </div>
-          }
+            {
+              exErr && <div className="alert alert-danger">
+                {
+                  exErr
+                }
+              </div>
+            }
             <p>Personal Information</p>
             <div className="inputs_name d-grid">
               <div className="input ">
