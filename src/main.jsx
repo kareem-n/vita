@@ -5,15 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import { Provider } from 'react-redux'
 import { MainStore } from './redux/Main.js'
-import { BrowserRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
 // import { BrowserRouter } from 'react-router-dom'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={MainStore} >
-    <BrowserRouter >
-
+    <HashRouter >
       <App />
-    </BrowserRouter>
+    </HashRouter>
   </Provider>
 )
