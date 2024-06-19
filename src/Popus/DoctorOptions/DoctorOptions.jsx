@@ -10,19 +10,13 @@ import { FaXmark } from "react-icons/fa6";
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
 
-const DoctorOptions = () => {
+const DoctorOptions = ({popup, setPopup}) => {
 
 
   const { type } = useSelector(state => state.user);
 
-  const [popup, setPopup] = useState(true);
   const hide = () => {
     setPopup(false)
-  }
-  if (popup) {
-    document.body.style.overflow = 'hidden'
-  } else {
-    document.body.style.overflow = 'auto'
   }
 
   return (

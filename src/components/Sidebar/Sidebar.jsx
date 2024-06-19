@@ -7,27 +7,34 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { MdOutlineQrCodeScanner } from "react-icons/md";
 import { IoMdLogOut } from "react-icons/io";
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import DoctorOptions from '../../Popus/DoctorOptions/DoctorOptions';
 import AddProfile from '../../Popus/AddProfile/AddProfile';
 import { useSelector } from 'react-redux';
 
 const Sidebar = () => {
 
-
   const { type } = useSelector(state => state.user);
-
-
   const [popup, setPopup] = useState(false)
   const showPopup = () => {
+    console.log(0);
     setPopup(!popup)
   }
 
-  if (popup) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = 'auto';
-  }
+  useEffect(() => {
+
+
+    console.log(popup);
+    if (popup) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+  }, [popup])
+
+
+
 
   return (
     <>
@@ -51,7 +58,7 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {popup && (<DoctorOptions />)}
+      {popup && <DoctorOptions popup={popup} setPopup={setPopup} />}
     </>
   )
 }
