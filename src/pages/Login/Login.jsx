@@ -11,7 +11,7 @@ import { useState } from "react";
 import Joi from "joi";
 import Loader from "../../components/loader/Loader";
 import { useDispatch } from "react-redux";
-import { setUser } from "../../redux/slices/UserSlice";
+import { setUser, setUserDet, setUserImage } from "../../redux/slices/UserSlice";
 import axios from "axios";
 
 const Login = () => {
@@ -64,6 +64,16 @@ const Login = () => {
 
 
 
+  const convertArrayBufferToBase64 = (buffer) => {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -80,13 +90,34 @@ const Login = () => {
       axios.post("https://blissful-gentleness-production.up.railway.app/login", loginForm).then(res => {
         setLoading(false);
 
-        console.log(res.data);
+        // console.log(res.data);
 
         dispatch(setUser(res.data.token));
-
         localStorage.setItem("user", res.data.token);
 
-        navigate('/userInfo')
+        axios.get("https://blissful-gentleness-production.up.railway.app/users/auth/get-profile-image", {
+          headers: {
+            Authorization: `Bearer ${res.data.token}`,
+          },
+          responseType: 'arraybuffer',
+        }).then(data => {
+          const base64 = convertArrayBufferToBase64(data.data);
+          const image = `data:image/jpeg;base64,${base64}`;
+          dispatch(setUserImage(image));
+        })
+
+
+        axios.get("https://blissful-gentleness-production.up.railway.app/users/auth/get-general-info-of-user", {
+          headers: {
+            Authorization: `Bearer ${res.data.token}`
+          }
+        }).then(data => {
+          // console.log(data.data);
+          dispatch(setUserDet(data.data));
+          navigate('/userInfo')
+        })
+
+
 
       }).catch(err => {
         setLoading(false)

@@ -3,10 +3,15 @@ import { useRef, useState } from 'react';
 import profile from '../../assets/images/User.png'
 import edit from '../../assets/images/edit.png'
 import { InputSubmit } from '../../components/Buttons/Buttons';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState(0);
   const tabTitles = ['personal details', 'Org 1', 'Org 2'];
+
+
+  const { user, image } = useSelector((state) => state.user);
 
   const handleTabClick = (index) => {
     setActiveTab(index);
@@ -22,6 +27,9 @@ const Profile = () => {
 
   const handleImageChangePersonalDetails = (e) => {
     const file = e.target.files[0];
+
+    console.log(file);
+
     setImagePersonalDetails(e.target.files[0])
   };
 
@@ -33,6 +41,36 @@ const Profile = () => {
     const file = e.target.files[0];
     setImageOrg_1(e.target.files[0])
   };
+
+  const handlePersonalSubmit = (e) => {
+    e.preventDefault();
+
+    if (imagePersonalDetails) {
+
+      const formImg = new FormData;
+
+      formImg.append("image", imagePersonalDetails);
+
+      console.log(formImg);
+
+      axios.post("https://blissful-gentleness-production.up.railway.app/users/auth/add-profile-image", formImg, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        console.log(res.data);
+        window.location.reload() ;
+
+      }).catch(err => {
+        console.log(err);
+      })
+
+
+      // console.log(imagePersonalDetails);
+    }
+
+
+  }
 
   return (
     <>
@@ -49,62 +87,63 @@ const Profile = () => {
           ))}
         </div>
         <div className="tab-content">
-          {activeTab === 0 && 
-              <form action='' className="personal_details">
+          {activeTab === 0 &&
+            <form onSubmit={handlePersonalSubmit}>
+              <div className="personal_details">
                 <div className="inputImage" onClick={handleImageClickPersonalDetails}>
                   {imagePersonalDetails ? (
-                      <img src={URL.createObjectURL(imagePersonalDetails)} width="180px" />
-                    ):(
-                  <img src={profile} alt="" />
+                    <img src={URL.createObjectURL(imagePersonalDetails)} width="180px" />
+                  ) : (
+                    <img src={image && image} alt="" />
                   )}
-                  <input type="file" ref={inputRef} onChange={handleImageChangePersonalDetails} style={{display:'none'}}/>
+                  <input type="file" ref={inputRef} onChange={handleImageChangePersonalDetails} style={{ display: 'none' }} />
                   <img src={edit} className="edit" />
                 </div>
                 <div className="formInputs">
                   <div className="inputs_name d-grid">
                     <div className="input">
                       <label htmlFor="first_name">First Name <span>*</span></label>
-                      <input type="text" id="first_name" /*onChange={handleChange}*/ name="firstName" placeholder="Enter Your First Name"/>
+                      <input type="text" id="first_name" /*onChange={handleChange}*/ name="firstName" placeholder="Enter Your First Name" />
                       {/* {errors.firstName && <div className='alert alert-danger'>{errors.firstName}</div>} */}
                     </div>
                     <div className="input">
                       <label htmlFor="middle_name">Middle Name</label>
-                      <input type="text" id="middle_name" placeholder="Enter Your Middle Name"/>
+                      <input type="text" id="middle_name" placeholder="Enter Your Middle Name" />
                     </div>
                     <div className="input">
                       <label htmlFor="last_name">Last Name <span>*</span></label>
-                      <input type="text" id="last_name" /*onChange={handleChange}*/ name="lastName" placeholder="Enter Your Last Name"/>
+                      <input type="text" id="last_name" /*onChange={handleChange}*/ name="lastName" placeholder="Enter Your Last Name" />
                       {/* {errors.lastName && <div className='alert alert-danger'>{errors.lastName}</div>} */}
                     </div>
                   </div>
                   <div className="ssn_userName d-grid">
                     <div className="input">
-                      <label htmlFor="SSN">Social Security Number (SSN)   <span>*</span></label>
-                      <input type="number" id="SSN" name="SSN" /*onChange={handleChange}*/ placeholder="Enter Your Social Security Number "/>
+                      <label htmlFor="SSN">Social Security Number(SSN)  <span>*</span></label>
+                      <input type="number" id="SSN" name="SSN" /*onChange={handleChange}*/ placeholder="Enter Your Social Security Number " />
                       {/* {errors.SSN && <div className='alert alert-danger'>{errors.SSN}</div>} */}
                     </div>
                     <div className="input">
                       <label htmlFor="user_name">Username <span>*</span></label>
-                      <input type="text" id="user_name" /*onChange={handleChange}*/ name="userName" placeholder="Enter Your User Name"/>
+                      <input type="text" id="user_name" /*onChange={handleChange}*/ name="userName" placeholder="Enter Your User Name" />
                       {/* {errors.userName && <div className='alert alert-danger'>{errors.userName}</div>} */}
                     </div>
                   </div>
                   <div className="mob_data d-grid">
                     <div className="input">
                       <label htmlFor="mobile">Mobile Number  <span>*</span></label>
-                      <input type="number" name="mobile" id="mobile" /*onChange={handleChange}*/ placeholder="Enter Your Mobile Number"/>
+                      <input type="number" name="mobile" id="mobile" /*onChange={handleChange}*/ placeholder="Enter Your Mobile Number" />
                       {/* {errors.mobile && <div className='alert alert-danger'>{errors.mobile}</div>} */}
                     </div>
                     <div className="input">
                       <label htmlFor="data">Data Of Birth <span>*</span></label>
-                      <input type="date" name="data" /*onChange={handleChange}*/ id="data"/>
+                      <input type="date" name="data" /*onChange={handleChange}*/ id="data" />
                       {/* {errors.data && <div className='alert alert-danger'>{errors.data}</div>} */}
                     </div>
                   </div>
                   <div className="inputs d-grid">
                     <div className="input">
                       <label htmlFor="Email">Email Address <span>*</span></label>
-                      <input type="email" name="email" /*onChange={handleChange}*/ id="Email" placeholder="Enter Your Email Address"/>
+                      <input type="email" name="email" /*onChange={handleChange}*/ id="Email" placeholder="Enter Your Email Address" />
                       {/* {errors.email && <div className='alert alert-danger'>{errors.email}</div>} */}
                     </div>
                     <div className="input">
@@ -130,12 +169,12 @@ const Profile = () => {
                   <div className="address_currentPassword d-grid">
                     <div className="input">
                       <label htmlFor="address">Adderss</label>
-                      <input type="number" name="mobile" id="address" /*onChange={handleChange}*/ placeholder="Enter Your Adderss"/>
+                      <input type="number" name="mobile" id="address" /*onChange={handleChange}*/ placeholder="Enter Your Adderss" />
                       {/* {errors.mobile && <div className='alert alert-danger'>{errors.mobile}</div>} */}
                     </div>
                     <div className="input">
                       <label htmlFor="CurrentPassword">Current Password <span>*</span></label>
-                      <input type="password" name="CurrentPassword" /*onChange={handleChange}*/ id="currentPassword" placeholder='Current Password'/>
+                      <input type="password" name="CurrentPassword" /*onChange={handleChange}*/ id="currentPassword" placeholder='Current Password' />
                       {/* {errors.data && <div className='alert alert-danger'>{errors.data}</div>} */}
                     </div>
                   </div>
@@ -147,29 +186,34 @@ const Profile = () => {
                     <div className="pass">
                       <div className="input">
                         <label htmlFor="NPassword">New Password <span>*</span></label>
-                        <input type="password" name="NPassword" /*onChange={handleChange}*/ id="NPassword" placeholder='New Password'/>
+                        <input type="password" name="NPassword" /*onChange={handleChange}*/ id="NPassword" placeholder='New Password' />
                         {/* {errors.data && <div className='alert alert-danger'>{errors.data}</div>} */}
                       </div>
                       <div className="input">
                         <label htmlFor="CPassword">Confirm Password <span>*</span></label>
-                        <input type="password" name="CPassword" /*onChange={handleChange}*/ id="CPassword" placeholder='Confirm Password'/>
+                        <input type="password" name="CPassword" /*onChange={handleChange}*/ id="CPassword" placeholder='Confirm Password' />
                         {/* {errors.data && <div className='alert alert-danger'>{errors.data}</div>} */}
                       </div>
                     </div>
                   </div>
                 </div>
-                {/* <InputSubmit>Save</InputSubmit> */}
-              </form>
-            }
-          {activeTab === 1 && 
+              </div>
+
+              <div className="">
+
+                <InputSubmit>Save</InputSubmit>
+              </div>
+            </form>
+          }
+          {activeTab === 1 &&
             <form action='' className="org_1">
               <div className="inputImage" onClick={handleImageClickOrg_1}>
                 {imageOrg_1 ? (
-                    <img src={URL.createObjectURL(imageOrg_1)} width="180px" />
-                  ):(
-                <img src={profile} alt="" />
+                  <img src={URL.createObjectURL(imageOrg_1)} width="180px" />
+                ) : (
+                  <img src={profile} alt="" />
                 )}
-                <input type="file" ref={inputRef} onChange={handleImageChangeOrg_1} style={{display:'none'}}/>
+                <input type="file" ref={inputRef} onChange={handleImageChangeOrg_1} style={{ display: 'none' }} />
                 <img src={edit} className="edit" />
 
               </div>
@@ -177,26 +221,26 @@ const Profile = () => {
                 <div className="inputs">
                   <div className="input">
                     <label htmlFor="Organization_Name">Organization Name <span>*</span></label>
-                    <input type="text" id="Organization_Name" /*onChange={handleChange}*/ name="OrganizationName" placeholder="Organization_Name"/>
+                    <input type="text" id="Organization_Name" /*onChange={handleChange}*/ name="OrganizationName" placeholder="Organization_Name" />
                     {/* {errors.firstName && <div className='alert alert-danger'>{errors.firstName}</div>} */}
                   </div>
                   <div className="input">
-                      <label htmlFor="user_name">Username <span>*</span></label>
-                      <input type="text" id="user_name" /*onChange={handleChange}*/ name="userName" placeholder="Enter Your User Name"/>
-                      {/* {errors.userName && <div className='alert alert-danger'>{errors.userName}</div>} */}
-                    </div>
-                    <div className="input">
-                      <label htmlFor="mobile">Mobile Number</label>
-                      <input type="number" name="mobile" id="mobile" placeholder="Enter Your Mobile Number"/>
-                    </div>
-                    <div className="input">
-                      <label htmlFor="Email">Email Address</label>
-                      <input type="email" name="email" id="Email" placeholder="Enter Your Email Address"/>
-                    </div>
-                    <div className="textarea">
-                      <label htmlFor="Bio">Bio</label>
-                      <textarea name="Bio" id="Bio" cols="30" rows="10" placeholder='Bio'></textarea>
-                    </div>
+                    <label htmlFor="user_name">Username <span>*</span></label>
+                    <input type="text" id="user_name" /*onChange={handleChange}*/ name="userName" placeholder="Enter Your User Name" />
+                    {/* {errors.userName && <div className='alert alert-danger'>{errors.userName}</div>} */}
+                  </div>
+                  <div className="input">
+                    <label htmlFor="mobile">Mobile Number</label>
+                    <input type="number" name="mobile" id="mobile" placeholder="Enter Your Mobile Number" />
+                  </div>
+                  <div className="input">
+                    <label htmlFor="Email">Email Address</label>
+                    <input type="email" name="email" id="Email" placeholder="Enter Your Email Address" />
+                  </div>
+                  <div className="textarea">
+                    <label htmlFor="Bio">Bio</label>
+                    <textarea name="Bio" id="Bio" cols="30" rows="10" placeholder='Bio'></textarea>
+                  </div>
                 </div>
               </div>
               {/* <InputSubmit>Save</InputSubmit> */}

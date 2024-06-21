@@ -1,12 +1,17 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import User from '../../assets/images/User.png'
 import './UserInfo.css'
 import { useEffect } from 'react';
 import { setUser } from '../../redux/slices/UserSlice';
 const UserInfo = () => {
 
-  
+
   const dispatch = useDispatch();
+
+
+  const { userDet } = useSelector(state => state.user);
+
+
 
   useEffect(() => {
 
@@ -23,29 +28,32 @@ const UserInfo = () => {
         <div className="image">
           <img src={User} alt="" />
         </div>
-        <div className="info">
+        {
+          userDet &&  <div className="info">
           <div>
-            <strong>Name:</strong> <span>Galal Elaasar </span>
+            <strong>Name:</strong> <span>{userDet.fullName} </span>
           </div>
           <div>
-            <strong>Date of birth:</strong> <span>1/5/2002</span>
+            <strong>Date of birth:</strong> <span>{userDet.dateOfBirth}</span>
           </div>
           <div>
-            <strong>Age:</strong> <span> 32</span>
+            <strong>Age:</strong> <span> {userDet.age}</span>
           </div>
           <div>
-            <strong>Gender:</strong> <span>Male </span>
+            <strong>Gender:</strong> <span>{userDet.gender} </span>
           </div>
           <div>
-            <strong>Marital Status:</strong> <span>Single </span>
+            <strong>Marital Status:</strong> <span>{userDet.martalStatus} </span>
           </div>
           <div>
-            <strong>Mobile Number:</strong> <span>01099909451 </span>
+            <strong>Mobile Number:</strong> <span>{userDet.phone} </span>
           </div>
           <div>
-            <strong>Address:</strong> <span>Address</span>
+            <strong>Address:</strong> <span>{userDet.address}</span>
           </div>
         </div>
+        }
+       
       </div>
     </div>
   )

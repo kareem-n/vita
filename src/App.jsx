@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import Home from './pages/Home/Home'
 import Login from './pages/Login/Login'
 import Register from './pages/Register/Register'
@@ -20,7 +20,8 @@ import ViewPrescription from './pages/ViewPrescription/ViewPrescription'
 import Profile from './pages/Profile/Profile'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { setUser } from './redux/slices/UserSlice'
+import { setUser, setUserDet, setUserImage } from './redux/slices/UserSlice'
+import axios from 'axios'
 
 
 function App() {
@@ -32,8 +33,40 @@ function App() {
 
   const dispatch = useDispatch();
 
+
+  const convertArrayBufferToBase64 = (buffer) => {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  };
+
   useEffect(() => {
 
+
+    axios.get("https://blissful-gentleness-production.up.railway.app/users/auth/get-profile-image", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("user")}`,
+      },
+      responseType: 'arraybuffer',
+    }).then(data => {
+      const base64 = convertArrayBufferToBase64(data.data);
+      const image = `data:image/jpeg;base64,${base64}`;
+      dispatch(setUserImage(image));
+    })
+
+    axios.get("https://blissful-gentleness-production.up.railway.app/users/auth/get-general-info-of-user", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("user")}`
+      }
+    }).then(data => {
+      console.log(data.data);
+      dispatch(setUserDet(data.data));
+      // navigate('/userInfo')
+    })
     if (localStorage.getItem("user")) {
       dispatch(setUser(localStorage.getItem("user")));
     }
@@ -51,6 +84,17 @@ function App() {
     }
 
   }, [type])
+
+
+  const ProtectRoute = ({ children }) => {
+
+    if (localStorage.getItem("user")) {
+      return children;
+    } else {
+      return <Navigate to={'/login'} />
+    }
+
+  }
 
 
 
@@ -73,7 +117,9 @@ function App() {
         <Route path="/waiting_list" element={<Waiting_list />} />
         <Route path="/NoPatient" element={<NoPatient />} />
         <Route path="/patientAccess" element={<PatientAccess />} />
-        <Route path="/userInfo" element={<UserInfo />} />
+        <Route path="/userInfo" element={<ProtectRoute >
+          <UserInfo />
+        </ProtectRoute>} />
         <Route path="/Accordion" element={<Accordion />} />
         <Route path="/X_Rays" element={<X_Rays />} />
         <Route path="/Prescriptions" element={<Prescriptions />} />

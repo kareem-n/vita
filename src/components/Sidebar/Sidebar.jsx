@@ -10,11 +10,15 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import DoctorOptions from '../../Popus/DoctorOptions/DoctorOptions';
 import AddProfile from '../../Popus/AddProfile/AddProfile';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser, setUserDet } from '../../redux/slices/UserSlice';
 
 const Sidebar = () => {
 
   const { type } = useSelector(state => state.user);
+
+  const dispatch = useDispatch();
+
   const [popup, setPopup] = useState(false)
   const showPopup = () => {
     console.log(0);
@@ -51,7 +55,11 @@ const Sidebar = () => {
             <Link to="/Accordion"><MdOutlineQrCodeScanner /></Link>
           </div>
           <div className="logout">
-            <Link to={'/login'}>
+            <Link onClick={() => {
+              localStorage.clear();
+              dispatch(setUser(null))
+              dispatch(setUserDet(null));
+            }} to={'/login'}>
               <IoMdLogOut />
             </Link>
           </div>

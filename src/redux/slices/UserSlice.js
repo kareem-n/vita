@@ -2,7 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   user: 0,
+  userDet: null,
   type: "",
+  image: "",
 };
 
 export const UserSlice = createSlice({
@@ -15,8 +17,14 @@ export const UserSlice = createSlice({
     setType: (state, action) => {
       state.type = action.payload;
     },
+    setUserDet: (state, action) => {
+      state.userDet = action.payload;
+    },
+    setUserImage: (state, action) => {
+      state.image = action.payload;
+    },
   },
 });
 
 export default UserSlice.reducer;
-export const { setUser, setType } = UserSlice.actions;
+export const { setUser, setType, setUserDet, setUserImage } = UserSlice.actions;

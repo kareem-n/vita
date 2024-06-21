@@ -15,7 +15,10 @@ const Navbar = () => {
   const dispatch = useDispatch();
 
 
-  const { type } = useSelector(state => state.user);
+  const { type, user, userDet ,image } = useSelector(state => state.user);
+
+  console.log(userDet);
+
   const [dropShow, setSropShow] = useState(false);
   const [addProfileShow, setAddProfileShow] = useState(false);
 
@@ -46,7 +49,7 @@ const Navbar = () => {
     getA();
 
 
-  }, [])
+  }, [user])
 
 
   return (
@@ -65,11 +68,11 @@ const Navbar = () => {
             <div className="position-relative">
               <div className="info gap-3 d-flex justify-content-between align-items-center">
                 <div className="image">
-                  <img src={imageProfile} className='rounded-circle' width={'50px'} height={'50px'} />
+                  <img src={image&&image} className='rounded-circle' width={'50px'} height={'50px'} />
                 </div>
                 <div className="name_mile">
-                  <h4 className='m-0'>Malvika N.</h4>
-                  <p className='m-0'>@malvi34</p>
+                  <h4 className='m-0'>{userDet ? userDet.fullName : ''}</h4>
+                  <p className='m-0'>@{userDet ? userDet.username : ''}</p>
                 </div>
                 {
                   dropShow && <div className="position-absolute top-100 bg-dark mt-2 px-4 py-2 rounded-4">
