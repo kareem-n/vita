@@ -3,25 +3,23 @@ import './Buttons.css'
 
 const LoginButton = (props) => {
   return (
-    <div className="button login">
-      <Link to="/login">{props.children}</Link>
-    </div>
+    <Link to="/login" className='button login' style={{ color:'#000' }}>{props.children}</Link>
   )
 }
 
 const RegisterButton = (props) => {
   return (
     <div className="button register">
-      <Link to="/register">{props.children}</Link>
+      <Link to="/register" className='button register' style={{ color:'#fff' }}>{props.children}</Link>
     </div>
   )
 }
 
 const InputSubmit = (props) => {
   return (
-    <div className="button InputSubmit " onClick={props.hide}>
-      <input type="submit" value={props.children}/>
-    </div>
+    <input type="submit" className='button InputSubmit'
+      style={{ border:'1px solid #fff', color:'#fff' }}
+      value={props.children}/>
   )
 }
 
