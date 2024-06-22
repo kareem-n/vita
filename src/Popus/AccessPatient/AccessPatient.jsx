@@ -19,7 +19,7 @@ const AccessPatient = () => {
     <>
       {popup && (
         <div className='overlay d-flex justify-content-center align-items-center'>
-          <div className="popup">
+          <div className="popup d-flex gap-3">
             <Link to={'/patientAccess'} className='box'>
               <img src={Eye} alt="" />
               <h3>access patient</h3>

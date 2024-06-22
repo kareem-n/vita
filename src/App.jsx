@@ -22,6 +22,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { setUser, setUserDet, setUserImage } from './redux/slices/UserSlice'
 import axios from 'axios'
+import DocName from './pages/DocName/DocName'
 
 
 function App() {
@@ -127,6 +128,7 @@ function App() {
         <Route path="/AddPrescription" element={<AddPrescription />} />
         <Route path="/ViewPrescription" element={<ViewPrescription />} />
         <Route path="/Profile" element={<Profile />} />
+        <Route path="/DocName" element={<DocName />} />
       </Routes>
 
 

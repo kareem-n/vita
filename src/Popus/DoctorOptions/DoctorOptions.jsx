@@ -36,33 +36,35 @@ const DoctorOptions = ({popup, setPopup}) => {
                 </Link>
               }
 
-              <Link className="option">
+              <Link to={'/userInfo'} className="option">
                 <img src={image_02} alt="" />
                 <h3>General info</h3>
               </Link>
-              <Link className="option">
+              <Link to={'/Charts'} className="option">
                 <img src={image_03} alt="" />
                 <h3>Tests</h3>
               </Link>
-              <Link className="option">
+              <Link to={'/X_Rays'} className="option">
                 <img src={image_04} alt="" />
                 <h3>X-Rays</h3>
               </Link>
-              <Link className="option">
+              <Link to={'/Prescriptions_2'} className="option">
                 <img src={image_05} alt="" />
                 <h3>Prescriptions</h3>
               </Link>
               {
-                type === "doctor" && <Link className="option">
-                  <img src={image_06} alt="" />
-                  <h3>Add prescription</h3>
-                </Link>
+                type === "doctor" &&<>
+                  <Link to={'/AddPrescription'} className="option">
+                    <img src={image_06} alt="" />
+                    <h3>Add prescription</h3>
+                  </Link>
+                  <Link to={'/'} className='option'>
+                    <img src={uploadPost} alt="" />
+                    <h3>Upload Post</h3>
+                  </Link>
+                </> 
               }
 
-            <Link to={'/'} className='option'>
-              <img src={uploadPost} alt="" />
-              <h3>Upload Post</h3>
-            </Link>
             </div>
             <div className="close">
               <FaXmark onClick={hide} />

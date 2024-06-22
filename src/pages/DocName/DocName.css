@@ -1,0 +1,40 @@
+.prescriptions_2{
+  width: calc(100% - 90px);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  margin-top: 94px;
+  margin-left: auto;
+  margin-top: 98px;
+  height: 100vh;
+  .head{
+    padding: 30px;
+  }
+  .content{
+    padding: 20px 100px;
+    .heading , .d-flex{
+      background-color: var(--white-color);
+    }
+    .heading{
+      border: 2px solid var(--main-color);
+      h2{
+        font-size: 24px;
+      }
+    }
+    .data{
+      border-bottom: 1px solid var(--main-color);
+      h3{
+        font-size: 21px;
+        color: var(--black-color);
+      }
+      &:last-of-type{
+        border-bottom: 2px solid var(--main-color);
+      }
+    }
+    h2 , h3{
+      margin: 0;
+      flex: 1;
+      padding: 10px;
+      font-weight: 600;
+    }
+  }
+}

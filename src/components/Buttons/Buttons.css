@@ -34,6 +34,8 @@
   border: 2px solid var(--black-color);
   border-radius: 15px;
   padding: 0px 30px;
+  max-width: 120px;
+  width: 100%;
 }
 .firstBtn{
   background: var(--main-color);

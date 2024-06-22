@@ -24,12 +24,13 @@ const ContentHead = () => {
   )
 }
 
-const RaysHead = () => {
+const RaysHead = (props) => {
   return (
     <div className="head d-flex justify-content-between align-items-center">
       <div className="btns d-flex gap-2">
-        <FirstBtn>Date</FirstBtn>
-        <SecondBtn>Name</SecondBtn>
+      {props.children}
+        {/* <FirstBtn></FirstBtn>
+        <SecondBtn>Name</SecondBtn> */}
       </div>
     </div>
   )
