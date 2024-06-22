@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom"
 
-const DataPrescriptions_2 = (props) => {
+const DataPrescriptions_2 = ({data}) => {
+
   return (
-    <Link to={props.href} className='data d-flex align-items-center'>
-      <h3>Doctor</h3>
-      <h3>1/5/2002</h3>
+    <Link to={`/ViewPrescription/${data.prescription_id}`} className='data d-flex align-items-center'>
+      <h3>{data.doctorName}</h3>
+      <h3>{data.created_at}</h3>
     </Link>
   )
 }

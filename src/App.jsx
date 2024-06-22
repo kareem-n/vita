@@ -77,13 +77,13 @@ function App() {
 
   useEffect(() => {
 
-    if (type === "doctor") {
-      nav("/noPatient");
+    // if (type === "doctor") {
+    //   nav("/noPatient");
 
-    } else if (type === "patient") {
+    // } else if (type === "patient") {
 
-      nav("/userInfo")
-    }
+    //   nav("/userInfo")
+    // }
 
   }, [type])
 
@@ -144,7 +144,7 @@ function App() {
         <Route path="/Prescriptions" element={<Prescriptions />} />
         <Route path="/Prescriptions_2" element={<Prescriptions_2 />} />
         <Route path="/AddPrescription" element={<AddPrescription />} />
-        <Route path="/ViewPrescription" element={<ViewPrescription />} />
+        <Route path="/ViewPrescription/:id" element={<ViewPrescription />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/DocName" element={<DocName />} />
       </Routes>
