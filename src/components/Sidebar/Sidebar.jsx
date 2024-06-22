@@ -54,15 +54,13 @@ const Sidebar = () => {
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
             <Link to="/Accordion"><MdOutlineQrCodeScanner /></Link>
           </div>
-          <div className="logout">
-            <Link onClick={() => {
+            <Link className="logout" onClick={() => {
               localStorage.clear();
               dispatch(setUser(null))
               dispatch(setUserDet(null));
             }} to={'/login'}>
               <IoMdLogOut />
             </Link>
-          </div>
         </div>
       </div>
 
