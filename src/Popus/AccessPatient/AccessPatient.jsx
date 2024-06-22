@@ -3,7 +3,7 @@ import Eye from '../../assets/images/big Eye.png'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { FaXmark } from 'react-icons/fa6';
-
+import uploadPost from '../../assets/images/uploadImage.svg'
 const AccessPatient = () => {
   const [popup , setPopup] = useState(true);
   const hide = () =>{
@@ -23,6 +23,10 @@ const AccessPatient = () => {
             <Link to={'/patientAccess'} className='box'>
               <img src={Eye} alt="" />
               <h3>access patient</h3>
+            </Link>
+            <Link to={'/'} className='box'>
+              <img src={uploadPost} alt="" />
+              <h3>Upload Post</h3>
             </Link>
             <div className="close">
               <FaXmark onClick={hide}/>

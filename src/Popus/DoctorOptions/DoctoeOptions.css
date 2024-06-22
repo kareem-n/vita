@@ -16,6 +16,14 @@
     padding-top: 50px !important;
     position: relative;
     overflow: hidden;
+    &.doctorOptions{
+      max-height: 400px;
+      height: 100%;
+      overflow: auto;
+      &::-webkit-scrollbar {
+        width: 0;
+      }
+    }
     .DoctorOptions{
       display: grid;
       grid-template-columns: repeat(3,1fr);
