@@ -9,9 +9,7 @@ const LoginButton = (props) => {
 
 const RegisterButton = (props) => {
   return (
-    <div className="button register">
       <Link to="/register" className='button register' style={{ color:'#fff' }}>{props.children}</Link>
-    </div>
   )
 }
 
