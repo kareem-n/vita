@@ -138,8 +138,11 @@ const AddProfile = ({ setAddProfileShow }) => {
 
                   </Link>
                   <option value="profileType" disabled>Profile Type</option>
-                  <option value="doctor">Doctor</option>
                   <option value="patient">Patient</option>
+                  <option value="doctor">Doctor</option>
+                  <option value="xray_lab">XRays Lab</option>
+                  <option value="tests_lab">Tests Lab</option>
+                  <option value="pharmacy">Pharmacy</option>
                 </select>
                 {errors.profileType && <div className='alert alert-danger mt-2'>{errors.profileType}</div>}
               </div>
