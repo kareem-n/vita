@@ -20,7 +20,7 @@ import ViewPrescription from './pages/ViewPrescription/ViewPrescription'
 import Profile from './pages/Profile/Profile'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { setUser, setUserDet, setUserImage } from './redux/slices/UserSlice'
+import { setType, setUser, setUserDet, setUserImage } from './redux/slices/UserSlice'
 import axios from 'axios'
 import DocName from './pages/DocName/DocName'
 
@@ -70,6 +70,7 @@ function App() {
     })
     if (localStorage.getItem("user")) {
       dispatch(setUser(localStorage.getItem("user")));
+      dispatch(setType('patient'));
     }
 
   }, [])
@@ -98,6 +99,22 @@ function App() {
   }
 
 
+  const HomeAccess = ({ children }) => {
+
+
+    if (type === "patient") {
+      return <Navigate to={'/userinfo'} />;
+    }
+
+    else if (type === 'doctor') {
+      return <Navigate to={'/noaccess'} />;
+    } else {
+      return children
+    }
+
+  }
+
+
 
   return (
     <>
@@ -110,7 +127,8 @@ function App() {
       }
 
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<HomeAccess><Home /></HomeAccess>
+        } />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/verify" element={<Verify />} />
