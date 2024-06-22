@@ -1,8 +1,14 @@
+import { useEffect } from 'react'
 import FolderInfo from '../../components/FolderInfo/FolderInfo'
 import { RaysHead } from '../../components/Head/Head'
 import './Prescriptions.css'
+import axios from 'axios'
 
 const Prescriptions = () => {
+
+
+
+
   return (
     <div className='prescriptions'>
       <RaysHead/>

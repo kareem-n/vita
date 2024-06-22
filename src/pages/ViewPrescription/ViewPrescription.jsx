@@ -1,86 +1,95 @@
+import { useParams } from 'react-router-dom';
 import './ViewPrescription.css'
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const ViewPrescription = () => {
+
+  const { id } = useParams();
+
+
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+
+    axios.get(`https://blissful-gentleness-production.up.railway.app/patients/get-prescription-details?ID=${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("user")}`
+      }
+    }).then(res => {
+      console.log(res.data);
+      setData(res.data);
+    })
+
+  }, []);
+
+
+
   return (
     <div className='view_prescription'>
-      <div className="content_prescription">
-        <div className="head">
-          <div className="right">
-            <h4>Patient Name: <span>Micheal Jackson</span></h4>
-            <h4>Doctor Name: <span>Any Name </span></h4>
+      {
+        data && <div className="content_prescription">
+          <div className="head">
+            <div className="right">
+              <h4>Patient Name: <span>{data.
+                patientName
+              }</span></h4>
+              <h4>Doctor Name: <span>{data.doctorName
+              } </span></h4>
+            </div>
+            <div className="left">
+              <h4>Date: <span>{data.createdAt}</span></h4>
+            </div>
           </div>
-          <div className="left">
-            <h4>Date: <span>22/2/2022</span></h4>
+          <div className="info_prescription">
+            <div className="medicine">
+              <h3>Medicine: </h3>
+              <ul>
+                {
+                  data.medicines.map((item, key) => <li key={key}>
+                    {item.medicine}
+                    <p>- {item.note}</p>
+                  </li>
+                  )
+                }
+              </ul>
+            </div>
+            <div className="tests">
+              <h3>Tests: </h3>
+              <ul>
+                {
+                  data.tests.map((item, key) => <li key={key}>
+                    {item.test}
+                    <p>- {item.note}</p>
+                  </li>
+                  )
+                }
+              </ul>
+            </div>
+            <div className="x_Rays">
+              <h3>X-rays: </h3>
+              <ul>
+                {
+                  data.
+                    xrayes.map((item, key) => <li key={key}>
+                      {item.xray}
+                      <p>- {item.note}</p>
+                    </li>
+                    )
+                }
+              </ul>
+            </div>
+            <div className="diagnosis">
+              <h3>Diagnosis: {data.diagnosis} </h3>
+            </div>
+            <div className="note">
+              <h3>NOTE: {data.note}</h3>
+
+            </div>
           </div>
         </div>
-        <div className="info_prescription">
-          <div className="medicine">
-            <h3>Medicine: </h3>
-            <ul>
-              <li>
-                Medicine 1
-                <p>- Note</p>
-              </li>
-              <li>
-                Medicine 2
-                <p>- Note</p>
-              </li>
-              <li>
-                Medicine 3
-                <p>- Note</p>
-              </li>
-            </ul>
-          </div>
-          <div className="tests">
-          <h3>Tests: </h3>
-            <ul>
-              <li>
-                Test 1
-                <p>- Note</p>
-              </li>
-              <li>
-                Test 2
-                <p>- Note</p>
-              </li>
-              <li>
-                Test 3
-                <p>- Note</p>
-              </li>
-            </ul>
-          </div>
-          <div className="x_Rays">
-          <h3>X-rays: </h3>
-            <ul>
-              <li>
-                X-rays 1
-                <p>- Note</p>
-              </li>
-              <li>
-                X-rays 2
-                <p>- Note</p>
-              </li>
-              <li>
-                X-rays 3
-                <p>- Note</p>
-              </li>
-            </ul>
-          </div>
-          <div className="diagnosis">
-          <h3>Diagnosis: </h3>
-            <ul>
-              <li>
-                Diagnosis 1
-              </li>
-            </ul>
-          </div>
-          <div className="note">
-            <h3>NOTE:</h3>
-            <ul>
-              <li>note...</li>
-            </ul>
-          </div>          
-        </div>
-      </div>
+      }
+
     </div>
   )
 }

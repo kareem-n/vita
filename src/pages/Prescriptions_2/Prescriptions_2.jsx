@@ -2,8 +2,9 @@ import './Prescriptions_2.css'
 import { RaysHead } from '../../components/Head/Head'
 import DataPrescriptions_2 from '../../components/DataPrescriptions_2/DataPrescriptions_2'
 import { FirstBtn, SecondBtn } from '../../components/Buttons/Buttons'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import DocName from '../DocName/DocName'
+import axios from 'axios'
 
 const Prescriptions_2 = () => {
   const [activeComponent, setActiveComponent] = useState('second'); // حالة لتحديد الزر النشط
@@ -17,6 +18,24 @@ const Prescriptions_2 = () => {
   };
 
 
+  const [data, setData] = useState(null);
+
+
+  useEffect(() => {
+
+    axios.get("https://blissful-gentleness-production.up.railway.app/patients/get-all-prescriptions", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("user")}`
+      }
+    }).then(res => {
+      setData(res.data)
+    }).catch(err => {
+      console.log(err);
+    })
+
+  }, [])
+
+
   return (
     <div className='prescriptions_2'>
       <RaysHead>
@@ -28,21 +47,21 @@ const Prescriptions_2 = () => {
           <h2>Doctor</h2>
           <h2>Data</h2>
         </div>
+
+        {
+          data && data.map( item => 
+            <div className="">
+              <DataPrescriptions_2 data={item} href="/ViewPrescription" />
+            </div>
+          )
+        }
+
         {activeComponent === 'second' ? (
           <>
-            <DataPrescriptions_2 href="/ViewPrescription"/>
-            <DataPrescriptions_2 href="/ViewPrescription"/>
-            <DataPrescriptions_2/>
-            <DataPrescriptions_2/>
-            <DataPrescriptions_2/>
-            <DataPrescriptions_2/>
-            <DataPrescriptions_2/>
-            <DataPrescriptions_2/>
-            <DataPrescriptions_2/>
-            <DataPrescriptions_2/>
+
           </>
         ) : (
-          <DocName/>
+          <DocName />
         )}
       </div>
     </div>
