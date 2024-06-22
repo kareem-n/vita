@@ -5,13 +5,34 @@
   margin-top: 94px;
   margin-left: auto;
   margin-top: 98px;
+  height: 100%;
   .head{
     padding: 30px;
   }
   .charts{
     padding: 20px 100px;
-    grid-template-columns: repeat(3,1fr);
-    gap: 20px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    perspective: 900px;
+    .box{
+      position: relative;
+      width: 100%;
+      transform-style: preserve-3d;
+      transform-origin: right center;
+      transition: transform 0.8s ease-in-out;
+      flex: 0 0 31%;
+      height: 230px;
+      .global{
+        position: absolute;
+        width: 100%;
+        backface-visibility: hidden;
+      }
+      &.flipped{
+        transform: translateX(-100%) rotateY(-180deg);
+      }
+    }
     .chart , .NumChart{
       padding: 15px;
       background-color: var(--white-color);
@@ -21,9 +42,11 @@
       }
     }
     .chart{
-      display: flex;
+      /* display: flex; */
       justify-content: center;
       flex-direction: column;
+      transform: rotateY(180deg);
+
       .head{
         display: flex;
         justify-content: space-between;
@@ -58,6 +81,9 @@
           justify-content: center;
           align-items: center;
           flex-direction: column;
+          &.red-border {
+            border: 7px solid #FF1313; 
+          }
           h2{
             font-weight: 700;
             font-size: 28px;
@@ -65,9 +91,16 @@
           p{
             font-weight: 400;
             color: var(--main-color);
+            &.red-border {
+              color: #FF1313; 
+            }
           }
         }
       }
     }
   }
+}
+
+.global{
+  background-color: red;
 }

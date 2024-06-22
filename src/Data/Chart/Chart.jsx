@@ -1,9 +1,8 @@
-import React from 'react'
 import LineChart from '../../components/LineChart/LineChart'
 
 const Chart = (props) => {
   return (
-    <div className="chart">
+    <div className="global chart">
       {props.children}
       <LineChart/>
     </div>
@@ -12,7 +11,7 @@ const Chart = (props) => {
 
 const NumChart = (props) => {
   return (
-    <div className="NumChart">
+    <div className="global NumChart">
       {props.children}
     </div>
   )
