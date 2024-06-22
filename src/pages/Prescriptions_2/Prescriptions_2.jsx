@@ -5,19 +5,9 @@ import { FirstBtn, SecondBtn } from '../../components/Buttons/Buttons'
 import { useEffect, useState } from 'react'
 import DocName from '../DocName/DocName'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 const Prescriptions_2 = () => {
-  const [activeComponent, setActiveComponent] = useState('second'); // حالة لتحديد الزر النشط
-
-  const handleFirstBtnClick = () => {
-    setActiveComponent('first'); // تعيين الحالة إلى "first" عند الضغط على الزر الأول
-  };
-
-  const handleSecondBtnClick = () => {
-    setActiveComponent('second'); // تعيين الحالة إلى "second" عند الضغط على الزر الثاني
-  };
-
-
   const [data, setData] = useState(null);
 
 
@@ -39,8 +29,8 @@ const Prescriptions_2 = () => {
   return (
     <div className='prescriptions_2'>
       <RaysHead>
-        <FirstBtn onClick={handleFirstBtnClick}>Doctor</FirstBtn>
-        <SecondBtn onClick={handleSecondBtnClick}>List</SecondBtn>
+        <Link to={'/Prescriptions'} className='firstBtn'>Doctor</Link>
+        <Link className='secondBtn'>List</Link>
       </RaysHead>
       <div className="content">
         <div className="heading d-flex align-items-center">
@@ -56,13 +46,7 @@ const Prescriptions_2 = () => {
           )
         }
 
-        {activeComponent === 'second' ? (
-          <>
-
-          </>
-        ) : (
-          <DocName />
-        )}
+        
       </div>
     </div>
   )

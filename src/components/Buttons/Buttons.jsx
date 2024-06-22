@@ -23,13 +23,13 @@ const InputSubmit = (props) => {
 
 const FirstBtn = (props) =>{
   return (
-    <button type='button' className='firstBtn'>{props.children}</button>
+    <Link to={props.href} className='firstBtn'>{props.children}</Link>
   )
 }
 
 const SecondBtn = (props) =>{
   return (
-    <button type='button' className='secondBtn'>{props.children}</button>
+    <Link to={props.href} className='secondBtn'>{props.children}</Link>
   )
 }
 
