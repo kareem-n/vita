@@ -23,6 +23,9 @@ import { useEffect } from 'react'
 import { setType, setUser, setUserDet, setUserImage } from './redux/slices/UserSlice'
 import axios from 'axios'
 import DocName from './pages/DocName/DocName'
+import TestLapOptions from './Popus/TestLapOptions/TestLapOptions'
+import XRaysLapOptions from './Popus/XRaysLapOptions/XRaysLapOptions'
+import PharmacyOptions from './Popus/PharmacyOptions/PharmacyOptions'
 
 
 function App() {
@@ -147,6 +150,9 @@ function App() {
         <Route path="/ViewPrescription/:id" element={<ViewPrescription />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/DocName" element={<DocName />} />
+        <Route path="/TestLapOptions" element={<TestLapOptions />} />
+        <Route path="/XRaysLapOptions" element={<XRaysLapOptions />} />
+        <Route path="/PharmacyOptions" element={<PharmacyOptions />} />
       </Routes>
 
 
