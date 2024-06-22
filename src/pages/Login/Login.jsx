@@ -148,7 +148,7 @@ const Login = () => {
                 }
                 <form onSubmit={handleSubmit}>
                   <div className="input">
-                    <label htmlFor="username">Username<span>*</span></label>
+                    <label htmlFor="username">Username <span style={{ color:'#F21D2F' }}>*</span></label>
                     <input type="text" placeholder="user name" name="username" onChange={handleChange} />
 
                     {
@@ -164,7 +164,7 @@ const Login = () => {
 
                   </div>
                   <div className="input">
-                    <label htmlFor="password">Password  <span>*</span></label>
+                    <label htmlFor="password">Password <span style={{ color:'#F21D2F' }}>*</span></label>
                     <input type="password" name="password" id="password" placeholder="Enter Your Password" onChange={handleChange} />
 
                     {
@@ -180,9 +180,7 @@ const Login = () => {
                   </div>
                   <h6><a href="">Forgot Password ?</a></h6>
                   <div className="d-flex">
-                    <div className="">
-                      <InputSubmit>Login</InputSubmit>
-                    </div>
+                    <InputSubmit>Login</InputSubmit>
                     <span>No Account ? <Link to="/register">Register</Link></span>
                   </div>
                 </form>
