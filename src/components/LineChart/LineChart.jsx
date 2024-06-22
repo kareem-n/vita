@@ -15,11 +15,11 @@ const LineChart = () => {
     chartInstance.current = new Chart(myChartRef,{
       type:'line',
       data:{
-        labels: ['January','February','March','April','May'],
+        labels: ['January','February','March','April','May','June','July','August','September','October','November','December'],
         datasets:[
           {
             label:'Line Chart',
-            data:[100,20,0,40,70],
+            data:[100,20,0,40,70,50,30,15,48,63,96,3],
             fill:false,
             borderColor: '#0C68CF',
             borderWidth:3
