@@ -89,8 +89,6 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-
     const validResult = validateData(formData);
     const errorData = {};
 
