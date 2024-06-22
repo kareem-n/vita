@@ -31,20 +31,23 @@
               border-radius: 5px;
             }
             .button{
-              width: fit-content;
+              max-width: 150px;
+              width: 100%;
+              margin: 0;
             }
             h6{
               text-align: right;
               margin: 0;
               color: var(--main-color);
+              font-size: 14px;
             }
             .d-flex{
-              margin-top: 20px;
-              justify-content: start;
+              margin-top: 30px;
+              justify-content: space-between;
               align-items: center;
               gap: 50px;
               span{
-                font-size: 20px;
+                font-size: 16px;
                 font-weight: 500;
                 color: var(--black-color);
                 a{

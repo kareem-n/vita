@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom';
 import { FaXmark } from "react-icons/fa6";
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import uploadPost from '../../assets/images/uploadImage.svg'
+
 
 const DoctorOptions = ({popup, setPopup}) => {
 
@@ -25,7 +27,7 @@ const DoctorOptions = ({popup, setPopup}) => {
       {popup && (
 
         <div className='overlay d-flex justify-content-center align-items-center'>
-          <div className="popup">
+          <div className="popup doctorOptions">
             <div className="DoctorOptions">
               {
                 type === "doctor" && <Link to={""} className="option">
@@ -57,6 +59,10 @@ const DoctorOptions = ({popup, setPopup}) => {
                 </Link>
               }
 
+            <Link to={'/'} className='option'>
+              <img src={uploadPost} alt="" />
+              <h3>Upload Post</h3>
+            </Link>
             </div>
             <div className="close">
               <FaXmark onClick={hide} />

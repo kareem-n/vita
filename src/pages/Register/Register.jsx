@@ -177,7 +177,7 @@ const Register = () => {
               </div>
               <div className="input">
                 <label htmlFor="profilePicture">profile image</label>
-                <input type="file" id="profilePicture" name="profilePicture" onChange={handleChange} />
+                <input type="file" id="profilePicture" name="profilePicture" onChange={handleChange} style={{ backgroundColor:'#fff' }}/>
                 {
                   errors?.profilePicture && <div className="badge text-danger">
                     {errors?.profilePicture}
