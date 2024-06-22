@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { InputSubmit } from '../../components/Buttons/Buttons';
 import axios from 'axios';
 import Loader from '../../components/loader/Loader';
+import { data } from 'autoprefixer';
 
 const AddProfile = ({ setAddProfileShow }) => {
 
@@ -59,7 +60,9 @@ const AddProfile = ({ setAddProfileShow }) => {
       setLoad(true);
       switch (formData.profileType) {
         case 'doctor':
-          axios.post(`https://blissful-gentleness-production.up.railway.app/users/auth/add-doctor-profile?specialization=${formData.spec}`, {}, {
+          axios.post(`https://blissful-gentleness-production.up.railway.app/users/auth/add-doctor-profile`, {
+            specialization: formData.spec
+          }, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("user")}`
             }
@@ -69,6 +72,7 @@ const AddProfile = ({ setAddProfileShow }) => {
             }
             // console.log(res.data);
             setLoad(false)
+            window.location.reload();
           }).catch(err => {
             setLoad(false);
             setExErr("something went wrong try again !");
