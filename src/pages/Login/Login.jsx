@@ -114,7 +114,7 @@ const Login = () => {
         }).then(data => {
           // console.log(data.data);
           dispatch(setUserDet(data.data));
-          navigate('/userInfo')
+          navigate('/Posters')
         })
 
 
