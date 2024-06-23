@@ -18,7 +18,7 @@
         width: 100%;
         border-radius: 5px;
       }
-      p , svg{
+      p , .iconHeart{
         position: absolute;
         max-width: 70px;
         border-radius: 0px 0px 20px;
@@ -36,8 +36,18 @@
         left: 0;
       }
       .iconHeart{
+        background: #fff;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        bottom: 0;
+        position: absolute;
+        right: 0;
+        border-radius: 20px 0 0;
         svg{
-          
+          fill: red;
+          font-size: 20px;
         }
 
       }
