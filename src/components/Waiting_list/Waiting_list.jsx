@@ -11,7 +11,9 @@ import { useSelector } from 'react-redux';
 const Waiting_list = () => {
 
 
-  const { type } = useSelector(state => state.user)
+  const { type, currentProfile } = useSelector(state => state.user)
+
+  console.log(type);
 
   const [load, setLoad] = useState(false);
   const [data, setData] = useState([]);
@@ -109,6 +111,44 @@ const Waiting_list = () => {
 
       })
     }
+    if (type === "xray_lab") {
+
+      setLoad(true);
+      axios.get(`https://blissful-gentleness-production.up.railway.app/XRay-Lab/get-list-of-connections?xRayLaboratoryName=${currentProfile}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        console.log(0);
+        const tmp = [];
+        res.data.map(item => {
+          axios.get(`https://blissful-gentleness-production.up.railway.app/users/auth/get-image?username=${item.username}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user")}`
+            }, responseType: 'arraybuffer'
+          }).then(ress => {
+            const base64 = convertArrayBufferToBase64(ress.data);
+            const image = `data:image/jpeg;base64,${base64}`;
+
+
+            item = { ...item, image };
+            tmp.push(item);
+            // setData(tmp)
+
+          })
+
+        })
+
+        setTimeout(() => {
+          setData(tmp);
+          setLoad(false);
+        }, 2000);
+
+        // setData(tmp);
+
+
+      })
+    }
 
 
 
@@ -142,18 +182,33 @@ const Waiting_list = () => {
                       if (type === 'patient') {
                         tmp = 'doctorName';
                         path = 'patients';
+                        axios.get(`https://blissful-gentleness-production.up.railway.app/${path}/accept_access?${tmp}=${item.username}`, {
+                          headers: {
+                            Authorization: `Bearer ${localStorage.getItem("user")}`
+                          }
+                        }).then(() => {
+                          window.location.reload();
+                        })
                       } else if (type === 'doctor') {
                         tmp = 'patient';
                         path = "doctors"
+                        axios.get(`https://blissful-gentleness-production.up.railway.app/${path}/accept_access?${tmp}=${item.username}`, {
+                          headers: {
+                            Authorization: `Bearer ${localStorage.getItem("user")}`
+                          }
+                        }).then(() => {
+                          window.location.reload();
+                        })
                       }
-
-                      axios.get(`https://blissful-gentleness-production.up.railway.app/${path}/accept_access?${tmp}=${item.username}`, {
-                        headers: {
-                          Authorization: `Bearer ${localStorage.getItem("user")}`
-                        }
-                      }).then(() => {
-                        window.location.reload();
-                      })
+                      else if (type === 'xray_lab') {
+                        axios.get(`https://blissful-gentleness-production.up.railway.app/XRay-Lab/accept-access?xRayLaboratoryName=${currentProfile}&patientName=${item.username}`, {
+                          headers: {
+                            Authorization: `Bearer ${localStorage.getItem("user")}`
+                          }
+                        }).then(() => {
+                          window.location.reload();
+                        })
+                      }
 
                     }}
                     className="done">
@@ -168,18 +223,35 @@ const Waiting_list = () => {
                     if (type === 'patient') {
                       tmp = 'doctorName';
                       path = 'patients';
+                      axios.get(`https://blissful-gentleness-production.up.railway.app/${path}/remove_access?${tmp}=${item.username}`, {
+                        headers: {
+                          Authorization: `Bearer ${localStorage.getItem("user")}`
+                        }
+                      }).then(() => {
+                        window.location.reload();
+                      })
                     } else if (type === 'doctor') {
                       tmp = 'patient';
                       path = "doctors"
+                      axios.get(`https://blissful-gentleness-production.up.railway.app/${path}/remove_access?${tmp}=${item.username}`, {
+                        headers: {
+                          Authorization: `Bearer ${localStorage.getItem("user")}`
+                        }
+                      }).then(() => {
+                        window.location.reload();
+                      })
+                    }
+                    else if (type === 'xray_lab') {
+                      axios.get(`https://blissful-gentleness-production.up.railway.app/XRay-Lab/remove-access?xRayLaboratoryName=${currentProfile}&patientName=${item.username}`, {
+                        headers: {
+                          Authorization: `Bearer ${localStorage.getItem("user")}`
+                        }
+                      }).then(() => {
+                        window.location.reload();
+                      })
                     }
 
-                    axios.get(`https://blissful-gentleness-production.up.railway.app/${path}/remove_access?${tmp}=${item.username}`, {
-                      headers: {
-                        Authorization: `Bearer ${localStorage.getItem("user")}`
-                      }
-                    }).then(() => {
-                      window.location.reload();
-                    })
+
 
                   }}
                   className="not">

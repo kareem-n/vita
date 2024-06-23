@@ -8,16 +8,16 @@ import { IoMdAddCircle } from "react-icons/io";
 import AddProfile from '../../Popus/AddProfile/AddProfile';
 import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
-import { setType } from '../../redux/slices/UserSlice';
+import { setCurrentProfile, setType } from '../../redux/slices/UserSlice';
+import Search from '../search/Search';
+import { FaXmark } from 'react-icons/fa6';
 const Navbar = () => {
 
 
   const dispatch = useDispatch();
 
 
-  const { type, user, userDet ,image } = useSelector(state => state.user);
-
-  console.log(userDet);
+  const { type, user, userDet, image } = useSelector(state => state.user);
 
   const [dropShow, setSropShow] = useState(false);
   const [addProfileShow, setAddProfileShow] = useState(false);
@@ -26,7 +26,6 @@ const Navbar = () => {
 
 
   function getA() {
-    console.log(localStorage.getItem("user"));
 
     axios.get("https://blissful-gentleness-production.up.railway.app/users/auth/get-list-of-profiles",
       {
@@ -35,7 +34,6 @@ const Navbar = () => {
         }
       })
       .then(res => {
-        console.log(res.data);
         setProfiles(res.data);
       })
       .catch(err => {
@@ -49,26 +47,42 @@ const Navbar = () => {
     getA();
 
 
-  }, [user])
+  }, [user]);
+
+  const [searchPop, setSearchPop] = useState(true)
 
 
   return (
     <>
       <nav className='d-flex justify-content-between align-items-center'>
         <h2>Tests</h2>
+        {/* search com */}
+        {
+          searchPop && <div className="d-flex position-relative">
+            <Search />
+          </div>
+        }
         <div
           style={{
-            borderColor: type === 'doctor' ? 'yellow' : 'green'
+            borderColor: type === 'doctor' ? 'yellow' : type === "patient" ? 'green' : 'orange'
           }}
           className="account">
           <div className="profile d-flex justify-content-between align-items-center">
-            <div className="search">
-              <FaSearch />
+
+            <div onClick={() => {
+              setSearchPop(!searchPop);
+            }} className="search">
+
+              {
+                searchPop ? <FaXmark /> : <FaSearch />
+              }
+
+
             </div>
             <div className="position-relative">
               <div className="info gap-3 d-flex justify-content-between align-items-center">
                 <div className="image">
-                  <img src={image&&image} className='rounded-circle' width={'50px'} height={'50px'} />
+                  <img src={image && image} className='rounded-circle' width={'50px'} height={'50px'} />
                 </div>
                 <div className="name_mile">
                   <h4 className='m-0' style={{ fontSize:'13px' }}>{userDet ? userDet.fullName : ''}</h4>
@@ -113,7 +127,31 @@ const Navbar = () => {
                           }} className='rounded-circle object-fit-cover me-2' alt="" />
                           Patient
                         </div>}
-                        {profiles.organizationDTOList.length > 0 && <div className="bg-danger">kareem</div>}
+
+
+                        {profiles.organizationDTOList.length > 0 &&
+                          profiles.organizationDTOList.map((item, key) => <div
+                            key={key}
+                            onClick={() => {
+                              dispatch(setType(item.type));
+                              dispatch(setCurrentProfile(item.organizationName));
+                              setSropShow(false);
+                            }}
+                            style={{
+                              cursor: 'pointer',
+                              color: 'orange'
+
+                            }}
+                            className="fw-bold text-nowrap border-4 p-1">
+                            <img src={imageProfile} style={{
+                              width: "40px",
+                              height: '40px',
+                              border: '4px solid orange'
+                            }} className='rounded-circle object-fit-cover me-2' alt="" />
+                            {item.organizationName
+                            }
+                          </div>)
+                        }
                       </div>
                     }
                     <div
