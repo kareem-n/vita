@@ -12,6 +12,8 @@ import DoctorOptions from '../../Popus/DoctorOptions/DoctorOptions';
 import AddProfile from '../../Popus/AddProfile/AddProfile';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, setUserDet } from '../../redux/slices/UserSlice';
+import PatientAccess from '../../Popus/PatientAccess/PatientAccess';
+import NoPatient from '../NoPatient/NoPatient';
 
 const Sidebar = () => {
 
@@ -20,8 +22,8 @@ const Sidebar = () => {
   const dispatch = useDispatch();
 
   const [popup, setPopup] = useState(false)
+
   const showPopup = () => {
-    console.log(0);
     setPopup(!popup)
   }
 
@@ -54,17 +56,21 @@ const Sidebar = () => {
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
             <Link to="/Accordion"><MdOutlineQrCodeScanner /></Link>
           </div>
-            <Link className="logout" onClick={() => {
-              localStorage.clear();
-              dispatch(setUser(null))
-              dispatch(setUserDet(null));
-            }} to={'/login'}>
-              <IoMdLogOut />
-            </Link>
+          <Link className="logout" onClick={() => {
+            localStorage.clear();
+            dispatch(setUser(null))
+            dispatch(setUserDet(null));
+          }} to={'/login'}>
+            <IoMdLogOut />
+          </Link>
         </div>
       </div>
 
-      {popup && <DoctorOptions popup={popup} setPopup={setPopup} />}
+      {popup && <div className="">
+        {/* <NoPatient /> */}
+        <DoctorOptions popup={popup} setPopup={setPopup} />
+
+      </div>}
     </>
   )
 }

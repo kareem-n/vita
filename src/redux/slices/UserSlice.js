@@ -5,6 +5,8 @@ const initialState = {
   userDet: null,
   type: "",
   image: "",
+  profiles: "",
+  currentProfile: '' ,
 };
 
 export const UserSlice = createSlice({
@@ -23,8 +25,14 @@ export const UserSlice = createSlice({
     setUserImage: (state, action) => {
       state.image = action.payload;
     },
+    setProfiles: (state, action) => {
+      state.profiles = action.payload;
+    },
+    setCurrentProfile: (state, action) => {
+      state.currentProfile = action.payload;
+    },
   },
 });
 
 export default UserSlice.reducer;
-export const { setUser, setType, setUserDet, setUserImage } = UserSlice.actions;
+export const { setUser, setType, setUserDet,setCurrentProfile, setUserImage , setProfiles } = UserSlice.actions;

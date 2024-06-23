@@ -84,7 +84,6 @@ function App() {
     //   nav("/noPatient");
 
     // } else if (type === "patient") {
-
     //   nav("/userInfo")
     // }
 
