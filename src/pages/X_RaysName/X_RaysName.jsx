@@ -1,4 +1,4 @@
-import 'X_RaysName.css';
+import './X_RaysName.css';
 
 const X_RaysName = () => {
   return (
