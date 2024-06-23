@@ -74,7 +74,7 @@ const Navbar = () => {
             }} className="search">
 
               {
-                searchPop ?  <FaSearch /> : <FaXmark /> 
+                searchPop ? <FaXmark /> : <FaSearch />
               }
 
 
