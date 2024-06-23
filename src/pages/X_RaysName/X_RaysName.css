@@ -6,9 +6,16 @@
   margin-left: auto;
   margin-top: 98px;
   height: 100vh;
-  .heading{
-    h2{
-      
+  .imagesName{
+    .imageName{
+      padding: 15px 25px;
+      background-color: var(--white-color);
+      flex: 0 0 15%;
+      border-radius: 5px;
+      img{
+        width: 100%;
+        border-radius: 5px;
+      }
     }
   }
 }
