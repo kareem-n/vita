@@ -184,7 +184,7 @@ const Profile = () => {
           loader && <Loader />
         }
         <div className="tab-buttons">
-          {[0, 1, 2].map((index) => (
+          {[0, 1].map((index) => (
             <button
               key={index}
               className={index === activeTab ? 'active' : ''}
@@ -367,7 +367,7 @@ const Profile = () => {
               {/* <InputSubmit>Save</InputSubmit> */}
             </form>
           }
-          {activeTab === 2 && <div>Content for Tab 3</div>}
+          {/* {activeTab === 2 && <div>Content for Tab 3</div>} */}
         </div>
       </div>
     </>
