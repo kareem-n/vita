@@ -18,25 +18,28 @@
         width: 100%;
         border-radius: 5px;
       }
-      /* p , svg{
+      p , svg{
         position: absolute;
-      } */
-      p{
-        margin: 0;
         max-width: 70px;
+        border-radius: 0px 0px 20px;
         width: 100%;
         text-align: center;
+      }
+      p{
+        margin: 0;
         background: var(--main-color);
         color: #fff;
         font-weight: 600;
         font-style: italic;
         padding: 3px;
-        position: absolute;
         top: 0;
         left: 0;
       }
-      svg{
-        
+      .iconHeart{
+        svg{
+          
+        }
+
       }
     }
   }
