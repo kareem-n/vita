@@ -28,7 +28,7 @@ const Posters = () => {
               <img src={poster} alt="" />
               <p>Vita</p>
               <div className="iconHeart">
-                <FaHeart style={{ background: liked[index] ? 'red' : 'black' }} />
+                <FaHeart style={{ color: liked[index] ? 'red' : '#EFEEEE' }} />
               </div>
             </div>
           ))}
