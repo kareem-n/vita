@@ -27,6 +27,7 @@ import TestLapOptions from './Popus/TestLapOptions/TestLapOptions'
 import XRaysLapOptions from './Popus/XRaysLapOptions/XRaysLapOptions'
 import PharmacyOptions from './Popus/PharmacyOptions/PharmacyOptions'
 import X_RaysName from './pages/X_RaysName/X_RaysName'
+import Posters from './pages/Posters/Posters'
 
 
 function App() {
@@ -154,6 +155,7 @@ function App() {
         <Route path="/XRaysLapOptions" element={<XRaysLapOptions />} />
         <Route path="/PharmacyOptions" element={<PharmacyOptions />} />
         <Route path="/X_RaysName" element={<X_RaysName />} />
+        <Route path="/Posters" element={<Posters />} />
       </Routes>
 
 
