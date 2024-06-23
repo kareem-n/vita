@@ -1,5 +1,5 @@
 import './Posters.css'
-import { CiHeart } from "react-icons/ci";
+import { FaHeart } from "react-icons/fa6";
 import { useState } from 'react';
 import poster from '../../assets/images/adbdecfb6a9c4b872702d8a52799d6e5.jpg'
 
@@ -28,7 +28,7 @@ const Posters = () => {
               <img src={poster} alt="" />
               <p>Vita</p>
               <div className="iconHeart">
-                <CiHeart style={{ color: liked[index] ? 'red' : 'black' }} />
+                <FaHeart style={{ background: liked[index] ? 'red' : 'black' }} />
               </div>
             </div>
           ))}
