@@ -50,7 +50,8 @@ const Sidebar = () => {
             <img src={Logo} alt="logo" />
           </div>
           <div className="links">
-            <Link to={type === "doctor" ? "/NoPatient" : '/userInfo'}><TiHome /></Link>
+            <Link to={type === "doctor" ? "/Posters" : '/Posters'}><TiHome /></Link>
+            {/* <Link to={type === "doctor" ? "/NoPatient" : '/userInfo'}><TiHome /></Link> */}
             <Link to="/Profile"><FaUser /></Link>
             <Link onClick={showPopup} to="#"><AiOutlineAppstore /></Link>
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
