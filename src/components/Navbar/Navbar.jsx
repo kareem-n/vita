@@ -71,7 +71,7 @@ const Navbar = () => {
                   <img src={image&&image} className='rounded-circle' width={'50px'} height={'50px'} />
                 </div>
                 <div className="name_mile">
-                  <h4 className='m-0'>{userDet ? userDet.fullName : ''}</h4>
+                  <h4 className='m-0' style={{ fontSize:'13px' }}>{userDet ? userDet.fullName : ''}</h4>
                   <p className='m-0'>@{userDet ? userDet.username : ''}</p>
                 </div>
                 {
