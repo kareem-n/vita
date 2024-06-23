@@ -16,27 +16,37 @@ const Posters = () => {
           <div className="box">
             <img src={poster} alt="" />
             <p>Vita</p>
-            <CiHeart/>
+            <div className="iconHeart">
+              <CiHeart/>
+            </div>
           </div>
           <div className="box">
             <img src={poster} alt="" />
             <p>Vita</p>
-            <CiHeart/>
+            <div className="iconHeart">
+              <CiHeart/>
+            </div>
           </div>
           <div className="box">
             <img src={poster} alt="" />
             <p>Vita</p>
-            <CiHeart/>
+            <div className="iconHeart">
+              <CiHeart/>
+            </div>
           </div>
           <div className="box">
             <img src={poster} alt="" />
             <p>Vita</p>
-            <CiHeart/>
+            <div className="iconHeart">
+              <CiHeart/>
+            </div>
           </div>
           <div className="box">
             <img src={poster} alt="" />
             <p>Vita</p>
-            <CiHeart/>
+            <div className="iconHeart">
+              <CiHeart/>
+            </div>
           </div>
         </div>
       </div>
