@@ -10,7 +10,7 @@ import Loader from '../../components/loader/Loader';
 
 const Profile = () => {
   const [activeTab, setActiveTab] = useState(0);
-  const tabTitles = ['personal details', 'Org 1', 'Org 2'];
+  const tabTitles = ['personal details', 'Org 1'];
 
   const [modiData, setModiData] = useState(null);
   const [success, setSuccess] = useState('');
