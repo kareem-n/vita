@@ -30,7 +30,7 @@ const DoctorOptions = ({popup, setPopup}) => {
           <div className="popup doctorOptions">
             <div className="DoctorOptions">
               {
-                type === "doctor" && <Link to={""} className="option">
+                type === "doctor" && <Link to={"/noPatient"} className="option">
                   <img src={image_01} alt="" />
                   <h3>Close patient</h3>
                 </Link>
