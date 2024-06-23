@@ -11,6 +11,7 @@
     .box{
       /* padding: 15px 25px;
       background-color: var(--white-color); */
+      cursor: pointer;
       position: relative;
       flex: 0 0 24%;
       border-radius: 5px;
