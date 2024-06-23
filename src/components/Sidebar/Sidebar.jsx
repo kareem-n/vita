@@ -51,7 +51,7 @@ const Sidebar = () => {
           </div>
           <div className="links">
             <Link to={type === "doctor" ? "/NoPatient" : '/userInfo'}><TiHome /></Link>
-            <Link to="/X_Rays"><FaUser /></Link>
+            <Link to="/Profile"><FaUser /></Link>
             <Link onClick={showPopup} to="#"><AiOutlineAppstore /></Link>
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
             <Link to="/Accordion"><MdOutlineQrCodeScanner /></Link>
