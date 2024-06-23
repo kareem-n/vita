@@ -4,6 +4,7 @@
   background-color: #f5f5f5;
   margin-top: 94px;
   margin-left: auto;
+  height: 100vh;
   .tab-buttons{
     padding: 0 30px;
     display: flex;
