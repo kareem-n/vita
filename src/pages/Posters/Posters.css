@@ -10,11 +10,21 @@
     .box{
       /* padding: 15px 25px;
       background-color: var(--white-color); */
+      position: relative;
       flex: 0 0 25%;
       border-radius: 5px;
       img{
         width: 100%;
         border-radius: 5px;
+      }
+      p , svg{
+        position: absolute;
+      }
+      p{
+        
+      }
+      svg{
+        
       }
     }
   }
