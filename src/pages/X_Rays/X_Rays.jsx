@@ -7,18 +7,17 @@ const X_Rays = () => {
     <div className='x_rays'>
       <RaysHead/>
       <div className="x_raysInfo d-grid">
-        <FolderInfo href="/Prescriptions">X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
-        <FolderInfo>X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
+        <FolderInfo href="/X_RaysName">X_Rays</FolderInfo>
       </div>
     </div>
   )
