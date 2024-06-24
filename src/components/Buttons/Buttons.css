@@ -30,8 +30,9 @@
   }
   
   &.InputSubmit{
-    border:'1px solid #fff';
-    color:'#fff';
+    
+    border:1px solid #fff;
+    color:#fff;
     position: relative;
     z-index: 5;
   }
