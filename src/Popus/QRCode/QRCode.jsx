@@ -3,16 +3,16 @@ import { FaXmark } from "react-icons/fa6";
 import ImageQRCode from '../../assets/images/QR.png'
 
 
-const QRCode = ({ popup, setPopup }) => {
+const QRCode = ({ popupQRCode, setpopupQRCode }) => {
 
   const hide = () => {
-    setPopup(false)
+    popupQRCode(false)
   }
 
   return (
     <>
 
-      {popup && (
+      {popupQRCode && (
         <div className='overlay d-flex justify-content-center align-items-center'>
           <div className="popup">
             <div className="qrcode">
