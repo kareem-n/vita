@@ -19,7 +19,7 @@ const Profile = () => {
 
   useEffect(() => {
 
-    axios.get("https://blissful-gentleness-production.up.railway.app/users/auth/get-general-info-of-user", {
+    axios.get("https://vita-production.up.railway.app/users/auth/get-general-info-of-user", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`
       }
@@ -118,16 +118,18 @@ const Profile = () => {
   const handlePersonalSubmit = (e) => {
     e.preventDefault();
 
+
     if (imagePersonalDetails) {
       const formImg = new FormData;
 
       formImg.append("image", imagePersonalDetails);
 
-      axios.post("https://blissful-gentleness-production.up.railway.app/users/auth/add-profile-image", formImg, {
+      axios.post("https://vita-production.up.railway.app/users/auth/add-profile-image", formImg, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
       }).then(res => {
+        console.log(res.data);
         window.location.reload();
       }).catch(err => {
         console.log(err);
@@ -154,8 +156,7 @@ const Profile = () => {
     } else {
       setLoader(true);
 
-      console.log(validResult.value);
-      axios.post("https://blissful-gentleness-production.up.railway.app/users/auth/modify-data", validResult.value, {
+      axios.post("https://vita-production.up.railway.app/users/auth/modify-data", validResult.value, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
@@ -163,7 +164,9 @@ const Profile = () => {
         .then(res => {
           setLoader(false);
           setErrors(null);
-          window.location.reload() ;
+
+          console.log(res.data);
+          // window.location.reload() ;
           // localStorage.setItem("user", res.data.token);
           // navigate("/login");
         }).catch(err => {

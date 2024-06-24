@@ -5,32 +5,41 @@ import image_03 from "../../assets/images/Group 1171275808.svg";
 import image_04 from "../../assets/images/Group 1171275809.svg";
 import image_05 from "../../assets/images/Group 1.svg";
 import image_06 from "../../assets/images/Group 1171275811.svg";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaXmark } from "react-icons/fa6";
-import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import uploadPost from '../../assets/images/uploadImage.svg'
+import NoPatient from '../../components/NoPatient/NoPatient';
+import { setAccessP } from '../../redux/slices/UserSlice';
 
 
 const DoctorOptions = ({ popup, setPopup }) => {
 
 
-  const { type } = useSelector(state => state.user);
+  const dispatch = useDispatch();
+  const nav = useNavigate();
+
+  const { type, accessP } = useSelector(state => state.user);
 
   const hide = () => {
-    setPopup(false)
+    dispatch(setAccessP(false));
+    setPopup(false);
+    nav('/nopatient');
   }
+
+
 
   return (
     <>
-
-      {popup && (
-
-        <div className='overlay d-flex justify-content-center align-items-center'>
+      {
+        (type === "doctor" && !accessP) ? <NoPatient /> : <div className='overlay d-flex justify-content-center align-items-center'>
           <div className="popup doctorOptions">
             <div className="DoctorOptions">
               {
-                type === "doctor" && <Link to={"/noPatient"} className="option">
+                type === "doctor" && <Link
+                  onClick={hide}
+                  to={"/noPatient"} className="option">
                   <img src={image_01} alt="" />
                   <h3>Close patient</h3>
                 </Link>
@@ -66,12 +75,16 @@ const DoctorOptions = ({ popup, setPopup }) => {
               }
 
             </div>
-            <div className="close">
-              <FaXmark onClick={hide} />
-            </div>
+            <Link to={'/nopatient'} onClick={hide} className="close">
+              <FaXmark />
+            </Link>
           </div>
         </div>
-      )}
+
+
+      }
+
+
     </>
   )
 }

@@ -26,6 +26,7 @@ import DocName from './pages/DocName/DocName'
 import TestLapOptions from './Popus/TestLapOptions/TestLapOptions'
 import XRaysLapOptions from './Popus/XRaysLapOptions/XRaysLapOptions'
 import PharmacyOptions from './Popus/PharmacyOptions/PharmacyOptions'
+import DoctorOptions from './Popus/DoctorOptions/DoctorOptions'
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
   useEffect(() => {
 
 
-    axios.get("https://blissful-gentleness-production.up.railway.app/users/auth/get-profile-image", {
+    axios.get("https://vita-production.up.railway.app/users/auth/get-profile-image", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`,
       },
@@ -59,10 +60,11 @@ function App() {
     }).then(data => {
       const base64 = convertArrayBufferToBase64(data.data);
       const image = `data:image/jpeg;base64,${base64}`;
+      console.log(image);
       dispatch(setUserImage(image));
     })
 
-    axios.get("https://blissful-gentleness-production.up.railway.app/users/auth/get-general-info-of-user", {
+    axios.get("https://vita-production.up.railway.app/users/auth/get-general-info-of-user", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`
       }
@@ -71,9 +73,11 @@ function App() {
       dispatch(setUserDet(data.data));
       // navigate('/userInfo')
     })
+
+
     if (localStorage.getItem("user")) {
       dispatch(setUser(localStorage.getItem("user")));
-      dispatch(setType('patient'));
+      // dispatch(setType('patient'));
     }
 
   }, [])
@@ -137,7 +141,9 @@ function App() {
         <Route path="/charts" element={<Charts />} />
         <Route path="/waiting_list" element={<Waiting_list />} />
         <Route path="/NoPatient" element={<NoPatient />} />
+        
         <Route path="/patientAccess" element={<PatientAccess />} />
+
         <Route path="/userInfo" element={<ProtectRoute >
           <UserInfo />
         </ProtectRoute>} />

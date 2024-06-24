@@ -3,10 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   user: 0,
   userDet: null,
-  type: "",
+  type: "doctor",
   image: "",
   profiles: "",
-  currentProfile: '' ,
+  currentProfile: "",
+  accessP: false,
 };
 
 export const UserSlice = createSlice({
@@ -31,8 +32,19 @@ export const UserSlice = createSlice({
     setCurrentProfile: (state, action) => {
       state.currentProfile = action.payload;
     },
+    setAccessP: (state, action) => {
+      state.accessP = action.payload;
+    },
   },
 });
 
 export default UserSlice.reducer;
-export const { setUser, setType, setUserDet,setCurrentProfile, setUserImage , setProfiles } = UserSlice.actions;
+export const {
+  setUser,
+  setType,
+  setUserDet,
+  setCurrentProfile,
+  setUserImage,
+  setProfiles,
+  setAccessP,
+} = UserSlice.actions;

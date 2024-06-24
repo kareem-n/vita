@@ -37,7 +37,7 @@ const Waiting_list = () => {
       if (type === "patient") {
 
         setLoad(true);
-        axios.get("https://blissful-gentleness-production.up.railway.app/patients/get-list-of-connections", {
+        axios.get("https://vita12.vercel.app/patients/get-list-of-connections", {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("user")}`
           }
@@ -45,7 +45,7 @@ const Waiting_list = () => {
 
           const tmp = [];
           res.data.map(item => {
-            axios.get(`https://blissful-gentleness-production.up.railway.app/users/auth/get-image?username=${item.username}`, {
+            axios.get(`https://vita12.vercel.app/users/auth/get-image?username=${item.username}`, {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem("user")}`
               }, responseType: 'arraybuffer'
@@ -76,7 +76,7 @@ const Waiting_list = () => {
     if (type === "doctor") {
 
       setLoad(true);
-      axios.get("https://blissful-gentleness-production.up.railway.app/doctors/get-list-of-connections", {
+      axios.get("https://vita12.vercel.app/doctors/get-list-of-connections", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
@@ -84,7 +84,7 @@ const Waiting_list = () => {
 
         const tmp = [];
         res.data.map(item => {
-          axios.get(`https://blissful-gentleness-production.up.railway.app/users/auth/get-image?username=${item.username}`, {
+          axios.get(`https://vita12.vercel.app/users/auth/get-image?username=${item.username}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("user")}`
             }, responseType: 'arraybuffer'
@@ -114,7 +114,7 @@ const Waiting_list = () => {
     if (type === "xray_lab") {
 
       setLoad(true);
-      axios.get(`https://blissful-gentleness-production.up.railway.app/XRay-Lab/get-list-of-connections?xRayLaboratoryName=${currentProfile}`, {
+      axios.get(`https://vita12.vercel.app/XRay-Lab/get-list-of-connections?xRayLaboratoryName=${currentProfile}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
@@ -122,7 +122,7 @@ const Waiting_list = () => {
         console.log(0);
         const tmp = [];
         res.data.map(item => {
-          axios.get(`https://blissful-gentleness-production.up.railway.app/users/auth/get-image?username=${item.username}`, {
+          axios.get(`https://vita12.vercel.app/users/auth/get-image?username=${item.username}`, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("user")}`
             }, responseType: 'arraybuffer'
@@ -182,7 +182,7 @@ const Waiting_list = () => {
                       if (type === 'patient') {
                         tmp = 'doctorName';
                         path = 'patients';
-                        axios.get(`https://blissful-gentleness-production.up.railway.app/${path}/accept_access?${tmp}=${item.username}`, {
+                        axios.get(`https://vita12.vercel.app/${path}/accept_access?${tmp}=${item.username}`, {
                           headers: {
                             Authorization: `Bearer ${localStorage.getItem("user")}`
                           }
@@ -192,7 +192,7 @@ const Waiting_list = () => {
                       } else if (type === 'doctor') {
                         tmp = 'patient';
                         path = "doctors"
-                        axios.get(`https://blissful-gentleness-production.up.railway.app/${path}/accept_access?${tmp}=${item.username}`, {
+                        axios.get(`https://vita12.vercel.app/${path}/accept_access?${tmp}=${item.username}`, {
                           headers: {
                             Authorization: `Bearer ${localStorage.getItem("user")}`
                           }
@@ -201,7 +201,7 @@ const Waiting_list = () => {
                         })
                       }
                       else if (type === 'xray_lab') {
-                        axios.get(`https://blissful-gentleness-production.up.railway.app/XRay-Lab/accept-access?xRayLaboratoryName=${currentProfile}&patientName=${item.username}`, {
+                        axios.get(`https://vita12.vercel.app/XRay-Lab/accept-access?xRayLaboratoryName=${currentProfile}&patientName=${item.username}`, {
                           headers: {
                             Authorization: `Bearer ${localStorage.getItem("user")}`
                           }
@@ -223,7 +223,7 @@ const Waiting_list = () => {
                     if (type === 'patient') {
                       tmp = 'doctorName';
                       path = 'patients';
-                      axios.get(`https://blissful-gentleness-production.up.railway.app/${path}/remove_access?${tmp}=${item.username}`, {
+                      axios.get(`https://vita12.vercel.app/${path}/remove_access?${tmp}=${item.username}`, {
                         headers: {
                           Authorization: `Bearer ${localStorage.getItem("user")}`
                         }
@@ -233,7 +233,7 @@ const Waiting_list = () => {
                     } else if (type === 'doctor') {
                       tmp = 'patient';
                       path = "doctors"
-                      axios.get(`https://blissful-gentleness-production.up.railway.app/${path}/remove_access?${tmp}=${item.username}`, {
+                      axios.get(`https://vita12.vercel.app/${path}/remove_access?${tmp}=${item.username}`, {
                         headers: {
                           Authorization: `Bearer ${localStorage.getItem("user")}`
                         }
@@ -242,7 +242,7 @@ const Waiting_list = () => {
                       })
                     }
                     else if (type === 'xray_lab') {
-                      axios.get(`https://blissful-gentleness-production.up.railway.app/XRay-Lab/remove-access?xRayLaboratoryName=${currentProfile}&patientName=${item.username}`, {
+                      axios.get(`https://vita12.vercel.app/XRay-Lab/remove-access?xRayLaboratoryName=${currentProfile}&patientName=${item.username}`, {
                         headers: {
                           Authorization: `Bearer ${localStorage.getItem("user")}`
                         }

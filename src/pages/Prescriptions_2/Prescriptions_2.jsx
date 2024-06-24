@@ -13,7 +13,7 @@ const Prescriptions_2 = () => {
 
   useEffect(() => {
 
-    axios.get("https://blissful-gentleness-production.up.railway.app/patients/get-all-prescriptions", {
+    axios.get("https://vita12.vercel.app/patients/get-all-prescriptions", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`
       }

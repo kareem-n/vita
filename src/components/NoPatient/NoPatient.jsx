@@ -8,17 +8,8 @@ import { setUser } from '../../redux/slices/UserSlice';
 
 const NoPatient = () => {
 
-
-
   const dispatch = useDispatch();
 
-  useEffect(() => {
-
-    if (localStorage.getItem("user")) {
-      dispatch(setUser(localStorage.getItem("user")));
-    }
-
-  }, [])
   const [popup, setPopup] = useState(false)
   const showPopup = () => {
     setPopup(!popup)

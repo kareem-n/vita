@@ -6,7 +6,7 @@ import { AiOutlineAppstore } from "react-icons/ai";
 import { FaTelegramPlane } from "react-icons/fa";
 import { MdOutlineQrCodeScanner } from "react-icons/md";
 import { IoMdLogOut } from "react-icons/io";
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import DoctorOptions from '../../Popus/DoctorOptions/DoctorOptions';
 import AddProfile from '../../Popus/AddProfile/AddProfile';
@@ -17,7 +17,9 @@ import NoPatient from '../NoPatient/NoPatient';
 
 const Sidebar = () => {
 
-  const { type } = useSelector(state => state.user);
+  const { type, accessP } = useSelector(state => state.user);
+
+  const nav = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -30,7 +32,6 @@ const Sidebar = () => {
   useEffect(() => {
 
 
-    console.log(popup);
     if (popup) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -66,11 +67,10 @@ const Sidebar = () => {
         </div>
       </div>
 
-      {popup && <div className="">
-        {/* <NoPatient /> */}
+      { popup && <div className="">
         <DoctorOptions popup={popup} setPopup={setPopup} />
-
-      </div>}
+      </div>
+      }
     </>
   )
 }
