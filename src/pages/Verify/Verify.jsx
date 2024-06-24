@@ -12,14 +12,12 @@ const Verify = () => {
     const value = e.target.value;
 
     if (value.length === 1 && index < inputRefs.current.length - 1) {
-      // نقل التركيز إلى الحقل التالي
       inputRefs.current[index + 1].focus();
     }
   };
 
   const handleKeyDown = (e, index) => {
     if (e.key === 'Backspace' && index > 0 && !e.target.value) {
-      // حذف محتوى الحقل السابق ونقل التركيز إليه
       inputRefs.current[index - 1].focus();
       inputRefs.current[index - 1].value = '';
     }
@@ -46,6 +44,7 @@ const Verify = () => {
                   ref={(el) => (inputRefs.current[index] = el)}
                   onChange={(e) => handleInputChange(e, index)}
                   onKeyDown={(e) => handleKeyDown(e, index)}
+                  required
                 />
               ))}
             </div>

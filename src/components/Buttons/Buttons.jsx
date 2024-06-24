@@ -16,7 +16,6 @@ const RegisterButton = (props) => {
 const InputSubmit = (props) => {
   return (
     <input type="submit" className='button InputSubmit'
-      style={{ border:'1px solid #fff', color:'#fff' }}
       value={props.children}/>
   )
 }
