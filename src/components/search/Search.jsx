@@ -40,7 +40,7 @@ function Search() {
 
     const handleSearch = () => {
         let fold, endpoint, searchParam, searchParam2;
-        const baseUrl = 'https://blissful-gentleness-production.up.railway.app';
+        const baseUrl = 'https://vita-production.up.railway.app/';
         // const url = `/patients/give_access?doctorName=eslam`;
 
         if (type === "doctor") {

@@ -78,8 +78,8 @@ function App() {
 
     if (localStorage.getItem("user")) {
       dispatch(setUser(localStorage.getItem("user")));
-      dispatch(setType('patient'));
     }
+    dispatch(setType('patient'));
 
   }, [])
 
@@ -101,6 +101,16 @@ function App() {
       return children;
     } else {
       return <Navigate to={'/login'} />
+    }
+  }
+
+
+  const ProtectDoctor = ({ children }) => {
+
+    if (type === "doctor") {
+      return children
+    } else {
+      return <Navigate to={'/'} />;
     }
 
   }
@@ -141,8 +151,9 @@ function App() {
         <Route path="/verify" element={<Verify />} />
         <Route path="/charts" element={<Charts />} />
         <Route path="/waiting_list" element={<Waiting_list />} />
-        <Route path="/NoPatient" element={<NoPatient />} />
-        
+        <Route path="/NoPatient" element={<ProtectDoctor
+        > <NoPatient /></ProtectDoctor>} />
+
         <Route path="/patientAccess" element={<PatientAccess />} />
 
         <Route path="/userInfo" element={<ProtectRoute >

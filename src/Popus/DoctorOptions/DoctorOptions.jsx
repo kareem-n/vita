@@ -25,7 +25,7 @@ const DoctorOptions = ({ popup, setPopup }) => {
   const hide = () => {
     dispatch(setAccessP(false));
     setPopup(false);
-    nav('/nopatient');
+    // nav('/nopatient');
   }
 
 
@@ -73,7 +73,7 @@ const DoctorOptions = ({ popup, setPopup }) => {
               }
 
             </div>
-            <Link to={'/nopatient'} onClick={hide} className="close">
+            <Link to={ type ==="doctor" && '/nopatient'} onClick={hide} className="close">
               <FaXmark />
             </Link>
           </div>
