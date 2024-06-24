@@ -8,8 +8,11 @@ import { useDispatch } from 'react-redux'
 import { setAccessP } from '../../redux/slices/UserSlice'
 import DoctorOptions from '../DoctorOptions/DoctorOptions'
 import axios from 'axios'
+import Loader from './../../components/loader/Loader';
 
-const PatientAccess = () => {
+const PatientAccess = ({ setshowtmp, setPoop }) => {
+
+
   const [popup, setPopup] = useState(true);
 
   const dispatch = useDispatch();
@@ -27,6 +30,8 @@ const PatientAccess = () => {
     }
     return window.btoa(binary);
   };
+
+
 
   useEffect(() => {
 
@@ -62,10 +67,6 @@ const PatientAccess = () => {
         setLoad(false);
       }, 2000);
 
-      // setData(tmp);
-
-      console.log(res.data);
-
 
     })
 
@@ -74,74 +75,60 @@ const PatientAccess = () => {
 
   const navigate = useNavigate()
   const hide = () => {
+    setPoop(false);
     setPopup(false)
-    // navigate('/NoPatient')
+    navigate('/NoPatient')
   }
   if (popup) {
     document.body.style.overflow = 'hidden'
   } else {
     document.body.style.overflow = 'auto'
   }
+
+  const [docOp, setDocOp] = useState(false);
+
+
   return (
     <>
-      {popup ? <>
+      {popup && <>
         {
-          data && <div className='overlay d-flex justify-content-center align-items-center'>
+          data ? <div className='overlay d-flex justify-content-center align-items-center'>
             <div className="popup">
               <h3 className="text-center mb-3">Choose patient to access</h3>
               <div className="patients d-grid">
-                <Link onClick={() => {
-                  dispatch(setAccessP(true));
-                  setPopup(false);
-                }} className="patient">
-                  <img src={Patient} alt="" />
-                  <h3>Michael Jackson</h3>
-                </Link>
-                <Link to={'/DoctorOptions'} className="patient">
-                  <img src={Patient} alt="" />
-                  <h3>Michael Jackson</h3>
-                </Link>
-                <Link to={'/DoctorOptions'} className="patient">
-                  <img src={Patient} alt="" />
-                  <h3>Michael Jackson</h3>
-                </Link>
-                <Link to={'/DoctorOptions'} className="patient">
-                  <img src={Patient} alt="" />
-                  <h3>Michael Jackson</h3>
-                </Link>
-                <Link to={'/DoctorOptions'} className="patient">
-                  <img src={Patient} alt="" />
-                  <h3>Michael Jackson</h3>
-                </Link>
-                <Link to={'/DoctorOptions'} className="patient">
-                  <img src={Patient} alt="" />
-                  <h3>Michael Jackson</h3>
-                </Link>
-                <Link to={'/DoctorOptions'} className="patient">
-                  <img src={Patient} alt="" />
-                  <h3>Michael Jackson</h3>
-                </Link>
-                <Link to={'/DoctorOptions'} className="patient">
-                  <img src={Patient} alt="" />
-                  <h3>Michael Jackson</h3>
-                </Link>
-                <Link to={'/DoctorOptions'} className="patient">
-                  <img src={Patient} alt="" />
-                  <h3>Michael Jackson</h3>
-                </Link>
-                <Link to={'/DoctorOptions'} className="patient">
-                  <img src={Patient} alt="" />
-                  <h3>Michael Jackson</h3>
-                </Link>
+                {
+                  data.map((item, key) => <Link key={key} onClick={() => {
+                    dispatch(setAccessP(item.username));
+                    setDocOp(true);
+                    setPopup(false);
+                  }} className="patient">
+                    <img style={{
+                      width: '50px',
+                      height: '50px',
+                    }} className='rounded-circle object-fit' src={item.image} alt="" />
+                    <h3>{item.username}</h3>
+                  </Link>)
+                }
+
+
               </div>
               <div className="close">
                 <FaXmark onClick={hide} />
               </div>
             </div>
+
+
+          </div> : <div className="position-absolute z-3">
+            <Loader />
           </div>
         }
       </>
-        : <DoctorOptions />}
+      }
+
+
+      {
+        docOp && <DoctorOptions setshowtmp={setshowtmp} popup={docOp} setPopup={setDocOp} />
+      }
     </>
   )
 }

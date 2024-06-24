@@ -6,22 +6,43 @@ import { useEffect, useState } from 'react'
 import DocName from '../DocName/DocName'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const Prescriptions_2 = () => {
   const [data, setData] = useState(null);
+  const [dataForDoctor, setDataForDoctor] = useState(null);
+
+  const { type, accessP } = useSelector(state => state.user);
+
 
 
   useEffect(() => {
 
-    axios.get("https://vita12.vercel.app/patients/get-all-prescriptions", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("user")}`
-      }
-    }).then(res => {
-      setData(res.data)
-    }).catch(err => {
-      console.log(err);
-    })
+    if (type === "patient") {
+      axios.get("https://vita-production.up.railway.app/patients/get-all-prescriptions", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        setData(res.data)
+      }).catch(err => {
+        console.log(err);
+      })
+
+    } else {
+      axios.get(`https://vita-production.up.railway.app/doctors/get-all-prescriptions-sorted-by-Date?patientName=${accessP}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        setDataForDoctor(res.data) ;
+        console.log(0);
+      }).catch(err => {
+        console.log(err);
+      })
+    }
+
+
 
   }, [])
 
@@ -39,14 +60,22 @@ const Prescriptions_2 = () => {
         </div>
 
         {
-          data && data.map( item => 
-            <div className="">
+          data && data.map((item, key) =>
+            <div key={key} className="">
               <DataPrescriptions_2 data={item} href="/ViewPrescription" />
             </div>
           )
         }
 
-        
+        {
+          dataForDoctor && dataForDoctor.map((item, key) =>
+            <div key={key} className="">
+              <DataPrescriptions_2 data={item} href="/ViewPrescription" />
+            </div>
+          )
+        }
+
+
       </div>
     </div>
   )

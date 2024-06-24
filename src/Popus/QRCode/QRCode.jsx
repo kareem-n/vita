@@ -1,36 +1,40 @@
+import { useSelector } from 'react-redux';
 import './QRCode.css'
-import { FaXmark } from "react-icons/fa6";
-import ImageQRCode from '../../assets/images/QR.png'
+
+import QRCode from 'react-qr-code';
+
+const QRCodee = () => {
 
 
-const QRCode = ({ popupQRCode, setpopupQRCode }) => {
+  const { userDet } = useSelector(state => state.user);
 
-  const hide = () => {
-    setpopupQRCode(false)
-  }
 
   return (
     <>
-
-      {popupQRCode && (
-        <div className='overlay d-flex justify-content-center align-items-center'>
-          <div className="popup">
-            <div className="qrcode">
-              <div className="heading"><h3>Connect with (first name) </h3></div>
-              <div className="QRCode mt-7">
-                <div className="image">
-                  <img src={ImageQRCode} alt="" />
-                </div>
-              </div>
-            </div>
-            <div className="close">
-              <FaXmark onClick={hide} />
-            </div>
+      <div style={{
+        margin: '96px'
+      }}
+        className='d-flex align-items-center flex-column'
+      >
+        {
+          userDet && <div className='d-flex justify-content-center align-items-center flex-column'>
+            <QRCode
+              size={256}
+              style={{ height: "400px", maxWidth: "80%", width: "80%" }}
+              value={userDet.username}
+            />
+            <h1 className='mt-2 fw-bold'>@{userDet.username}</h1>
           </div>
-        </div>
-      )}
+
+
+        }
+
+
+
+      </div>
+
     </>
   )
 }
 
-export default QRCode;
+export default QRCodee;

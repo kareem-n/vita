@@ -94,6 +94,7 @@ const Login = () => {
 
         dispatch(setUser(res.data.token));
         localStorage.setItem("user", res.data.token);
+        localStorage.setItem("userP", 'patient');
 
         axios.get("https://vita-production.up.railway.app/users/auth/get-profile-image", {
           headers: {
@@ -148,7 +149,7 @@ const Login = () => {
                 }
                 <form onSubmit={handleSubmit}>
                   <div className="input">
-                    <label htmlFor="username">Username <span style={{ color:'#F21D2F' }}>*</span></label>
+                    <label htmlFor="username">Username <span style={{ color: '#F21D2F' }}>*</span></label>
                     <input type="text" placeholder="user name" name="username" onChange={handleChange} />
 
                     {
@@ -164,7 +165,7 @@ const Login = () => {
 
                   </div>
                   <div className="input">
-                    <label htmlFor="password">Password <span style={{ color:'#F21D2F' }}>*</span></label>
+                    <label htmlFor="password">Password <span style={{ color: '#F21D2F' }}>*</span></label>
                     <input type="password" name="password" id="password" placeholder="Enter Your Password" onChange={handleChange} />
 
                     {
