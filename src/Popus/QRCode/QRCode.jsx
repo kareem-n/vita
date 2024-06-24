@@ -6,7 +6,7 @@ import ImageQRCode from '../../assets/images/QR.png'
 const QRCode = ({ popupQRCode, setpopupQRCode }) => {
 
   const hide = () => {
-    popupQRCode(false)
+    setpopupQRCode(false)
   }
 
   return (

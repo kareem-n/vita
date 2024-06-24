@@ -46,9 +46,7 @@ const Sidebar = () => {
 
 
   useEffect(() => {
-
-
-    console.log(popup);
+    console.log(popupQRCode);
     if (popupQRCode) {
       document.body.style.overflow = 'hidden';
     } else {
