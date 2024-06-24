@@ -2,8 +2,21 @@ import "./Verify.css";
 import Vector from "../../assets/images/Vector.png";
 import Bg from "../../assets/images/bg-virfy.png";
 import { InputSubmit } from "../../components/Buttons/Buttons";
+import { useRef } from "react";
 
 const Verify = () => {
+  // إنشاء مراجع لكل حقل إدخال
+  const inputRefs = useRef([]);
+
+  const handleInputChange = (e, index) => {
+    const value = e.target.value;
+
+    if (value.length === 1 && index < inputRefs.current.length - 1) {
+      // نقل التركيز إلى الحقل التالي
+      inputRefs.current[index + 1].focus();
+    }
+  };
+
   return (
     <>
       <section className="verify" id="verify">
@@ -17,18 +30,19 @@ const Verify = () => {
             <h4>Enter verification code</h4>
 
             <div className="inputs d-grid">
-              <input type="text" maxLength={1} />
-              <input type="text" maxLength={1} />
-              <input type="text" maxLength={1} />
-              <input type="text" maxLength={1} />
-              <input type="text" maxLength={1} />
-              <input type="text" maxLength={1} />
-              <input type="text" maxLength={1} />
-              <input type="text" maxLength={1} />
+              {Array.from({ length: 8 }).map((_, index) => (
+                <input
+                  key={index}
+                  type="text"
+                  maxLength={1}
+                  ref={(el) => (inputRefs.current[index] = el)}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+              ))}
             </div>
             <p>A verification code has been sent to your mobile number and email</p>
             <InputSubmit>Verify</InputSubmit>
-          </form> 
+          </form>
           <img src={Vector} className="vector_1" />
           <img src={Vector} className="vector_2" />
           <img src={Vector} className="vector_3" />
