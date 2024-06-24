@@ -24,22 +24,37 @@ const Sidebar = () => {
   const dispatch = useDispatch();
 
   const [popup, setPopup] = useState(false)
-
+  
   const showPopup = () => {
     setPopup(!popup)
   }
-
+  
   useEffect(() => {
-
-
+    console.log(popup);
     if (popup) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-
+    
   }, [popup])
+  
 
+  const [popupQRCode, setpopupQRCode] = useState(false)
+  
+  const showpopupQRCode = () => {
+    setpopupQRCode(!popupQRCode)
+  }
+  
+  useEffect(() => {
+    console.log(popupQRCode);
+    if (popupQRCode) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+  }, [popupQRCode])
 
 
 
@@ -51,11 +66,12 @@ const Sidebar = () => {
             <img src={Logo} alt="logo" />
           </div>
           <div className="links">
-            <Link to={type === "doctor" ? "/NoPatient" : '/userInfo'}><TiHome /></Link>
+            <Link to={type === "doctor" ? "/Posters" : '/Posters'}><TiHome /></Link>
+            {/* <Link to={type === "doctor" ? "/NoPatient" : '/userInfo'}><TiHome /></Link> */}
             <Link to="/Profile"><FaUser /></Link>
             <Link onClick={showPopup} to="#"><AiOutlineAppstore /></Link>
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
-            <Link to="/Accordion"><MdOutlineQrCodeScanner /></Link>
+            <Link onClick={showpopupQRCode} to="#"><MdOutlineQrCodeScanner /></Link>
           </div>
           <Link className="logout" onClick={() => {
             localStorage.clear();

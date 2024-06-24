@@ -11,7 +11,6 @@ import NoPatient from './components/NoPatient/NoPatient'
 import AccessPatient from './Popus/AccessPatient/AccessPatient'
 import PatientAccess from './Popus/PatientAccess/PatientAccess'
 import UserInfo from './components/UserInfo/UserInfo'
-import Accordion from './pages/Accordion/Accordion'
 import X_Rays from './pages/X_Rays/X_Rays'
 import Prescriptions from './pages/Prescriptions/Prescriptions'
 import Prescriptions_2 from './pages/Prescriptions_2/Prescriptions_2'
@@ -26,7 +25,9 @@ import DocName from './pages/DocName/DocName'
 import TestLapOptions from './Popus/TestLapOptions/TestLapOptions'
 import XRaysLapOptions from './Popus/XRaysLapOptions/XRaysLapOptions'
 import PharmacyOptions from './Popus/PharmacyOptions/PharmacyOptions'
-import DoctorOptions from './Popus/DoctorOptions/DoctorOptions'
+import X_RaysName from './pages/X_RaysName/X_RaysName'
+import Posters from './pages/Posters/Posters'
+import QRCode from './Popus/QRCode/QRCode'
 
 
 function App() {
@@ -77,7 +78,7 @@ function App() {
 
     if (localStorage.getItem("user")) {
       dispatch(setUser(localStorage.getItem("user")));
-      // dispatch(setType('patient'));
+      dispatch(setType('patient'));
     }
 
   }, [])
@@ -147,7 +148,7 @@ function App() {
         <Route path="/userInfo" element={<ProtectRoute >
           <UserInfo />
         </ProtectRoute>} />
-        <Route path="/Accordion" element={<Accordion />} />
+        <Route path="/QRCode" element={<QRCode />} />
         <Route path="/X_Rays" element={<X_Rays />} />
         <Route path="/Prescriptions" element={<Prescriptions />} />
         <Route path="/Prescriptions_2" element={<Prescriptions_2 />} />
@@ -158,6 +159,8 @@ function App() {
         <Route path="/TestLapOptions" element={<TestLapOptions />} />
         <Route path="/XRaysLapOptions" element={<XRaysLapOptions />} />
         <Route path="/PharmacyOptions" element={<PharmacyOptions />} />
+        <Route path="/X_RaysName" element={<X_RaysName />} />
+        <Route path="/Posters" element={<Posters />} />
       </Routes>
 
 

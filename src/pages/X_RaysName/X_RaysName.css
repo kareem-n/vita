@@ -1,0 +1,21 @@
+.X_RaysName{
+  width: calc(100% - 90px);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  margin-top: 94px;
+  margin-left: auto;
+  margin-top: 98px;
+  height: 100vh;
+  .imagesName{
+    .imageName{
+      padding: 15px 25px;
+      background-color: var(--white-color);
+      flex: 0 0 15%;
+      border-radius: 5px;
+      img{
+        width: 100%;
+        border-radius: 5px;
+      }
+    }
+  }
+}
