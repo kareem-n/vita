@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import ImageQRCode from '../../assets/images/QR.png'
 
 
-const DoctorOptions = ({ popup, setPopup }) => {
+const QRCode = ({ popup, setPopup }) => {
 
 
   const { type } = useSelector(state => state.user);
@@ -37,4 +37,4 @@ const DoctorOptions = ({ popup, setPopup }) => {
   )
 }
 
-export default DoctorOptions;
+export default QRCode;

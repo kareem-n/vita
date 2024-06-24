@@ -55,7 +55,7 @@ const Sidebar = () => {
             <Link to="/Profile"><FaUser /></Link>
             <Link onClick={showPopup} to="#"><AiOutlineAppstore /></Link>
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
-            <Link to="/Accordion"><MdOutlineQrCodeScanner /></Link>
+            <Link to="/QRCode"><MdOutlineQrCodeScanner /></Link>
           </div>
           <Link className="logout" onClick={() => {
             localStorage.clear();
