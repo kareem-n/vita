@@ -31,10 +31,18 @@ const Sidebar = () => {
   const showpopupQRCode = () => {
     setpopupQRCode(!popupQRCode)
   }
-
+  
   useEffect(() => {
+    console.log(popupQRCode);
+    if (popupQRCode) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
 
-
+  }, [popupQRCode])
+  
+  useEffect(() => {
     console.log(popup);
     if (popup) {
       document.body.style.overflow = 'hidden';
@@ -45,15 +53,6 @@ const Sidebar = () => {
   }, [popup])
 
 
-  useEffect(() => {
-    console.log(popupQRCode);
-    if (popupQRCode) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-  }, [popupQRCode])
 
 
   return (
