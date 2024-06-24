@@ -154,7 +154,6 @@ function App() {
         <Route path="/NoPatient" element={<ProtectDoctor
         > <NoPatient /></ProtectDoctor>} />
 
-        <Route path="/patientAccess" element={<PatientAccess />} />
 
         <Route path="/userInfo" element={<ProtectRoute >
           <UserInfo />
