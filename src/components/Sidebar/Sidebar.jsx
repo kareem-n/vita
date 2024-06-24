@@ -22,9 +22,14 @@ const Sidebar = () => {
   const dispatch = useDispatch();
 
   const [popup, setPopup] = useState(false)
+  const [popupQRCode, setpopupQRCode] = useState(false)
 
   const showPopup = () => {
     setPopup(!popup)
+  }
+
+  const showpopupQRCode = () => {
+    setpopupQRCode(!popupQRCode)
   }
 
   useEffect(() => {
@@ -40,6 +45,17 @@ const Sidebar = () => {
   }, [popup])
 
 
+  useEffect(() => {
+
+
+    console.log(popup);
+    if (popupQRCode) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+
+  }, [popupQRCode])
 
 
   return (
@@ -55,7 +71,7 @@ const Sidebar = () => {
             <Link to="/Profile"><FaUser /></Link>
             <Link onClick={showPopup} to="#"><AiOutlineAppstore /></Link>
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
-            <Link onClick={showPopup} to="#"><MdOutlineQrCodeScanner /></Link>
+            <Link onClick={setpopupQRCode} to="#"><MdOutlineQrCodeScanner /></Link>
           </div>
           <Link className="logout" onClick={() => {
             localStorage.clear();
