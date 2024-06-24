@@ -17,6 +17,14 @@ const Verify = () => {
     }
   };
 
+  const handleKeyDown = (e, index) => {
+    if (e.key === 'Backspace' && index > 0 && !e.target.value) {
+      // حذف محتوى الحقل السابق ونقل التركيز إليه
+      inputRefs.current[index - 1].focus();
+      inputRefs.current[index - 1].value = '';
+    }
+  };
+
   return (
     <>
       <section className="verify" id="verify">
@@ -37,6 +45,7 @@ const Verify = () => {
                   maxLength={1}
                   ref={(el) => (inputRefs.current[index] = el)}
                   onChange={(e) => handleInputChange(e, index)}
+                  onKeyDown={(e) => handleKeyDown(e, index)}
                 />
               ))}
             </div>
@@ -50,7 +59,7 @@ const Verify = () => {
 
           <div className="circle one"></div>
           <div className="circle two"></div>
-          <div className="circle three"></div>
+          <div class="circle three"></div>
           <div className="circle four"></div>
           <div className="circle five"></div>
           <div className="circle six"></div>
