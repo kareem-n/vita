@@ -1,13 +1,9 @@
 import './QRCode.css'
 import { FaXmark } from "react-icons/fa6";
-import { useSelector } from 'react-redux';
 import ImageQRCode from '../../assets/images/QR.png'
 
 
 const QRCode = ({ popup, setPopup }) => {
-
-
-  const { type } = useSelector(state => state.user);
 
   const hide = () => {
     setPopup(false)
