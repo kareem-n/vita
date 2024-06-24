@@ -22,12 +22,24 @@ const Sidebar = () => {
   const dispatch = useDispatch();
 
   const [popup, setPopup] = useState(false)
-  const [popupQRCode, setpopupQRCode] = useState(false)
-
+  
   const showPopup = () => {
     setPopup(!popup)
   }
+  
+  useEffect(() => {
+    console.log(popup);
+    if (popup) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    
+  }, [popup])
+  
 
+  const [popupQRCode, setpopupQRCode] = useState(false)
+  
   const showpopupQRCode = () => {
     setpopupQRCode(!popupQRCode)
   }
@@ -41,17 +53,6 @@ const Sidebar = () => {
     }
 
   }, [popupQRCode])
-  
-  useEffect(() => {
-    console.log(popup);
-    if (popup) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-  }, [popup])
-
 
 
 
