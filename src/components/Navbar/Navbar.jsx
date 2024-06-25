@@ -55,7 +55,7 @@ const Navbar = () => {
   return (
     <>
       <nav className='d-flex justify-content-between align-items-center'>
-        <h2>Tests</h2>
+        <h2 className='m-0'>Tests</h2>
         {/* search com */}
         {
           searchPop && <div className="d-flex position-relative">
