@@ -7,12 +7,14 @@ import image_05 from "../../assets/images/Group 1.svg";
 import image_06 from "../../assets/images/Group 1171275811.svg";
 import { Link, useNavigate } from 'react-router-dom';
 import { FaXmark } from "react-icons/fa6";
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import uploadPost from '../../assets/images/uploadImage.svg'
+import NoPatient from '../../components/NoPatient/NoPatient';
 import { setAccessP } from '../../redux/slices/UserSlice';
 
 
-const DoctorOptions = ({ popup, setPopup, setshowtmp }) => {
+const DocOp = ({ popup, setPopup }) => {
 
 
   const dispatch = useDispatch();
@@ -22,10 +24,10 @@ const DoctorOptions = ({ popup, setPopup, setshowtmp }) => {
 
   const hide = () => {
 
+    console.log(0);
+
     dispatch(setAccessP(false));
     setPopup(false);
-    setshowtmp(false)
-
     // nav('/nopatient');
   }
 
@@ -43,13 +45,7 @@ const DoctorOptions = ({ popup, setPopup, setshowtmp }) => {
         <div className="popup doctorOptions">
           <div className="DoctorOptions">
             {
-              type === "doctor" && <Link onClick={() => {
-                setshowtmp(false)
-                setPopup(false)
-                dispatch(setAccessP(true))
-
-              }
-              } to={"/noPatient"} className="option">
+              type === "doctor" && <Link onClick={() => setPopup(false)} to={"/noPatient"} className="option">
                 <img src={image_01} alt="" />
                 <h3>Close patient</h3>
               </Link>
@@ -89,7 +85,7 @@ const DoctorOptions = ({ popup, setPopup, setshowtmp }) => {
             <FaXmark />
           </Link>
         </div>
-      </div >
+      </div>
 
 
 
@@ -99,4 +95,4 @@ const DoctorOptions = ({ popup, setPopup, setshowtmp }) => {
   )
 }
 
-export default DoctorOptions;
+export default DocOP;

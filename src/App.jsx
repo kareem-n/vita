@@ -27,7 +27,7 @@ import XRaysLapOptions from './Popus/XRaysLapOptions/XRaysLapOptions'
 import PharmacyOptions from './Popus/PharmacyOptions/PharmacyOptions'
 import X_RaysName from './pages/X_RaysName/X_RaysName'
 import Posters from './pages/Posters/Posters'
-import QRCode from './Popus/QRCode/QRCode'
+import QRCodee from './Popus/QRCode/QRCode'
 
 
 function App() {
@@ -61,7 +61,7 @@ function App() {
     }).then(data => {
       const base64 = convertArrayBufferToBase64(data.data);
       const image = `data:image/jpeg;base64,${base64}`;
-      console.log(image);
+      // console.log(image);
       dispatch(setUserImage(image));
     })
 
@@ -78,8 +78,8 @@ function App() {
 
     if (localStorage.getItem("user")) {
       dispatch(setUser(localStorage.getItem("user")));
+      dispatch(setType(localStorage.getItem("userP")));
     }
-    dispatch(setType('patient'));
 
   }, [])
 
@@ -151,15 +151,18 @@ function App() {
         <Route path="/verify" element={<Verify />} />
         <Route path="/charts" element={<Charts />} />
         <Route path="/waiting_list" element={<Waiting_list />} />
-        <Route path="/NoPatient" element={<ProtectDoctor
-        > <NoPatient /></ProtectDoctor>} />
+
+
+        <Route path="/NoPatient" element={<NoPatient />} />
 
         {/* <Route path="/patientAccess" element={<PatientAccess />} /> */}
 
         <Route path="/userInfo" element={<ProtectRoute >
           <UserInfo />
         </ProtectRoute>} />
-        <Route path="/QRCode" element={<QRCode />} />
+
+
+        <Route path="/QRCode" element={<QRCodee />} />
         <Route path="/X_Rays" element={<X_Rays />} />
         <Route path="/Prescriptions" element={<Prescriptions />} />
         <Route path="/Prescriptions_2" element={<Prescriptions_2 />} />

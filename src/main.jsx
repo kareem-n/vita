@@ -7,8 +7,6 @@ import { Provider } from 'react-redux'
 import { MainStore } from './redux/Main.js'
 import { HashRouter } from 'react-router-dom'
 
-// import { BrowserRouter } from 'react-router-dom'
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={MainStore} >
     <HashRouter >

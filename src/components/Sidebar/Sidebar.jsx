@@ -14,47 +14,30 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUser, setUserDet } from '../../redux/slices/UserSlice';
 import PatientAccess from '../../Popus/PatientAccess/PatientAccess';
 import NoPatient from '../NoPatient/NoPatient';
+import PatientOptions from './../../Popus/PatientOptions/PatientOptions';
 
 const Sidebar = () => {
 
   const { type, accessP } = useSelector(state => state.user);
 
-  const nav = useNavigate();
 
   const dispatch = useDispatch();
 
   const [popup, setPopup] = useState(false)
-  
+
   const showPopup = () => {
     setPopup(!popup)
   }
-  
+
   useEffect(() => {
-    console.log(popup);
     if (popup) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-    
+
   }, [popup])
-  
 
-  const [popupQRCode, setpopupQRCode] = useState(false)
-  
-  const showpopupQRCode = () => {
-    setpopupQRCode(!popupQRCode)
-  }
-  
-  useEffect(() => {
-    console.log(popupQRCode);
-    if (popupQRCode) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-
-  }, [popupQRCode])
 
 
 
@@ -69,9 +52,9 @@ const Sidebar = () => {
             <Link to={type === "doctor" ? "/Posters" : '/Posters'}><TiHome /></Link>
             {/* <Link to={type === "doctor" ? "/NoPatient" : '/userInfo'}><TiHome /></Link> */}
             <Link to="/Profile"><FaUser /></Link>
-            <Link onClick={showPopup} to="#"><AiOutlineAppstore /></Link>
+            <Link onClick={type === "patient" && showPopup} to={type === "doctor" && '/nopatient'}><AiOutlineAppstore /></Link>
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
-            <Link onClick={showpopupQRCode} to="#"><MdOutlineQrCodeScanner /></Link>
+            <Link to="/QRCode"><MdOutlineQrCodeScanner /></Link>
           </div>
           <Link className="logout" onClick={() => {
             localStorage.clear();
@@ -83,10 +66,11 @@ const Sidebar = () => {
         </div>
       </div>
 
-      { popup && <div className="">
-        <DoctorOptions popup={popup} setPopup={setPopup} />
+      {popup && type === "patient" && <div className="">
+        <PatientOptions popup={popup} setPopup={setPopup} />
       </div>
       }
+
     </>
   )
 }

@@ -1,4 +1,4 @@
-import './DoctoeOptions.css'
+import './PatientOptions.css'
 import image_01 from "../../assets/images/Group 1171275817.svg";
 import image_02 from "../../assets/images/Group 1171275818.svg";
 import image_03 from "../../assets/images/Group 1171275808.svg";
@@ -23,7 +23,7 @@ const PatientOptions = ({ popup, setPopup }) => {
   const { type, accessP } = useSelector(state => state.user);
 
   const hide = () => {
-    dispatch(setAccessP(false));
+    // dispatch(setAccessP(false));
     setPopup(false);
     // nav('/nopatient');
   }

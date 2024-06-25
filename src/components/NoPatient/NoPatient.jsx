@@ -10,12 +10,12 @@ const NoPatient = () => {
 
   const dispatch = useDispatch();
 
-  const [popup, setPopup] = useState(false)
+  const [Poop, setPoop] = useState(false)
   const showPopup = () => {
-    setPopup(!popup)
+    setPoop(!Poop)
   }
 
-  if (popup) {
+  if (Poop) {
     document.body.style.overflow = 'hidden';
   } else {
     document.body.style.overflow = 'auto';
@@ -31,8 +31,8 @@ const NoPatient = () => {
           <span>Access Patient</span>
         </button>
       </div>
-      {popup && (
-        <AccessPatient />
+      {Poop && (
+        <AccessPatient setPoop={setPoop} />
       )}
     </>
   )
