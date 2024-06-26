@@ -28,6 +28,7 @@ import PharmacyOptions from './Popus/PharmacyOptions/PharmacyOptions'
 import X_RaysName from './pages/X_RaysName/X_RaysName'
 import Posters from './pages/Posters/Posters'
 import QRCodee from './Popus/QRCode/QRCode'
+import Dashboard from './pages/Dashboard/Dashboard'
 
 
 function App() {
@@ -175,6 +176,7 @@ function App() {
         <Route path="/PharmacyOptions" element={<PharmacyOptions />} />
         <Route path="/X_RaysName" element={<X_RaysName />} />
         <Route path="/Posters" element={<Posters />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
       </Routes>
 
 
