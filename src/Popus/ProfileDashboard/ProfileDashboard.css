@@ -1,0 +1,66 @@
+.popup{
+  .heading{
+    h3{
+      margin: 0;
+      font-family: emoji;
+      letter-spacing: 2px;
+    }
+  }
+
+  form{
+    margin: auto;
+    margin-top: 30px;
+    max-width: 400px;
+    width: 100%;
+    label{
+      display: block;
+      color: #fff;
+      font-size: 16px;
+      margin-bottom: 7px;
+      line-height: 22px;
+      text-align: left;
+      font-family: Inter;
+      font-size: 18px;
+      font-weight: 300;
+    }
+    span{
+      color: #F21D2F;
+    }
+    input{
+      width: 100%;
+      outline: none;
+      border: 0;
+      background-color: #21222D;
+      padding-left: 7px;
+      height: 40px;
+      color: #fff;
+      border-radius: 7px;
+      &::placeholder{
+        color: #fff;
+      }
+    }
+    input[type='submit']{
+      max-width: 150px;
+      width: 100%;
+      margin: 30px auto;
+      color: #fff;
+      background-color: #21222D;
+    }
+  }
+  .close{
+    width: 50px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: 0;
+    border-radius: 0px 0px 0 20px;
+    svg{
+      font-size: 18px;
+      color: var(--white-color);
+      cursor: pointer;
+    }
+  }
+}

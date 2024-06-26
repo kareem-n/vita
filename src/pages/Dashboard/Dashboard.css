@@ -52,12 +52,12 @@
       }
     }
     .today_counts{
-      flex: 0 0 65%;
+      flex: 0 0 77%;
       .boxes{
         gap: 20px;
         margin-top: 30px;
         .box{
-          flex: 0 0 23%;
+          flex: 0 0 18%;
           padding: 25px 15px;
           border-radius: 7px;
           background-color: #171821;
@@ -68,26 +68,10 @@
       }
     }
     .options{
-      flex: 0 0 33%;
+      flex: 0 0 20%;
       .boxes{
         padding: 18px;
         gap: 25px;
-        .left{
-          flex: 0 0 45%;
-          text-align: center;
-          .box{
-            padding: 25px 15px;
-            border-radius: 7px;
-            background-color: #171821;
-            p{
-              margin-top: 10px;
-              font-size: 16px;
-              margin-top: 13px;
-              font-weight: 500;
-              color: #FEB95A;
-            }
-          }
-        }
         .right{
           flex: 0 0 45%;
           gap: 25px;

@@ -2,6 +2,7 @@ import './Dashboard.css'
 import vita from '../../assets/images/LOGO.png';
 import totalUsers from '../../assets/images/Total Users.png';
 import heart from '../../assets/images/Heart.png';
+import corona from '../../assets/images/Corona.png';
 import stethoscope from '../../assets/images/stethoscope.png';
 import org from '../../assets/images/org.png';
 import iconuser from '../../assets/images/iconuser.png';
@@ -36,6 +37,11 @@ const Dashboard = () => {
                 <p className='m-0' style={{ fontSize:"13px", color:'#FEB95A' }}>Total Users</p>
               </div>
               <div className="box">
+                <img src={corona} alt="" />
+                <h3 className='mt-3'>15</h3>
+                <p className='m-0' style={{ fontSize:"13px", color:'#FF5353' }}>Test Categories</p>
+              </div>
+              <div className="box">
                 <img src={heart} alt="" />
                 <h3 className='mt-3'>500</h3>
                 <p className='m-0' style={{ fontSize:"13px", color:'#66DDCE' }}>Different Tests</p>
@@ -56,21 +62,15 @@ const Dashboard = () => {
             <div className="title">
               <h5 className='m-0'>Options</h5>
             </div>
-            <div className="boxes d-flex align-items-center flex-wrap">
-              <div className="left">
-                <div className="box">
-                  <img src={iconfile} alt="" />
-                  <p className='mb-0 text-center'>Request <br /> Report</p>
-                </div>
-              </div>
+            <div className="boxes d-flex align-items-center justify-content-center flex-wrap">
               <div className="right">
                 <div className="box">
                   <img src={iconuser} alt="" />
                   <span>Profile</span>
                 </div>
-                <div className="box">
+                <div className="box" >
                   <img src={signout} alt="" />
-                  <span>Signout</span>
+                  <span style={{ color:'#FF5353' }}>Signout</span>
                 </div>
               </div>
             </div>
@@ -124,7 +124,7 @@ const Dashboard = () => {
               <h5 className='m-0'>Top Abnormal Tests</h5>
             </div>
             <div className="tests">
-              <table class="table">
+              <table className="table">
                 <thead>
                   <tr>
                     <th scope="col">#</th>
@@ -257,7 +257,6 @@ const Dashboard = () => {
                 </div>
                 </div>
             </div>
-
         </div>
       </div>
     </section>
