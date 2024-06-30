@@ -6,7 +6,6 @@ import corona from '../../assets/images/Corona.png';
 import stethoscope from '../../assets/images/stethoscope.png';
 import org from '../../assets/images/org.png';
 import iconuser from '../../assets/images/iconuser.png';
-import iconfile from '../../assets/images/iconfile.png';
 import signout from '../../assets/images/signout.png';
 
 const Dashboard = () => {
@@ -70,7 +69,7 @@ const Dashboard = () => {
                 </div>
                 <div className="box" >
                   <img src={signout} alt="" />
-                  <span style={{ color:'#FF5353' }}>Signout</span>
+                  <span>Signout</span>
                 </div>
               </div>
             </div>
@@ -257,6 +256,7 @@ const Dashboard = () => {
                 </div>
                 </div>
             </div>
+
         </div>
       </div>
     </section>
