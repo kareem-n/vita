@@ -12,9 +12,11 @@
     margin: auto;
     display: flex;
     justify-content: center;
-    padding-top: 70px;
-    height: 100vh;
+    padding-top: 50px;
     form{
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 7px;
       .file{
         img{
           position: absolute;
