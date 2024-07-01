@@ -1,5 +1,6 @@
 import './Dashboard.css'
 import vita from '../../assets/images/LOGO.png';
+<<<<<<< HEAD
 // import totalUsers from '../../assets/images/Total Users.png';
 // import heart from '../../assets/images/Heart.png';
 // import corona from '../../assets/images/Corona.png';
@@ -8,6 +9,15 @@ import vita from '../../assets/images/LOGO.png';
 // import iconuser from '../../assets/images/iconuser.png';
 // import iconfile from '../../assets/images/iconfile.png';
 // import signout from '../../assets/images/signout.png';
+=======
+import totalUsers from '../../assets/images/Total Users.png';
+import heart from '../../assets/images/Heart.png';
+import corona from '../../assets/images/Corona.png';
+import stethoscope from '../../assets/images/stethoscope.png';
+import org from '../../assets/images/org.png';
+import iconuser from '../../assets/images/iconuser.png';
+import signout from '../../assets/images/signout.png';
+>>>>>>> 58d51235aa31937d98740cc9d20006b624785e47
 
 const Dashboard = () => {
   return (
@@ -70,7 +80,7 @@ const Dashboard = () => {
                 </div>
                 <div className="box" >
                   <img src={signout} alt="" />
-                  <span style={{ color:'#FF5353' }}>Signout</span>
+                  <span>Signout</span>
                 </div>
               </div>
             </div>
@@ -257,6 +267,7 @@ const Dashboard = () => {
                 </div>
                 </div>
             </div>
+
         </div>
       </div>
     </section>
