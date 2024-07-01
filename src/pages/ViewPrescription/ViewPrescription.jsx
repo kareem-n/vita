@@ -12,7 +12,7 @@ const ViewPrescription = () => {
 
   useEffect(() => {
 
-    axios.get(`https://vita12.vercel.app/patients/get-prescription-details?ID=${id}`, {
+    axios.get(`https://vitaapp.azurewebsites.net/patients/get-prescription-details?ID=${id}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`
       }

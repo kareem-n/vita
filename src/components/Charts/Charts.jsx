@@ -7,7 +7,7 @@ import switchIcon2 from '../../assets/images/switchIcon2.png';
 // import Head, { ContentHead } from '../../components/Head/Head';
 
 const Charts = () => {
-  const [boxCount, setBoxCount] = useState(8); 
+  const [boxCount, setBoxCount] = useState(3); 
   const [boxes, setBoxes] = useState([]);
 
   useEffect(() => {

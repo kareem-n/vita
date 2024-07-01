@@ -113,11 +113,11 @@ const Register = () => {
       console.log(validResult.value);
       // console.log(formDataToSend.values());
 
-      axios.post("https://vita-production.up.railway.app/register", validResult.value)
+      axios.post("https://vitaapp.azurewebsites.net/register", validResult.value)
         .then(res => {
           setLoader(false);
           console.log(res);
-          localStorage.setItem("user", res.data.token);
+          // localStorage.setItem("user", res.data.token);
           navigate("/login");
         }).catch(err => {
           setLoader(false);

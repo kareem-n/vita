@@ -1,5 +1,4 @@
 import "./Home.css";
-import { FaUser } from "react-icons/fa";
 import Logo from "../../assets/images/LOGO.png";
 import Ellipse from "../../assets/images/Ellipse 1.png";
 import Vector_2 from "../../assets/images/Vector2.png";

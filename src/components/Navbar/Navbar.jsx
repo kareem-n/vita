@@ -27,7 +27,7 @@ const Navbar = () => {
 
   function getA() {
 
-    axios.get("https://vita-production.up.railway.app/users/auth/get-list-of-profiles",
+    axios.get("https://vitaapp.azurewebsites.net/users/auth/get-list-of-profiles",
       {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`

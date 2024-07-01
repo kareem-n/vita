@@ -19,7 +19,7 @@ const Prescriptions_2 = () => {
   useEffect(() => {
 
     if (type === "patient") {
-      axios.get("https://vita-production.up.railway.app/patients/get-all-prescriptions", {
+      axios.get("https://vitaapp.azurewebsites.net/patients/get-all-prescriptions", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }

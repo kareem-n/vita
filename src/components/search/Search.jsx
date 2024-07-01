@@ -1,15 +1,13 @@
-
 import { useState } from 'react';
 import { FaSearch } from 'react-icons/fa';
 import { FaCheckDouble } from "react-icons/fa";
-
 import { useSelector } from 'react-redux';
 import { IoIosWarning } from "react-icons/io";
-
 import { Bars } from 'react-loader-spinner';
 import axios from 'axios';
-function Search() {
 
+
+function Search() {
 
     const { type, currentProfile } = useSelector(state => state.user);
 
@@ -40,8 +38,10 @@ function Search() {
 
     const handleSearch = () => {
         let fold, endpoint, searchParam, searchParam2;
-        const baseUrl = 'https://vita-production.up.railway.app';
+        const baseUrl = 'https://vitaapp.azurewebsites.net';
         // const url = `/patients/give_access?doctorName=eslam`;
+
+        console.log(type);
 
         if (type === "doctor") {
 
@@ -65,14 +65,10 @@ function Search() {
                     searchParam = 'doctorName'
                     break;
                 case 'x-rays':
-                    fold = 'patients';
-                    endpoint = 'give-XRayLab-access';
-                    searchParam = 'xRayLaboratoryName'
-                    break;
                 case 'pharmacy':
                     fold = 'patients';
-                    endpoint = 'give-pharmacy-access';
-                    searchParam = 'pharmacistName'
+                    endpoint = 'give-organization-access';
+                    searchParam = 'organizationName'
                     break;
 
                 default:
@@ -80,32 +76,20 @@ function Search() {
             }
 
 
-        } else if (type === "xray_lab") {
+        } else if (type === "xray_lab" || type === "pharmacy" || type === "tests" ) {
             switch (searchParams.type) {
                 case 'patient':
-                    fold = 'XRay-Lab';
+                    fold = 'Organization';
                     endpoint = 'request-access';
                     searchParam = 'patientName'
-                    searchParam2 = 'xRayLaboratoryName'
+                    searchParam2 = 'organizationName'
                     break;
 
                 default:
                     break;
             }
         }
-        else if (type === "pharmacy") {
-            switch (searchParams.type) {
-                case 'patient':
-                    fold = 'Pharmacy';
-                    endpoint = 'request-access';
-                    searchParam = 'patientName'
-                    searchParam2 = 'pharmacistName'
-                    break;
-
-                default:
-                    break;
-            }
-        }
+       
 
 
 

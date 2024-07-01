@@ -1,13 +1,13 @@
 import './Dashboard.css'
 import vita from '../../assets/images/LOGO.png';
-import totalUsers from '../../assets/images/Total Users.png';
-import heart from '../../assets/images/Heart.png';
-import corona from '../../assets/images/Corona.png';
-import stethoscope from '../../assets/images/stethoscope.png';
-import org from '../../assets/images/org.png';
-import iconuser from '../../assets/images/iconuser.png';
-import iconfile from '../../assets/images/iconfile.png';
-import signout from '../../assets/images/signout.png';
+// import totalUsers from '../../assets/images/Total Users.png';
+// import heart from '../../assets/images/Heart.png';
+// import corona from '../../assets/images/Corona.png';
+// import stethoscope from '../../assets/images/stethoscope.png';
+// import org from '../../assets/images/org.png';
+// import iconuser from '../../assets/images/iconuser.png';
+// import iconfile from '../../assets/images/iconfile.png';
+// import signout from '../../assets/images/signout.png';
 
 const Dashboard = () => {
   return (

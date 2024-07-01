@@ -93,7 +93,7 @@ const AddProfile = ({ setAddProfileShow }) => {
       setLoad(true);
       switch (formData.profileType) {
         case 'doctor':
-          axios.post(`https://vita-production.up.railway.app/users/auth/add-doctor-profile`, {
+          axios.post(`https://vitaapp.azurewebsites.net/users/auth/add-doctor-profile`, {
             specialization: formData.spec
           }, {
             headers: {
@@ -113,7 +113,7 @@ const AddProfile = ({ setAddProfileShow }) => {
           })
           break;
         case 'patient':
-          axios.post(`https://vita-production.up.railway.app/users/auth/add-patient-profile`, {}, {
+          axios.post(`https://vitaapp.azurewebsites.net/users/auth/add-patient-profile`, {}, {
             headers: {
               Authorization: `Bearer ${localStorage.getItem("user")}`
             }
@@ -131,7 +131,7 @@ const AddProfile = ({ setAddProfileShow }) => {
           })
           break;
         case 'xray_lab':
-          axios.post(`https://vita-production.up.railway.app/users/auth/add-xray-laboratory-profile`, {
+          axios.post(`https://vitaapp.azurewebsites.net/users/auth/add-xray-laboratory-profile`, {
             organizationName: formData.organizationName,
             email: formData.email,
             location: formData.location
@@ -153,7 +153,7 @@ const AddProfile = ({ setAddProfileShow }) => {
           })
           break;
         case 'pharmacy':
-          axios.post(`https://vita-production.up.railway.app/users/auth/add-pharmacy-profile`, {
+          axios.post(`https://vitaapp.azurewebsites.net/users/auth/add-pharmacy-profile`, {
             organizationName: formData.organizationName,
             email: formData.email,
             location: formData.location

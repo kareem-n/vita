@@ -13,13 +13,13 @@ const Profile = () => {
   const tabTitles = ['personal details', 'Org 1'];
 
   const [modiData, setModiData] = useState(null);
-  const [success, setSuccess] = useState('');
+  // const [success, setSuccess] = useState('');
   const [exErr, setExErr] = useState('');
 
 
   useEffect(() => {
 
-    axios.get("https://vita-production.up.railway.app/users/auth/get-general-info-of-user", {
+    axios.get("https://vitaapp.azurewebsites.net/users/auth/get-general-info-of-user", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`
       }
@@ -124,7 +124,7 @@ const Profile = () => {
 
       formImg.append("image", imagePersonalDetails);
 
-      axios.post("https://vita-production.up.railway.app/users/auth/add-profile-image", formImg, {
+      axios.post("https://vitaapp.azurewebsites.net/users/auth/add-profile-image", formImg, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
@@ -156,7 +156,7 @@ const Profile = () => {
     } else {
       setLoader(true);
 
-      axios.post("https://vita-production.up.railway.app/users/auth/modify-data", validResult.value, {
+      axios.post("https://vitaapp.azurewebsites.net/users/auth/modify-data", validResult.value, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }

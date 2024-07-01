@@ -55,19 +55,21 @@ function App() {
   useEffect(() => {
 
 
-    axios.get("https://vita-production.up.railway.app/users/auth/get-profile-image", {
+    axios.get("https://vitaapp.azurewebsites.net/users/auth/get-profile-image", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`,
       },
       responseType: 'arraybuffer',
     }).then(data => {
+
+      console.log(data);
+
       const base64 = convertArrayBufferToBase64(data.data);
       const image = `data:image/jpeg;base64,${base64}`;
-      // console.log(image);
       dispatch(setUserImage(image));
     })
 
-    axios.get("https://vita-production.up.railway.app/users/auth/get-general-info-of-user", {
+    axios.get("https://vitaapp.azurewebsites.net/users/auth/get-general-info-of-user", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`
       }

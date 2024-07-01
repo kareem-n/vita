@@ -40,6 +40,8 @@ const Sidebar = () => {
 
 
 
+  const [showPP, setShowPP] = useState(false);
+
 
   return (
     <>
@@ -52,7 +54,7 @@ const Sidebar = () => {
             <Link to={type === "doctor" ? "/Posters" : '/Posters'}><TiHome /></Link>
             {/* <Link to={type === "doctor" ? "/NoPatient" : '/userInfo'}><TiHome /></Link> */}
             <Link to="/Profile"><FaUser /></Link>
-            <Link onClick={type === "patient" && showPopup} to={type === "doctor" && '/nopatient'}><AiOutlineAppstore /></Link>
+            <Link onClick={type === "patient" ? showPopup : accessP && setShowPP(true)} to={type === "doctor" && '/nopatient'}><AiOutlineAppstore /></Link>
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
             <Link to="/QRCode"><MdOutlineQrCodeScanner /></Link>
           </div>
@@ -70,6 +72,12 @@ const Sidebar = () => {
         <PatientOptions popup={popup} setPopup={setPopup} />
       </div>
       }
+      {popup && type === "doctor" && <div className="">
+        <DoctorOptions popup={popup} setPopup={setPopup} />
+      </div>
+      }
+
+
 
     </>
   )

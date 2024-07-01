@@ -87,16 +87,16 @@ const Login = () => {
       setLoading(false);
 
     } else {
-      axios.post("https://vita-production.up.railway.app/login", loginForm).then(res => {
+      axios.post("https://vitaapp.azurewebsites.net/login", loginForm).then(res => {
         setLoading(false);
 
-        // console.log(res.data);
+        console.log(res.data);
 
         dispatch(setUser(res.data.token));
         localStorage.setItem("user", res.data.token);
         localStorage.setItem("userP", 'patient');
 
-        axios.get("https://vita-production.up.railway.app/users/auth/get-profile-image", {
+        axios.get("https://vitaapp.azurewebsites.net/users/auth/get-profile-image", {
           headers: {
             Authorization: `Bearer ${res.data.token}`,
           },
@@ -108,7 +108,7 @@ const Login = () => {
         })
 
 
-        axios.get("https://vita-production.up.railway.app/users/auth/get-general-info-of-user", {
+        axios.get("https://vitaapp.azurewebsites.net/users/auth/get-general-info-of-user", {
           headers: {
             Authorization: `Bearer ${res.data.token}`
           }
@@ -122,8 +122,9 @@ const Login = () => {
 
       }).catch(err => {
         setLoading(false)
-        setExError("username or password is wrong!")
-        console.log(err);
+        // setExError("username or password is wrong!")
+        setExError(err.response.data)
+        // console.log();
       })
 
 
