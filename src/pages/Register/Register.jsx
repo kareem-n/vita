@@ -14,7 +14,6 @@ const Register = () => {
   const [exErr, setExErr] = useState(null);
 
   const [formData, setFormData] = useState({
-    profilePicture: "1",
     ssn: '',
     username: "",
     fullName: '',

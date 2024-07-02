@@ -106,7 +106,7 @@ const Waiting_list = () => {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
       }).then(res => {
-
+        console.log(res.data);
         const tmp = [];
         res.data.map(item => {
           axios.get(`https://vitaapp.azurewebsites.net/users/auth/get-image?username=${item.username}`, {
@@ -128,6 +128,7 @@ const Waiting_list = () => {
 
         setTimeout(() => {
           setData(tmp);
+          console.log(tmp);
           setLoad(false);
         }, 2000);
 
@@ -196,24 +197,44 @@ const Waiting_list = () => {
                 <h3>{item.fullName}</h3>
                 <p>@{item.username}</p>
               </div>
-              <div className="check">
+              {console.log(item)}
+              <div className="check ">
                 {
+
                   !item.access && <div
                     onClick={() => {
-
+                      console.log(0);
                       let tmp = ''
                       let path = ''
                       if (type === 'patient') {
-                        tmp = 'doctorName';
+
                         path = 'patients';
-                        axios.get(`https://vitaapp.azurewebsites.net/${path}/accept_access?${tmp}=${item.username}`, {
-                          headers: {
-                            Authorization: `Bearer ${localStorage.getItem("user")}`
-                          }
-                        }).then(() => {
-                          window.location.reload();
-                        })
-                      } else if (type === 'doctor') {
+                        if (item.user) {
+                          // user
+                          tmp = 'doctorName';
+                          axios.get(`https://vitaapp.azurewebsites.net/${path}/accept_access?${tmp}=${item.username}`, {
+                            headers: {
+                              Authorization: `Bearer ${localStorage.getItem("user")}`
+                            }
+                          }).then(() => {
+                            window.location.reload();
+                          })
+                        } else {
+
+                          // org
+                          axios.get(`https://vitaapp.azurewebsites.net/${path}/accept-organization-access?organizationName=${item.username}`, {
+                            headers: {
+                              Authorization: `Bearer ${localStorage.getItem("user")}`
+                            }
+                          }).then(() => {
+                            window.location.reload();
+                          })
+                        }
+                      }
+
+
+
+                      else if (type === 'doctor') {
                         tmp = 'patient';
                         path = "doctors"
                         axios.get(`https://vitaapp.azurewebsites.net/${path}/accept_access?${tmp}=${item.username}`, {
@@ -245,16 +266,34 @@ const Waiting_list = () => {
                     let tmp = ''
                     let path = ''
                     if (type === 'patient') {
-                      tmp = 'doctorName';
+
                       path = 'patients';
-                      axios.get(`https://vitaapp.azurewebsites.net/${path}/remove_access?${tmp}=${item.username}`, {
-                        headers: {
-                          Authorization: `Bearer ${localStorage.getItem("user")}`
-                        }
-                      }).then(() => {
-                        window.location.reload();
-                      })
-                    } else if (type === 'doctor') {
+                      if (item.user) {
+                        // user
+                        tmp = 'doctorName';
+                        axios.get(`https://vitaapp.azurewebsites.net/${path}/remove_access?${tmp}=${item.username}`, {
+                          headers: {
+                            Authorization: `Bearer ${localStorage.getItem("user")}`
+                          }
+                        }).then(() => {
+                          window.location.reload();
+                        })
+                      } else {
+
+                        // org
+                        axios.get(`https://vitaapp.azurewebsites.net/${path}/remove-organization-access?organizationName=${item.username}`, {
+                          headers: {
+                            Authorization: `Bearer ${localStorage.getItem("user")}`
+                          }
+                        }).then(() => {
+                          window.location.reload();
+                        })
+                      }
+                    }
+
+
+
+                    else if (type === 'doctor') {
                       tmp = 'patient';
                       path = "doctors"
                       axios.get(`https://vitaapp.azurewebsites.net/${path}/remove_access?${tmp}=${item.username}`, {
@@ -265,7 +304,7 @@ const Waiting_list = () => {
                         window.location.reload();
                       })
                     }
-                    else if (type === 'xray_lab') {
+                    else if (type === 'xray_lab' || type === 'pharmacy' || type === 'tests') {
                       axios.get(`https://vitaapp.azurewebsites.net/XRay-Lab/remove-access?xRayLaboratoryName=${currentProfile}&patientName=${item.username}`, {
                         headers: {
                           Authorization: `Bearer ${localStorage.getItem("user")}`

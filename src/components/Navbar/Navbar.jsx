@@ -85,7 +85,7 @@ const Navbar = () => {
                   <img src={image && image} className='rounded-circle' width={'50px'} height={'50px'} />
                 </div>
                 <div className="name_mile">
-                  <h4 className='m-0' style={{ fontSize:'13px' }}>{userDet ? userDet.fullName : ''}</h4>
+                  <h4 className='m-0' style={{ fontSize: '13px' }}>{userDet ? userDet.fullName : ''}</h4>
                   <p className='m-0'>@{userDet ? userDet.username : ''}</p>
                 </div>
                 {
@@ -96,6 +96,8 @@ const Navbar = () => {
                         {profiles.doctor && <div
                           onClick={() => {
                             dispatch(setType("doctor"));
+                            localStorage.setItem("userP", "doctor");
+
                             setSropShow(false);
                           }}
                           style={{
@@ -113,6 +115,8 @@ const Navbar = () => {
                         {profiles.patient && <div
                           onClick={() => {
                             dispatch(setType("patient"));
+                            localStorage.setItem("userP", "patient");
+
                             setSropShow(false);
 
                           }}
@@ -134,6 +138,7 @@ const Navbar = () => {
                             key={key}
                             onClick={() => {
                               dispatch(setType(item.type));
+                              localStorage.setItem("userP", item.type);
                               dispatch(setCurrentProfile(item.organizationName));
                               setSropShow(false);
                             }}
