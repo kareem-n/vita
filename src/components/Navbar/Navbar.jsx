@@ -64,7 +64,7 @@ const Navbar = () => {
         }
         <div
           style={{
-            borderColor: type === 'doctor' ? 'yellow' : type === "patient" ? 'green' : 'orange'
+            borderColor: localStorage.getItem("userP") === 'doctor' ? 'yellow' : localStorage.getItem("userP") === "patient" ? 'green' : 'orange'
           }}
           className="account">
           <div className="profile d-flex justify-content-between align-items-center">
