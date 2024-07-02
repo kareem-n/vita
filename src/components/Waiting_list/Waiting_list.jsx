@@ -98,7 +98,7 @@ const Waiting_list = () => {
         })
       }
 
-    if (type === "doctor") {
+  if (type === "doctor") {
 
       setLoad(true);
       axios.get("https://vitaapp.azurewebsites.net/doctors/get-list-of-connections", {

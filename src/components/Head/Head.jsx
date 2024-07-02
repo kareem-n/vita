@@ -10,15 +10,20 @@ const Head = (props) => {
   )
 }
 
-const ContentHead = () => {
+const ContentHead = ({ items, getData }) => {
   return (
     <div className="head d-flex justify-content-between align-items-center">
       <div className="btns d-flex gap-2">
         <FirstBtn>Date</FirstBtn>
         <SecondBtn>Name</SecondBtn>
       </div>
-      <select defaultValue="Category">
-        <option value="Category" disabled>Category</option>
+      <select onChange={(e) => {
+        getData(e.target.value)
+      }} defaultValue="Category">
+        {
+          items.map((item, key) => <option key={key} value={item}>{item}</option>
+          )
+        }
       </select>
     </div>
   )
@@ -28,7 +33,7 @@ const RaysHead = (props) => {
   return (
     <div className="head d-flex justify-content-between align-items-center">
       <div className="btns d-flex gap-2">
-      {props.children}
+        {props.children}
         {/* <FirstBtn></FirstBtn>
         <SecondBtn>Name</SecondBtn> */}
       </div>
@@ -48,4 +53,4 @@ const WaitingHead = () => {
 
 
 export default Head;
-export {ContentHead , WaitingHead, RaysHead}
+export { ContentHead, WaitingHead, RaysHead }
