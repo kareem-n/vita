@@ -244,7 +244,7 @@ const AddProfile = ({ setAddProfileShow }) => {
               {
                 isX && <div className="">
                   <div className="">
-                    <label className='w-100'>Organization Name <span>*</span></label>
+                    <label className='w-100'>UserName <span>*</span></label>
                     <input style={{
                       outline: 'none'
                     }} className='w-100 py-1 px-2 mt-2 rounded-3 border-0' onChange={handleChange} name='organizationName' type="text" />
@@ -277,7 +277,7 @@ const AddProfile = ({ setAddProfileShow }) => {
               {
                 isPhar && <div className="">
                   <div className="">
-                    <label className='w-100'>Organization Name <span>*</span></label>
+                    <label className='w-100'>UserName <span>*</span></label>
                     <input style={{
                       outline: 'none'
                     }} className='w-100 py-1 px-2 mt-2 rounded-3 border-0' onChange={handleChange} name='organizationName' type="text" />
@@ -309,7 +309,7 @@ const AddProfile = ({ setAddProfileShow }) => {
 
 
 
-              <InputSubmit>Add</InputSubmit>
+              <InputSubmit onClick={hide}>Add</InputSubmit>
             </form>
             <div className="close">
               <FaXmark onClick={hide} />
