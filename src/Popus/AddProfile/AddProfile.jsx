@@ -185,7 +185,7 @@ const AddProfile = ({ setAddProfileShow }) => {
     }
 
   }
-  const [popup, setPopup] = useState(true);
+  const [popup, setPopup] = useState(false);
   const hide = () => {
     setPopup(false);
     setAddProfileShow(false)
