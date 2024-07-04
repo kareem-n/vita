@@ -309,7 +309,7 @@ const AddProfile = ({ setAddProfileShow }) => {
 
 
 
-              <InputSubmit onClick={hide}>Add</InputSubmit>
+              <InputSubmit>Add</InputSubmit>
             </form>
             <div className="close">
               <FaXmark onClick={hide} />
