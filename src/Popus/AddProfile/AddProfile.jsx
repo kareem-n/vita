@@ -155,7 +155,7 @@ const AddProfile = ({ setAddProfileShow }) => {
         case 'pharmacy':
           axios.post(`https://vitaapp.azurewebsites.net/users/auth/add-pharmacy-profile`, {
             organizationName: formData.organizationName,
-            email: formData.email,
+            // email: formData.email,
             location: formData.location
           }, {
             headers: {
