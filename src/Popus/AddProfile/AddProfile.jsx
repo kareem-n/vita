@@ -235,9 +235,9 @@ const AddProfile = ({ setAddProfileShow }) => {
                   {errors.prove_number && <div className='alert alert-danger mt-2'>{errors.prove_number}</div>}
                 </div>
                 <div className="prove_number">
-                <label htmlFor="prove_number">Prove Number <span>*</span></label>
-                <input type="number" name='prove' required/>
-              </div>
+                  <label htmlFor="prove_number">Prove Number <span>*</span></label>
+                  <input type="number" name='prove' required/>
+                </div>
                 </>
               }
 
@@ -251,7 +251,11 @@ const AddProfile = ({ setAddProfileShow }) => {
 
                     {errors.organizationName && <div className='alert alert-danger mt-2'>{errors.organizationName}</div>}
                   </div>
-                  <div className="mt-2">
+                  <div className="prove_number">
+                    <label htmlFor="prove_number">Prove Number <span>*</span></label>
+                    <input type="number" name='prove' required/>
+                  </div>
+                  {/* <div className="mt-2">
                     <label className='w-100'>email</label>
                     <input style={{
                       outline: 'none'
@@ -265,10 +269,11 @@ const AddProfile = ({ setAddProfileShow }) => {
                     }} className='w-100 py-1 px-2 mt-2 rounded-3 border-0' onChange={handleChange} name='location' type="text" />
 
                     {errors.location && <div className='alert alert-danger mt-2'>{errors.location}</div>}
-                  </div>
+                  </div> */}
 
                 </div>
               }
+
               {
                 isPhar && <div className="">
                   <div className="">
@@ -279,7 +284,11 @@ const AddProfile = ({ setAddProfileShow }) => {
 
                     {errors.organizationName && <div className='alert alert-danger mt-2'>{errors.organizationName}</div>}
                   </div>
-                  <div className="mt-2">
+                  <div className="prove_number">
+                    <label htmlFor="prove_number">Prove Number <span>*</span></label>
+                    <input type="number" name='prove' required/>
+                  </div>
+                  {/* <div className="mt-2">
                     <label className='w-100'>email</label>
                     <input style={{
                       outline: 'none'
@@ -293,7 +302,7 @@ const AddProfile = ({ setAddProfileShow }) => {
                     }} className='w-100 py-1 px-2 mt-2 rounded-3 border-0' onChange={handleChange} name='location' type="text" />
 
                     {errors.location && <div className='alert alert-danger mt-2'>{errors.location}</div>}
-                  </div>
+                  </div> */}
 
                 </div>
               }
