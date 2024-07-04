@@ -39,4 +39,7 @@ form{
     width: fit-content;
     margin: 30px auto 10px;
   }
+  input{
+    height: 40px;
+  }
 }
