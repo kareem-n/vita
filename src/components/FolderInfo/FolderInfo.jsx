@@ -3,6 +3,8 @@ import folder from '../../assets/images/folder.png'
 import { Link } from 'react-router-dom'
 
 const FolderInfo = (props) => {
+
+
   return (
     <Link to={props.href}>
       <img src={folder} alt="" />

@@ -12,7 +12,7 @@ import uploadPost from '../../assets/images/uploadImage.svg'
 import { setAccessP } from '../../redux/slices/UserSlice';
 
 
-const DoctorOptions = ({ popup, setPopup, setshowtmp }) => {
+const DoctorOptions = ({ setPopup }) => {
 
 
   const dispatch = useDispatch();
@@ -22,9 +22,9 @@ const DoctorOptions = ({ popup, setPopup, setshowtmp }) => {
 
   const hide = () => {
 
-    dispatch(setAccessP(false));
+    // dispatch(setAccessP(false));
     setPopup(false);
-    setshowtmp(false)
+    // setshowtmp(false)
 
     // nav('/nopatient');
   }
@@ -44,9 +44,9 @@ const DoctorOptions = ({ popup, setPopup, setshowtmp }) => {
           <div className="DoctorOptions">
             {
               type === "doctor" && <Link onClick={() => {
-                setshowtmp(false)
+                // setshowtmp(false)
                 setPopup(false)
-                dispatch(setAccessP(true))
+                dispatch(setAccessP(false))
 
               }
               } to={"/noPatient"} className="option">

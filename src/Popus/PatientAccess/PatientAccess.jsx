@@ -37,15 +37,17 @@ const PatientAccess = ({ setshowtmp, setPoop }) => {
 
 
     setLoad(true);
-    axios.get("https://vita-production.up.railway.app/doctors/get-list-of-connections", {
+    axios.get("https://vitaapp.azurewebsites.net/doctors/get-list-of-connections", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`
       }
     }).then(res => {
 
+      console.log(res.data);
+
       const tmp = [];
       res.data.map(item => {
-        axios.get(`https://vita-production.up.railway.app/users/auth/get-image?username=${item.username}`, {
+        axios.get(`https://vitaapp.azurewebsites.net/users/auth/get-image?username=${item.username}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("user")}`
           }, responseType: 'arraybuffer'

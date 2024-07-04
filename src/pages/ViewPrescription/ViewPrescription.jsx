@@ -1,25 +1,47 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './ViewPrescription.css'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const ViewPrescription = () => {
 
   const { id } = useParams();
 
+  const nav = useNavigate();
+
+  const { type, accessP } = useSelector(state => state.user);
 
   const [data, setData] = useState(null);
 
   useEffect(() => {
 
-    axios.get(`https://vitaapp.azurewebsites.net/patients/get-prescription-details?ID=${id}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("user")}`
-      }
-    }).then(res => {
-      console.log(res.data);
-      setData(res.data);
-    })
+    if (accessP === false && type === "doctor") {
+      nav("/noPatient");
+      window.location.reload();
+      return
+    }
+
+
+    if (type === "patient") {
+      axios.get(`https://vitaapp.azurewebsites.net/patients/get-prescription-details?ID=${id}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        console.log(res.data);
+        setData(res.data);
+      })
+    } else if (type === "doctor") {
+      axios.get(`https://vitaapp.azurewebsites.net/doctors/get-prescription?ID=${id}&patientName=${accessP}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        console.log(res.data);
+        setData(res.data);
+      })
+    }
 
   }, []);
 

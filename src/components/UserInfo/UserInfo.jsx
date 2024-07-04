@@ -18,7 +18,7 @@ const UserInfo = () => {
 
   useEffect(() => {
     if (accessP) {
-      axios.get(`https://vita-production.up.railway.app/doctors/get-my-patient?patientName=${accessP}`, {
+      axios.get(`https://vitaapp.azurewebsites.net/doctors/get-my-patient?patientName=${accessP}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }

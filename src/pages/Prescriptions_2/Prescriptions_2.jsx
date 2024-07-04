@@ -5,7 +5,7 @@ import { FirstBtn, SecondBtn } from '../../components/Buttons/Buttons'
 import { useEffect, useState } from 'react'
 import DocName from '../DocName/DocName'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 const Prescriptions_2 = () => {
@@ -14,9 +14,14 @@ const Prescriptions_2 = () => {
 
   const { type, accessP } = useSelector(state => state.user);
 
+  const nav = useNavigate();
 
 
   useEffect(() => {
+
+    if( type === "doctor" && accessP ===false) {
+      nav("/noPatient");
+    }
 
     if (type === "patient") {
       axios.get("https://vitaapp.azurewebsites.net/patients/get-all-prescriptions", {
@@ -29,13 +34,13 @@ const Prescriptions_2 = () => {
         console.log(err);
       })
 
-    } else {
-      axios.get(`https://vita-production.up.railway.app/doctors/get-all-prescriptions-sorted-by-Date?patientName=${accessP}`, {
+    } else if (type === "doctor") {
+      axios.get(`https://vitaapp.azurewebsites.net/doctors/get-all-prescriptions-sorted-by-Date?patientName=${accessP}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
       }).then(res => {
-        setDataForDoctor(res.data) ;
+        setDataForDoctor(res.data);
         console.log(0);
       }).catch(err => {
         console.log(err);
@@ -56,7 +61,7 @@ const Prescriptions_2 = () => {
       <div className="content">
         <div className="heading d-flex align-items-center">
           <h2>Doctor</h2>
-          <h2>Data</h2>
+          <h2>Date</h2>
         </div>
 
         {

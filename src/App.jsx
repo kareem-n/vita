@@ -19,7 +19,7 @@ import ViewPrescription from './pages/ViewPrescription/ViewPrescription'
 import Profile from './pages/Profile/Profile'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { setType, setUser, setUserDet, setUserImage } from './redux/slices/UserSlice'
+import { setCurrentProfile, setType, setUser, setUserDet, setUserImage } from './redux/slices/UserSlice'
 import axios from 'axios'
 import DocName from './pages/DocName/DocName'
 import TestLapOptions from './Popus/TestLapOptions/TestLapOptions'
@@ -62,8 +62,6 @@ function App() {
       responseType: 'arraybuffer',
     }).then(data => {
 
-      console.log(data);
-
       const base64 = convertArrayBufferToBase64(data.data);
       const image = `data:image/jpeg;base64,${base64}`;
       dispatch(setUserImage(image));
@@ -83,6 +81,7 @@ function App() {
     if (localStorage.getItem("user")) {
       dispatch(setUser(localStorage.getItem("user")));
       dispatch(setType(localStorage.getItem("userP")));
+      dispatch(setCurrentProfile(localStorage.getItem("userP")));
     }
 
   }, [])
@@ -177,7 +176,7 @@ function App() {
         <Route path="/TestLapOptions" element={<TestLapOptions />} />
         <Route path="/XRaysLapOptions" element={<XRaysLapOptions />} />
         <Route path="/PharmacyOptions" element={<PharmacyOptions />} />
-        <Route path="/X_RaysName" element={<X_RaysName />} />
+        <Route path="/X_RaysName/:id/:name" element={<X_RaysName />} />
         <Route path="/Posters" element={<Posters />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/UploadTests" element={<UploadTests />} />

@@ -15,6 +15,7 @@ import { setUser, setUserDet } from '../../redux/slices/UserSlice';
 import PatientAccess from '../../Popus/PatientAccess/PatientAccess';
 import NoPatient from '../NoPatient/NoPatient';
 import PatientOptions from './../../Popus/PatientOptions/PatientOptions';
+import AccessPatient from '../../Popus/AccessPatient/AccessPatient';
 
 const Sidebar = () => {
 
@@ -25,11 +26,12 @@ const Sidebar = () => {
 
   const [popup, setPopup] = useState(false)
 
-  const showPopup = () => {
-    setPopup(!popup)
-  }
 
   useEffect(() => {
+
+
+    if (!popup) return
+
     if (popup) {
       document.body.style.overflow = 'hidden';
     } else {
@@ -40,7 +42,7 @@ const Sidebar = () => {
 
 
 
-  const [showPP, setShowPP] = useState(false);
+  // const [showPP, setShowPP] = useState(false);
 
 
   return (
@@ -54,7 +56,12 @@ const Sidebar = () => {
             <Link to={type === "doctor" ? "/Posters" : '/Posters'}><TiHome /></Link>
             {/* <Link to={type === "doctor" ? "/NoPatient" : '/userInfo'}><TiHome /></Link> */}
             <Link to="/Profile"><FaUser /></Link>
-            <Link onClick={type === "patient" ? showPopup : accessP && setShowPP(true)} to={type === "doctor" && '/nopatient'}><AiOutlineAppstore /></Link>
+
+
+
+
+            <Link onClick={() => { setPopup(true) }}><AiOutlineAppstore /></Link>
+
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
             <Link to="/QRCode"><MdOutlineQrCodeScanner /></Link>
           </div>
@@ -72,9 +79,19 @@ const Sidebar = () => {
         <PatientOptions popup={popup} setPopup={setPopup} />
       </div>
       }
-      {popup && type === "doctor" && <div className="">
-        <DoctorOptions popup={popup} setPopup={setPopup} />
-      </div>
+
+      {
+        console.log(popup && type === "doctor")
+      }
+
+      {
+        (popup && type === "doctor") && (accessP ? <div className="">
+          <DoctorOptions setPopup={setPopup}  />
+        </div> : <AccessPatient setPopup={setPopup} />)
+      }
+
+      {
+        console.log(popup && type === "doctor")
       }
 
 

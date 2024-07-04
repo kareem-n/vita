@@ -6,40 +6,80 @@ import switchIcon from '../../assets/images/switchIcon.png';
 import switchIcon2 from '../../assets/images/switchIcon2.png';
 import axios from 'axios';
 import { Bars } from 'react-loader-spinner';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 // import Head, { ContentHead } from '../../components/Head/Head';
 
 const Charts = () => {
   const [boxCount, setBoxCount] = useState(3);
   const [boxes, setBoxes] = useState([]);
 
+  const nav = useNavigate();
+
+  const { type, accessP } = useSelector(state => state.user);
+
+  console.log(accessP);
 
   const [catItems, setCatItems] = useState(null);
   const [data, setData] = useState(null)
 
 
   function getData(cat) {
-    axios.get(`https://vitaapp.azurewebsites.net/patients/get-list-of-tests-details-by-category?category=${cat}`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("user")}`
-      }
-    }).then(dt => {
-      setData(dt.data)
-      console.log(dt.data);
-    })
+
+    if (type === "patient") {
+      axios.get(`https://vitaapp.azurewebsites.net/patients/get-list-of-tests-details-by-category?category=${cat}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(dt => {
+        setData(dt.data)
+        console.log(dt.data);
+      })
+    } else if (type === "doctor") {
+      axios.get(`https://vitaapp.azurewebsites.net/doctors/get-list-of-tests-details-by-category?category=${cat}&patientName=${accessP}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(dt => {
+        setData(dt.data)
+        console.log(dt.data);
+      })
+    }
+
+
   }
 
   useEffect(() => {
 
-    axios.get("https://vitaapp.azurewebsites.net/patients/get-category-list", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("user")}`
-      }
-    }).then(res => {
-      setCatItems(res.data);
-      if (res.data[0]) {
-        getData(res.data[0])
-      }
-    })
+    console.log(type, accessP);
+
+    if (type === 'doctor' && accessP === false) nav('/noPatient')
+
+    if (type === "patient") {
+      axios.get("https://vitaapp.azurewebsites.net/patients/get-category-list", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        setCatItems(res.data);
+        if (res.data[0]) {
+          getData(res.data[0])
+        }
+      })
+    } else if (type === "doctor") {
+      axios.get(`https://vitaapp.azurewebsites.net/doctors/get-category-list?patientName=${accessP}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        setCatItems(res.data);
+        if (res.data[0]) {
+          getData(res.data[0])
+        }
+      })
+    }
+
+
 
   }, [])
 
@@ -67,6 +107,12 @@ const Charts = () => {
           {
             catItems && <ContentHead getData={getData} items={catItems} />
           }
+
+          <div className="">
+            patient name : {data[0].patientName}
+          </div>
+
+
           <div className="charts">
             {data.map((box, index) => (
               <div
@@ -81,7 +127,7 @@ const Charts = () => {
                   <div className="info d-flex align-items-center gap-4 justify-content-evenly">
                     <div className="name_date">
                       <h2>{box.description}</h2>
-                      <p><strong>Date: </strong>15/9/2025</p>
+                      <p><strong>Date: </strong>{box.createdAt}</p>
                     </div>
                     <div className={`num ${box.isRedBorder ? 'red-border' : ''}`}>
                       <h2 className='m-0'>{box.value}</h2>
