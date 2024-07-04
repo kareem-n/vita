@@ -226,13 +226,19 @@ const AddProfile = ({ setAddProfileShow }) => {
                 {errors.profileType && <div className='alert alert-danger mt-2'>{errors.profileType}</div>}
               </div>
               {
-                isDoc && <div className="prove_number">
+                isDoc && <>
+                  <div className="prove_number">
                   <label htmlFor="prove_number">Specialization <span>*</span></label>
                   <input type="text" name='spec' onChange={handleChange} />
 
 
                   {errors.prove_number && <div className='alert alert-danger mt-2'>{errors.prove_number}</div>}
                 </div>
+                <div className="prove_number">
+                <label htmlFor="prove_number">Prove Number <span>*</span></label>
+                <input type="number" name='prove' required/>
+              </div>
+                </>
               }
 
               {
