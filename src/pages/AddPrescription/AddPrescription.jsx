@@ -68,7 +68,7 @@ const AddPrescription = () => {
             </button>
         {/* <p>{JSON.stringify(dataMedicine)}</p> */}
       </div>
-    
+
       <div className='test'>
         <div className="heading d-flex justify-content-around align-items-center">
           <h3>Test</h3>
@@ -85,7 +85,7 @@ const AddPrescription = () => {
         <button type='button' className='addBtn' onClick={handleClickTest}>
           <IoAddOutline/>
         </button>
-      {/* <p>{JSON.stringify(dataTest)}</p> */}
+        {/* <p>{JSON.stringify(dataTest)}</p> */}
       </div>
 
       <div className='x_Ray'>
@@ -104,7 +104,7 @@ const AddPrescription = () => {
         <button type='button' className='addBtn' onClick={handleClickXRay}>
           <IoAddOutline/>
         </button>
-      {/* <p>{JSON.stringify(dataXRay)}</p> */}
+        {/* <p>{JSON.stringify(dataXRay)}</p> */}
       </div>
       <div className='Diagnosis'>
         <div className="heading d-flex justify-content-around align-items-center">
@@ -118,7 +118,7 @@ const AddPrescription = () => {
         </div>
         <textarea name="" id="" cols="30" rows="10" placeholder='Note...'></textarea>
       </div>
-        <button type="submit" className='add'>Add</button>
+      <button type="submit" className='add'>Add</button>
     </form>
   )
 }

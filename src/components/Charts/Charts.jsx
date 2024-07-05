@@ -22,6 +22,7 @@ const Charts = () => {
 
   const [catItems, setCatItems] = useState(null);
   const [data, setData] = useState(null)
+  const [load, setLoad] = useState(false)
 
 
   function getData(cat) {
@@ -33,7 +34,11 @@ const Charts = () => {
         }
       }).then(dt => {
         setData(dt.data)
+        setLoad(false)
+
         console.log(dt.data);
+      }).catch(err => {
+        setLoad(false)
       })
     } else if (type === "doctor") {
       axios.get(`https://vitaapp.azurewebsites.net/doctors/get-list-of-tests-details-by-category?category=${cat}&patientName=${accessP}`, {
@@ -42,7 +47,11 @@ const Charts = () => {
         }
       }).then(dt => {
         setData(dt.data)
+        setLoad(false)
+
         console.log(dt.data);
+      }).catch(err => {
+        setLoad(false)
       })
     }
 
@@ -51,10 +60,11 @@ const Charts = () => {
 
   useEffect(() => {
 
-    console.log(type, accessP);
-
     if (type === 'doctor' && accessP === false) nav('/noPatient')
 
+
+
+    setLoad(true);
     if (type === "patient") {
       axios.get("https://vitaapp.azurewebsites.net/patients/get-category-list", {
         headers: {
@@ -62,9 +72,13 @@ const Charts = () => {
         }
       }).then(res => {
         setCatItems(res.data);
-        if (res.data[0]) {
+        if (res.data) {
           getData(res.data[0])
+        } else {
+          setLoad(false);
         }
+      }).catch(err => {
+        setLoad(false)
       })
     } else if (type === "doctor") {
       axios.get(`https://vitaapp.azurewebsites.net/doctors/get-category-list?patientName=${accessP}`, {
@@ -73,9 +87,13 @@ const Charts = () => {
         }
       }).then(res => {
         setCatItems(res.data);
-        if (res.data[0]) {
+        if (res.data) {
           getData(res.data[0])
+        } else {
+          setLoad(false);
         }
+      }).catch(err => {
+        setLoad(false)
       })
     }
 
@@ -103,7 +121,7 @@ const Charts = () => {
   return (
     <>
       {
-        data ? <div className='Charts'>
+        load ? (data ? <div className='Charts'>
           {
             catItems && <ContentHead getData={getData} items={catItems} />
           }
@@ -145,6 +163,8 @@ const Charts = () => {
             ))}
           </div>
         </div> : <div style={{
+          margin: '400px' // message of no data 
+        }} className="bg-danger">no data</div>) : <div style={{
           margin: '200px'
         }} className="d-flex align-items-center justify-content-center">
           <Bars color='blue' />

@@ -16,6 +16,7 @@ import PatientAccess from '../../Popus/PatientAccess/PatientAccess';
 import NoPatient from '../NoPatient/NoPatient';
 import PatientOptions from './../../Popus/PatientOptions/PatientOptions';
 import AccessPatient from '../../Popus/AccessPatient/AccessPatient';
+import XRaysLapOptions from '../../Popus/XRaysLapOptions/XRaysLapOptions';
 
 const Sidebar = () => {
 
@@ -80,20 +81,22 @@ const Sidebar = () => {
       </div>
       }
 
+
+
       {
-        console.log(popup && type === "doctor")
+        console.log(type)
       }
 
       {
         (popup && type === "doctor") && (accessP ? <div className="">
-          <DoctorOptions setPopup={setPopup}  />
+          <DoctorOptions setPopup={setPopup} />
         </div> : <AccessPatient setPopup={setPopup} />)
       }
-
       {
-        console.log(popup && type === "doctor")
+        (popup && type === "xray_lab") && (accessP ? <div className="">
+          <XRaysLapOptions setPopup={setPopup} />
+        </div> : <AccessPatient setPopup={setPopup} />)
       }
-
 
 
     </>

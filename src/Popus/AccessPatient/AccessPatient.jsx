@@ -10,6 +10,8 @@ import PatientAccess from '../PatientAccess/PatientAccess';
 const AccessPatient = ({ setPopup }) => {
 
 
+  const [self, setself] = useState(true);
+
   // const [popup, setPopup] = useState(false);
 
   const dispatch = useDispatch();
@@ -24,33 +26,37 @@ const AccessPatient = ({ setPopup }) => {
 
   return (
     <>
-
-      <div className='overlay d-flex justify-content-center align-items-center'>
-        <div className="popup d-flex gap-3">
-          <Link onClick={() => {
-            setshowtmp(true);
-            // hide() ;
-          }} className='box'>
-            <img src={Eye} alt="" />
-            <h3>access patient</h3>
-          </Link>
-          <Link to={'/'} className='box'>
-            <img src={uploadPost} alt="" />
-            <h3>Upload Post</h3>
-          </Link>
-          <div className="close">
-            <FaXmark onClick={() => {
-              setPopup(false)
-              // dispatch(setAccessP(false))
-            }} />
+      {
+        self && <div className='overlay d-flex justify-content-center align-items-center'>
+          <div className="popup d-flex gap-3">
+            <Link onClick={() => {
+              setshowtmp(true);
+              // setself(false)
+              // hide() ;
+            }} className='box'>
+              <img src={Eye} alt="" />
+              <h3>access patient</h3>
+            </Link>
+            <Link to={'/'} className='box'>
+              <img src={uploadPost} alt="" />
+              <h3>Upload Post</h3>
+            </Link>
+            <div className="close">
+              <FaXmark onClick={() => {
+                setPopup(false)
+                // dispatch(setAccessP(false))
+              }} />
+            </div>
           </div>
+
+          {
+          }
         </div>
+      }
 
-        {
-          showtmp && <PatientAccess />
-        }
-      </div>
-
+      {
+        showtmp && <PatientAccess setPopup={setPopup} />
+      }
     </>
   )
 }
