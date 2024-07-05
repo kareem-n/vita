@@ -182,11 +182,11 @@ const AddProfile = ({ setAddProfileShow }) => {
     setPopup(false);
     setAddProfileShow(false)
   }
-  if (popup) {
-    document.body.style.overflow = 'hidden'
-  } else {
-    document.body.style.overflow = 'auto'
-  }
+  // if (popup) {
+  //   document.body.style.overflow = 'hidden'
+  // } else {
+  //   document.body.style.overflow = 'auto'
+  // }
 
   return (
     <>
