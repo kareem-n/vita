@@ -498,34 +498,36 @@ const Profile = () => {
                     <img src={edit} className="edit" />
 
                   </div>
+                    <div className="d-flex flex-column ">
+                      <div className="formInputs">
+                        <div className="inputs">
 
-                  <div className="formInputs">
-                    <div className="inputs">
+                          <div className="input">
+                            <label htmlFor="mobile">Mobile Number</label>
+                            <input onChange={(e) => {
+                              handleOrgChange(e)
+                            }} type="number" defaultValue={orgCData?.phone} name="phone" id="mobile" placeholder="Enter Your Mobile Number" />
+                          </div>
+                          <div className="input">
+                            <label htmlFor="Email">Location</label>
+                            <input onChange={(e) => {
+                              handleOrgChange(e)
+                            }} type="text" defaultValue={orgCData?.location} name="location" id="location" placeholder="Enter Your location Address" />
+                          </div>
+                          <div className="input">
+                            <label htmlFor="Email">Email Address</label>
+                            <input onChange={(e) => {
+                              handleOrgChange(e)
+                            }} type="email" defaultValue={orgCData?.email} name="email" id="Email" placeholder="Enter Your Email Address" />
+                          </div>
 
-                      <div className="input">
-                        <label htmlFor="mobile">Mobile Number</label>
-                        <input onChange={(e) => {
-                          handleOrgChange(e)
-                        }} type="number" defaultValue={orgCData?.phone} name="phone" id="mobile" placeholder="Enter Your Mobile Number" />
+
+
+                        </div>
                       </div>
-                      <div className="input">
-                        <label htmlFor="Email">Location</label>
-                        <input onChange={(e) => {
-                          handleOrgChange(e)
-                        }} type="text" defaultValue={orgCData?.location} name="location" id="location" placeholder="Enter Your location Address" />
-                      </div>
-                      <div className="input">
-                        <label htmlFor="Email">Email Address</label>
-                        <input onChange={(e) => {
-                          handleOrgChange(e)
-                        }} type="email" defaultValue={orgCData?.email} name="email" id="Email" placeholder="Enter Your Email Address" />
-                      </div>
-
-
-
+                      <InputSubmit>Save</InputSubmit>
+                      
                     </div>
-                  </div>
-                  <InputSubmit>Save</InputSubmit>
                 </form>
               }
               {/* {activeTab === 2 && <div>Content for Tab 3</div>} */}
