@@ -28,7 +28,7 @@ const TestLapOptions = () => {
             <img src={image_05} alt="" />
             <h3>Prescriptions</h3>
           </Link>
-          <Link to={'/'} className='option'>
+          <Link to={'/UploadTests'} className='option'>
             <img src={uploadTest} alt="" />
             <h3>Upload Test</h3>
           </Link>
