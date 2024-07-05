@@ -55,6 +55,7 @@ function App() {
   useEffect(() => {
 
 
+
     axios.get("https://vitaapp.azurewebsites.net/users/auth/get-profile-image", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("user")}`,
@@ -72,7 +73,6 @@ function App() {
         Authorization: `Bearer ${localStorage.getItem("user")}`
       }
     }).then(data => {
-      console.log(data.data);
       dispatch(setUserDet(data.data));
       // navigate('/userInfo')
     })
@@ -83,6 +83,9 @@ function App() {
       dispatch(setType(localStorage.getItem("userP")));
       dispatch(setCurrentProfile(localStorage.getItem("current")));
     }
+
+    console.log(type, user);
+
 
   }, [])
 
@@ -122,14 +125,8 @@ function App() {
   const HomeAccess = ({ children }) => {
 
 
-    if (type === "patient") {
-      return <Navigate to={'/userinfo'} />;
-    }
-
-    else if (type === 'doctor') {
-      return <Navigate to={'/noaccess'} />;
-    } else {
-      return children
+    if (localStorage.getItem("user")) {
+      return <Navigate to={'/Posters'} />;
     }
 
   }

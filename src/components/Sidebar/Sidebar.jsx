@@ -81,12 +81,6 @@ const Sidebar = () => {
       </div>
       }
 
-
-
-      {
-        console.log(type)
-      }
-
       {
         (popup && type === "doctor") && (accessP ? <div className="">
           <DoctorOptions setPopup={setPopup} />

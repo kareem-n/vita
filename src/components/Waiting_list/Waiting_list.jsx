@@ -98,7 +98,7 @@ const Waiting_list = () => {
         })
       }
 
-  if (type === "doctor") {
+    if (type === "doctor") {
 
       setLoad(true);
       axios.get("https://vitaapp.azurewebsites.net/doctors/get-list-of-connections", {
@@ -140,7 +140,7 @@ const Waiting_list = () => {
     if (type === "xray_lab") {
 
       setLoad(true);
-      axios.get(`https://vitaapp.azurewebsites.net/XRay-Lab/get-list-of-connections?xRayLaboratoryName=${currentProfile}`, {
+      axios.get(`https://vitaapp.azurewebsites.net/Organization/get-list-of-connections?organizationName=${currentProfile}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
@@ -246,7 +246,7 @@ const Waiting_list = () => {
                         })
                       }
                       else if (type === 'xray_lab') {
-                        axios.get(`https://vitaapp.azurewebsites.net/XRay-Lab/accept-access?xRayLaboratoryName=${currentProfile}&patientName=${item.username}`, {
+                        axios.get(`https://vitaapp.azurewebsites.net/Organization/accept-access?organizationName=${currentProfile}&patientName=${item.username}`, {
                           headers: {
                             Authorization: `Bearer ${localStorage.getItem("user")}`
                           }
@@ -305,7 +305,7 @@ const Waiting_list = () => {
                       })
                     }
                     else if (type === 'xray_lab' || type === 'pharmacy' || type === 'tests') {
-                      axios.get(`https://vitaapp.azurewebsites.net/XRay-Lab/remove-access?xRayLaboratoryName=${currentProfile}&patientName=${item.username}`, {
+                      axios.get(`https://vitaapp.azurewebsites.net/Organization/remove-access?organizationName=${currentProfile}&patientName=${item.username}`, {
                         headers: {
                           Authorization: `Bearer ${localStorage.getItem("user")}`
                         }
