@@ -30,6 +30,7 @@ import Posters from './pages/Posters/Posters'
 import QRCodee from './Popus/QRCode/QRCode'
 import Dashboard from './pages/Dashboard/Dashboard'
 import UploadTests from './pages/UploadTests/UploadTests'
+import DocPresc from './pages/docPresc/DocPresc'
 
 
 function App() {
@@ -166,6 +167,7 @@ function App() {
         <Route path="/X_Rays" element={<X_Rays />} />
         <Route path="/Prescriptions" element={<Prescriptions />} />
         <Route path="/Prescriptions_2" element={<Prescriptions_2 />} />
+        <Route path="/docPresc/:name" element={<DocPresc />} />
         <Route path="/AddPrescription" element={<AddPrescription />} />
         <Route path="/ViewPrescription/:id" element={<ViewPrescription />} />
         <Route path="/Profile" element={<Profile />} />
