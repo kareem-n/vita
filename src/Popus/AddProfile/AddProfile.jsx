@@ -1,6 +1,6 @@
 import './AddProfile.css'
 import { FaXmark } from 'react-icons/fa6'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { InputSubmit } from '../../components/Buttons/Buttons';
 import axios from 'axios';
