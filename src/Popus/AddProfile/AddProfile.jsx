@@ -183,6 +183,16 @@ const AddProfile = ({ setAddProfileShow }) => {
     setAddProfileShow(false)
   }
 
+  useEffect(() => {
+    if (popup) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto'; // Clean up on unmount
+    };
+  }, [popup]);
 
 
   return (
