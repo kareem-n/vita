@@ -27,7 +27,19 @@ const Prescriptions = () => {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
       }).then(res => {
-        setData(res.data)
+
+        const uniqueDoctorNamesSet = new Set();
+
+        // Filter the doctors array to remove duplicates based on the doctor name
+        const uniqueDoctors = res.data.filter(doctor => {
+          if (!uniqueDoctorNamesSet.has(doctor.doctorName)) {
+            uniqueDoctorNamesSet.add(doctor.doctorName);
+            return true;
+          }
+          return false;
+        });
+
+        setData(uniqueDoctors)
       }).catch(err => {
         console.log(err);
       })
@@ -70,6 +82,11 @@ const Prescriptions = () => {
         <SecondBtn href='/Prescriptions_2'>List</SecondBtn>
       </RaysHead>
       <div className="prescriptions_Info d-grid">
+
+      {
+          data && data.map((doc, key) => <FolderInfo key={key} href={`/docPresc/${doc.doctorName}`}>{doc.doctorName}</FolderInfo>
+          )
+        }
         {
           dataForDoctor && dataForDoctor.map((doc, key) => <FolderInfo key={key} href={`/docPresc/${doc.doctorName}`}>{doc.doctorName}</FolderInfo>
           )

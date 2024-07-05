@@ -32,7 +32,10 @@ const DocPresc = () => {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
       }).then(res => {
-        setData(res.data)
+        const list = res.data.filter( doc =>  doc.doctorName === name )
+
+
+        setData(list)
       }).catch(err => {
         console.log(err);
       })
