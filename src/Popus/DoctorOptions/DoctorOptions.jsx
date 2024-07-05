@@ -29,7 +29,17 @@ const DoctorOptions = ({ setPopup }) => {
     // nav('/nopatient');
   }
 
-
+  const [popup, setPopup] = useState(true);
+  useEffect(() => {
+    if (popup) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto'; // Clean up on unmount
+    };
+  }, [popup]);
 
   // if (type === "doctor" && !accessP) {
   //   nav('/nopatient')
