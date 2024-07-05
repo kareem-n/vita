@@ -76,14 +76,6 @@ const AddProfile = ({ setAddProfileShow }) => {
       validationErrors.organizationName = 'organizationName Is required'
       e.preventDefault();
     }
-    if (!formData.email.trim() && (formData.profileType === "xray_lab" || formData.profileType === "pharmacy")) {
-      validationErrors.email = 'email Is required'
-      e.preventDefault();
-    }
-    if (!formData.location.trim() && (formData.profileType === "xray_lab" || formData.profileType === "pharmacy")) {
-      validationErrors.location = 'location Is required'
-      e.preventDefault();
-    }
 
     setErrors(validationErrors);
 
@@ -145,7 +137,7 @@ const AddProfile = ({ setAddProfileShow }) => {
             }
             console.log(res.data);
             setLoad(false)
-            // window.location.reload();
+            window.location.reload();
           }).catch(err => {
             setLoad(false);
             setExErr(err.response.data);
@@ -167,7 +159,7 @@ const AddProfile = ({ setAddProfileShow }) => {
             }
             console.log(res.data);
             setLoad(false)
-            // window.location.reload();
+            window.location.reload();
           }).catch(err => {
             console.log(555);
             setLoad(false);

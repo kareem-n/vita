@@ -7,16 +7,31 @@ import { FaXmark } from "react-icons/fa6";
 import uploadTest from '../../assets/images/Upload Test.svg'
 
 import React from 'react'
+import { useDispatch } from 'react-redux';
+import { setAccessP } from '../../redux/slices/UserSlice';
 
-const XRaysLapOptions = () => {
+const XRaysLapOptions = ({ setPopup }) => {
+
+  const dispatch = useDispatch();
+
+
   const hide = () => {
     setPopup(false)
   }
+
+
   return (
     <div className='overlay d-flex justify-content-center align-items-center'>
       <div className="popup">
         <div className="XRaysLapOptions">
-          <Link to={""} className="option">
+          <Link
+            onClick={() => {
+              // setshowtmp(false)
+              setPopup(false)
+              dispatch(setAccessP(false))
+            }
+            }
+            to={"/noPatient"} className="option">
             <img src={image_01} alt="" />
             <h3>Close patient</h3>
           </Link>

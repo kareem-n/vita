@@ -4,13 +4,14 @@ import { Link } from 'react-router-dom'
 import { FaXmark } from 'react-icons/fa6'
 import { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setAccessP } from '../../redux/slices/UserSlice'
 import DoctorOptions from '../DoctorOptions/DoctorOptions'
 import axios from 'axios'
 import Loader from './../../components/loader/Loader';
 
-const PatientAccess = ({ setshowtmp, setPoop }) => {
+const PatientAccess = ({ }) => {
+  const { type, accessP, currentProfile } = useSelector(state => state.user);
 
 
   const [popup, setPopup] = useState(true);
@@ -37,47 +38,81 @@ const PatientAccess = ({ setshowtmp, setPoop }) => {
 
 
     setLoad(true);
-    axios.get("https://vitaapp.azurewebsites.net/doctors/get-list-of-connections", {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("user")}`
-      }
-    }).then(res => {
 
-      console.log(res.data);
-
-      const tmp = [];
-      res.data.map(item => {
-        axios.get(`https://vitaapp.azurewebsites.net/users/auth/get-image?username=${item.username}`, {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("user")}`
-          }, responseType: 'arraybuffer'
-        }).then(ress => {
-          const base64 = convertArrayBufferToBase64(ress.data);
-          const image = `data:image/jpeg;base64,${base64}`;
+    if (type === 'doctor') {
+      axios.get("https://vitaapp.azurewebsites.net/doctors/get-list-of-connections", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
 
 
-          item = { ...item, image };
-          tmp.push(item);
-          // setData(tmp)
+        const tmp = [];
+        res.data.map(item => {
+          axios.get(`https://vitaapp.azurewebsites.net/users/auth/get-image?username=${item.username}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user")}`
+            }, responseType: 'arraybuffer'
+          }).then(ress => {
+            const base64 = convertArrayBufferToBase64(ress.data);
+            const image = `data:image/jpeg;base64,${base64}`;
+
+
+            item = { ...item, image };
+            tmp.push(item);
+            // setData(tmp)
+
+          })
 
         })
-
+        setTimeout(() => {
+          setData(tmp);
+          setLoad(false);
+        }, 2000);
       })
-
-      setTimeout(() => {
-        setData(tmp);
-        setLoad(false);
-      }, 2000);
+    }
 
 
-    })
+    if (type === 'xray_lab') {
+      axios.get(`https://vitaapp.azurewebsites.net/Organization/get-list-of-connections?organizationName=${currentProfile}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        const tmp = [];
+        res.data.map(item => {
+          axios.get(`https://vitaapp.azurewebsites.net/users/auth/get-image?username=${item.username}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user")}`
+            }, responseType: 'arraybuffer'
+          }).then(ress => {
+            const base64 = convertArrayBufferToBase64(ress.data);
+            const image = `data:image/jpeg;base64,${base64}`;
+
+
+            item = { ...item, image };
+            tmp.push(item);
+            // setData(tmp)
+
+          })
+
+        })
+        setTimeout(() => {
+          setData(tmp);
+          setLoad(false);
+        }, 2000);
+      })
+    }
+
+
+
+
 
   }, [])
 
 
   const navigate = useNavigate()
   const hide = () => {
-    setPoop(false);
     setPopup(false)
     navigate('/NoPatient')
   }
@@ -127,10 +162,10 @@ const PatientAccess = ({ setshowtmp, setPoop }) => {
       </>
       }
 
-
+      {/* 
       {
-        docOp && <DoctorOptions setshowtmp={setshowtmp} popup={docOp} setPopup={setDocOp} />
-      }
+        docOp && <DoctorOptions popup={docOp} setPopup={setDocOp} />
+      } */}
     </>
   )
 }

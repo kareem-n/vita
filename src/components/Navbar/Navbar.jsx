@@ -139,6 +139,7 @@ const Navbar = () => {
                             onClick={() => {
                               dispatch(setType(item.type));
                               localStorage.setItem("userP", item.type);
+                              localStorage.setItem("current", item.organizationName);
                               dispatch(setCurrentProfile(item.organizationName));
                               setSropShow(false);
                             }}

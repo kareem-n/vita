@@ -47,7 +47,6 @@ const DoctorOptions = ({ setPopup }) => {
                 // setshowtmp(false)
                 setPopup(false)
                 dispatch(setAccessP(false))
-
               }
               } to={"/noPatient"} className="option">
                 <img src={image_01} alt="" />

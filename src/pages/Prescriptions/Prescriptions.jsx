@@ -8,6 +8,11 @@ import { FirstBtn , SecondBtn} from '../../components/Buttons/Buttons'
 const Prescriptions = () => {
 
 
+  useEffect(() => {
+    
+  }, [])
+  
+
 
 
   return (
