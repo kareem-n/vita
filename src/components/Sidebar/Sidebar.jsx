@@ -28,18 +28,17 @@ const Sidebar = () => {
   const [popup, setPopup] = useState(false)
 
 
+
   useEffect(() => {
-
-
-    if (!popup) return
-
     if (popup) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-
-  }, [popup])
+    return () => {
+      document.body.style.overflow = 'auto'; // Clean up on unmount
+    };
+  }, [popup]);
 
 
 
