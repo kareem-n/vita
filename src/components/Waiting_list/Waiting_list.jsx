@@ -75,7 +75,6 @@ const Waiting_list = () => {
                 const base64 = convertArrayBufferToBase64(ress.data);
                 const image = `data:image/jpeg;base64,${base64}`;
 
-                console.log(image);
                 item = { ...item, image };
                 tmp.push(item);
 
@@ -90,7 +89,7 @@ const Waiting_list = () => {
           setTimeout(() => {
             setData(tmp);
             setLoad(false);
-          }, 2000);
+          }, 1500);
 
           // setData(tmp);
 
@@ -128,17 +127,16 @@ const Waiting_list = () => {
 
         setTimeout(() => {
           setData(tmp);
-          console.log(tmp);
           setLoad(false);
-        }, 2000);
+        }, 1500);
 
         // setData(tmp);
 
 
       })
     }
-    if (type === "xray_lab") {
 
+    if (type === "xray_lab" || type === "pharmacy" || type === "test_lab") {
       setLoad(true);
       axios.get(`https://vitaapp.azurewebsites.net/Organization/get-list-of-connections?organizationName=${currentProfile}`, {
         headers: {
@@ -167,10 +165,8 @@ const Waiting_list = () => {
         setTimeout(() => {
           setData(tmp);
           setLoad(false);
-        }, 2000);
-
+        }, 1500);
         // setData(tmp);
-
 
       })
     }
@@ -197,7 +193,6 @@ const Waiting_list = () => {
                 <h3>{item.fullName}</h3>
                 <p>@{item.username}</p>
               </div>
-              {console.log(item)}
               <div className="check ">
                 {
 
@@ -245,7 +240,7 @@ const Waiting_list = () => {
                           window.location.reload();
                         })
                       }
-                      else if (type === 'xray_lab') {
+                      else if (type === 'xray_lab' || type === 'pharmacy' || type === "test_lab") {
                         axios.get(`https://vitaapp.azurewebsites.net/Organization/accept-access?organizationName=${currentProfile}&patientName=${item.username}`, {
                           headers: {
                             Authorization: `Bearer ${localStorage.getItem("user")}`
@@ -304,7 +299,7 @@ const Waiting_list = () => {
                         window.location.reload();
                       })
                     }
-                    else if (type === 'xray_lab' || type === 'pharmacy' || type === 'tests') {
+                    else if (type === 'xray_lab' || type === 'pharmacy' || type === 'test_lab') {
                       axios.get(`https://vitaapp.azurewebsites.net/Organization/remove-access?organizationName=${currentProfile}&patientName=${item.username}`, {
                         headers: {
                           Authorization: `Bearer ${localStorage.getItem("user")}`

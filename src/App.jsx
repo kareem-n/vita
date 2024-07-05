@@ -81,11 +81,14 @@ function App() {
 
     if (localStorage.getItem("user")) {
       dispatch(setUser(localStorage.getItem("user")));
-      dispatch(setType(localStorage.getItem("userP")));
       dispatch(setCurrentProfile(localStorage.getItem("current")));
     }
 
-    console.log(type, user);
+    if (localStorage.getItem("userP")) {
+      dispatch(setType(localStorage.getItem("userP")))
+    }
+
+    console.log(type);
 
 
   }, [])

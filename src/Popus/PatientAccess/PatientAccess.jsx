@@ -45,8 +45,6 @@ const PatientAccess = ({ }) => {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
       }).then(res => {
-
-
         const tmp = [];
         res.data.map(item => {
           axios.get(`https://vitaapp.azurewebsites.net/users/auth/get-image?username=${item.username}`, {
@@ -68,12 +66,12 @@ const PatientAccess = ({ }) => {
         setTimeout(() => {
           setData(tmp);
           setLoad(false);
-        }, 2000);
+        }, 1000);
       })
     }
 
 
-    if (type === 'xray_lab') {
+    if (type === 'xray_lab' || type === "test_lab" || type ==="pharmacy") {
       axios.get(`https://vitaapp.azurewebsites.net/Organization/get-list-of-connections?organizationName=${currentProfile}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
@@ -100,13 +98,9 @@ const PatientAccess = ({ }) => {
         setTimeout(() => {
           setData(tmp);
           setLoad(false);
-        }, 2000);
+        }, 1000);
       })
     }
-
-
-
-
 
   }, [])
 

@@ -25,6 +25,7 @@ const AddProfile = ({ setAddProfileShow }) => {
   const [exErr, setExErr] = useState('');
   const [errors, setErrors] = useState({});
 
+  const [isTest, setisTest] = useState(false);
 
 
   const handleChange = (e) => {
@@ -34,22 +35,36 @@ const AddProfile = ({ setAddProfileShow }) => {
       setIsDoc(true);
       setIsX(false);
       setIsPhar(false);
+      setisTest(false)
+
     }
     if (value === "patient") {
       setIsDoc(false);
       setIsX(false)
       setIsPhar(false)
+      setisTest(false)
+
     }
 
     if (value === "xray_lab" && name === "profileType") {
       setIsX(true);
       setIsDoc(false);
       setIsPhar(false);
+      setisTest(false)
+
     }
     if (value === "pharmacy" && name === "profileType") {
       setIsPhar(true);
       setIsX(false);
       setIsDoc(false);
+      setisTest(false)
+
+    }
+    if (value === "tests_lab" && name === "profileType") {
+      setIsPhar(false);
+      setIsX(false);
+      setIsDoc(false);
+      setisTest(true)
     }
 
     setFormData({
@@ -167,6 +182,27 @@ const AddProfile = ({ setAddProfileShow }) => {
             console.log(err);
           })
           break;
+        case 'tests_lab':
+          axios.post(`https://vitaapp.azurewebsites.net/users/auth/add-test-lab-profile`, {
+            organizationName: formData.organizationName,
+            email: formData.email,
+            location: formData.location
+          }, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user")}`
+            }
+          }).then(res => {
+            if (res.data === false) {
+              setExErr("Already in type");
+            }
+            setLoad(false)
+            window.location.reload();
+          }).catch(err => {
+            setLoad(false);
+            setExErr(err.response.data);
+            console.log(err);
+          })
+          break;
 
 
         default:
@@ -220,16 +256,16 @@ const AddProfile = ({ setAddProfileShow }) => {
               {
                 isDoc && <>
                   <div className="prove_number">
-                  <label htmlFor="prove_number">Specialization <span>*</span></label>
-                  <input type="text" name='spec' onChange={handleChange} />
+                    <label htmlFor="prove_number">Specialization <span>*</span></label>
+                    <input type="text" name='spec' onChange={handleChange} />
 
 
-                  {errors.prove_number && <div className='alert alert-danger mt-2'>{errors.prove_number}</div>}
-                </div>
-                <div className="prove_number">
-                  <label htmlFor="prove_number">Prove Number <span>*</span></label>
-                  <input type="number" name='prove' required/>
-                </div>
+                    {errors.prove_number && <div className='alert alert-danger mt-2'>{errors.prove_number}</div>}
+                  </div>
+                  <div className="prove_number">
+                    <label htmlFor="prove_number">Prove Number <span>*</span></label>
+                    <input type="number" name='prove' required />
+                  </div>
                 </>
               }
 
@@ -245,7 +281,7 @@ const AddProfile = ({ setAddProfileShow }) => {
                   </div>
                   <div className="prove_number">
                     <label htmlFor="prove_number">Prove Number <span>*</span></label>
-                    <input type="number" name='prove' required/>
+                    <input type="number" name='prove' required />
                   </div>
                   {/* <div className="mt-2">
                     <label className='w-100'>email</label>
@@ -278,7 +314,39 @@ const AddProfile = ({ setAddProfileShow }) => {
                   </div>
                   <div className="prove_number">
                     <label htmlFor="prove_number">Prove Number <span>*</span></label>
-                    <input type="number" name='prove' required/>
+                    <input type="number" name='prove' required />
+                  </div>
+                  {/* <div className="mt-2">
+                    <label className='w-100'>email</label>
+                    <input style={{
+                      outline: 'none'
+                    }} className='w-100 py-1 px-2 mt-2 rounded-3 border-0' onChange={handleChange} name='email' type="text" />
+                    {errors.email && <div className='alert alert-danger mt-2'>{errors.email}</div>}
+                  </div>
+                  <div className="mt-2">
+                    <label className='w-100'>location</label>
+                    <input style={{
+                      outline: 'none'
+                    }} className='w-100 py-1 px-2 mt-2 rounded-3 border-0' onChange={handleChange} name='location' type="text" />
+
+                    {errors.location && <div className='alert alert-danger mt-2'>{errors.location}</div>}
+                  </div> */}
+
+                </div>
+              }
+              {
+                isTest && <div className="">
+                  <div className="">
+                    <label className='w-100'>UserName <span>*</span></label>
+                    <input style={{
+                      outline: 'none'
+                    }} className='w-100 py-1 px-2 mt-2 rounded-3 border-0' onChange={handleChange} name='organizationName' type="text" />
+
+                    {errors.organizationName && <div className='alert alert-danger mt-2'>{errors.organizationName}</div>}
+                  </div>
+                  <div className="prove_number">
+                    <label htmlFor="prove_number">Prove Number <span>*</span></label>
+                    <input type="number" name='prove' required />
                   </div>
                   {/* <div className="mt-2">
                     <label className='w-100'>email</label>

@@ -14,13 +14,6 @@ const AccessPatient = ({ setPopup }) => {
 
   // const [popup, setPopup] = useState(false);
 
-  const dispatch = useDispatch();
-
-  const hide = () => {
-    // setPopup(false);
-    // dispatch(setAccessP(false));
-  }
-
   const [showtmp, setshowtmp] = useState(false);
 
 
@@ -43,14 +36,16 @@ const AccessPatient = ({ setPopup }) => {
             </Link>
             <div className="close">
               <FaXmark onClick={() => {
-                setPopup(false)
+
+                if (setPopup) {
+                  setPopup(false)
+                }else {
+                  setself(false)
+                }
                 // dispatch(setAccessP(false))
               }} />
             </div>
           </div>
-
-          {
-          }
         </div>
       }
 

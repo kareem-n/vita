@@ -17,6 +17,7 @@ import NoPatient from '../NoPatient/NoPatient';
 import PatientOptions from './../../Popus/PatientOptions/PatientOptions';
 import AccessPatient from '../../Popus/AccessPatient/AccessPatient';
 import XRaysLapOptions from '../../Popus/XRaysLapOptions/XRaysLapOptions';
+import TestLapOptions from '../../Popus/TestLapOptions/TestLapOptions';
 
 const Sidebar = () => {
 
@@ -29,9 +30,6 @@ const Sidebar = () => {
 
 
   useEffect(() => {
-
-
-    if (!popup) return
 
     if (popup) {
       document.body.style.overflow = 'hidden';
@@ -86,6 +84,16 @@ const Sidebar = () => {
           <DoctorOptions setPopup={setPopup} />
         </div> : <AccessPatient setPopup={setPopup} />)
       }
+      {
+        console.log(type)
+      }
+
+      {
+        (popup && type === "test_lab") && (accessP ? <div className="">
+          <TestLapOptions setPopup={setPopup} />
+        </div> : <AccessPatient setPopup={setPopup} />)
+      }
+      
       {
         (popup && type === "xray_lab") && (accessP ? <div className="">
           <XRaysLapOptions setPopup={setPopup} />

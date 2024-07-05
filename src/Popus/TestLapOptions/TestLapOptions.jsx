@@ -5,18 +5,30 @@ import image_05 from "../../assets/images/Group 1.svg";
 import { Link } from 'react-router-dom';
 import { FaXmark } from "react-icons/fa6";
 import uploadTest from '../../assets/images/Upload Test.svg'
+import { useDispatch } from 'react-redux';
+import { setAccessP } from '../../redux/slices/UserSlice';
 
-import React from 'react'
 
-const TestLapOptions = () => {
+const TestLapOptions = ({ setPopup }) => {
+
   const hide = () => {
     setPopup(false)
   }
+  const dispatch = useDispatch();
+
+
   return (
     <div className='overlay d-flex justify-content-center align-items-center'>
       <div className="popup">
         <div className="TestLapOptions">
-          <Link to={""} className="option">
+          <Link
+            onClick={() => {
+              // setshowtmp(false)
+              setPopup(false)
+              dispatch(setAccessP(false))
+            }
+            }
+            to={""} className="option">
             <img src={image_01} alt="" />
             <h3>Close patient</h3>
           </Link>

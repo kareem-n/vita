@@ -18,16 +18,14 @@ const Charts = () => {
 
   const { type, accessP } = useSelector(state => state.user);
 
-  console.log(accessP);
-
   const [catItems, setCatItems] = useState(null);
   const [data, setData] = useState(null)
   const [load, setLoad] = useState(false)
 
-
   function getData(cat) {
 
     if (type === "patient") {
+
       axios.get(`https://vitaapp.azurewebsites.net/patients/get-list-of-tests-details-by-category?category=${cat}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
@@ -35,7 +33,6 @@ const Charts = () => {
       }).then(dt => {
         setData(dt.data)
         setLoad(false)
-
         console.log(dt.data);
       }).catch(err => {
         setLoad(false)
@@ -58,14 +55,23 @@ const Charts = () => {
 
   }
 
+
+
+
   useEffect(() => {
 
-    if (type === 'doctor' && accessP === false) nav('/noPatient')
+    console.log(type === 'doctor' && accessP === false);
+    console.log(type, accessP);
 
-
+    if (type === 'doctor' && accessP === false) {
+      nav("/noPatient")
+      return
+    }
 
     setLoad(true);
     if (type === "patient") {
+      setLoad(true);
+
       axios.get("https://vitaapp.azurewebsites.net/patients/get-category-list", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
@@ -81,47 +87,57 @@ const Charts = () => {
         setLoad(false)
       })
     } else if (type === "doctor") {
+      setLoad(true);
+
       axios.get(`https://vitaapp.azurewebsites.net/doctors/get-category-list?patientName=${accessP}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
       }).then(res => {
-        setCatItems(res.data);
-        if (res.data) {
+
+        if (res.data.length > 0) {
+          setCatItems(res.data);
           getData(res.data[0])
         } else {
           setLoad(false);
         }
       }).catch(err => {
+        console.log(err);
         setLoad(false)
       })
     }
 
 
 
-  }, [])
+  }, [type])
 
 
-  useEffect(() => {
-    const initialBoxState = Array(boxCount).fill({ isFlipped: false, isRedBorder: false });
-    setBoxes(initialBoxState);
-  }, [boxCount]);
+  // useEffect(() => {
+  //   const initialBoxState = Array(boxCount).fill({ isFlipped: false, isRedBorder: false });
+  //   setBoxes(initialBoxState);
+  // }, [boxCount]);
 
-  const handleFlip = (index) => {
-    const newBoxes = [...boxes];
-    newBoxes[index] = { ...newBoxes[index], isFlipped: !newBoxes[index].isFlipped };
-    setBoxes(newBoxes);
-  };
+  // const handleFlip = (index) => {
+  //   const newBoxes = [...boxes];
+  //   newBoxes[index] = { ...newBoxes[index], isFlipped: !newBoxes[index].isFlipped };
+  //   setBoxes(newBoxes);
+  // };
 
-  const handleDoubleClick = (index) => {
-    const newBoxes = [...boxes];
-    newBoxes[index] = { ...newBoxes[index], isRedBorder: !newBoxes[index].isRedBorder };
-    setBoxes(newBoxes);
-  };
+  // const handleDoubleClick = (index) => {
+  //   const newBoxes = [...boxes];
+  //   newBoxes[index] = { ...newBoxes[index], isRedBorder: !newBoxes[index].isRedBorder };
+  //   setBoxes(newBoxes);
+  // };
+
+
   return (
     <>
       {
-        load ? (data ? <div className='Charts'>
+        load ? <div style={{
+          margin: '200px'
+        }} className="d-flex align-items-center justify-content-center">
+          <Bars color='blue' />
+        </div> : (data ? <div className='Charts'>
           {
             catItems && <ContentHead getData={getData} items={catItems} />
           }
@@ -129,8 +145,6 @@ const Charts = () => {
           <div className="">
             patient name : {data[0].patientName}
           </div>
-
-
           <div className="charts">
             {data.map((box, index) => (
               <div
@@ -164,12 +178,13 @@ const Charts = () => {
           </div>
         </div> : <div style={{
           margin: '400px' // message of no data 
-        }} className="bg-danger">no data</div>) : <div style={{
-          margin: '200px'
-        }} className="d-flex align-items-center justify-content-center">
-          <Bars color='blue' />
-        </div>
+        }} className="bg-danger">no data</div>)
       }
+
+
+
+
+
 
     </>
 
