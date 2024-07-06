@@ -11,6 +11,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentProfile, setType } from '../../redux/slices/UserSlice';
 import Search from '../search/Search';
 import { FaXmark } from 'react-icons/fa6';
+import { useLocation } from 'react-router-dom';
 const Navbar = () => {
   const location = useLocation();
   const pageTitles = {
