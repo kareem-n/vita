@@ -16,12 +16,15 @@ const Navbar = () => {
   const location = useLocation();
   const pageTitles = {
     '/Posters': 'Posters',
-    '/AddPrescription': 'AddPrescription',
+    '/AddPrescription': 'Add Prescription',
     '/Prescriptions': 'Prescriptions',
     '/Prescriptions_2': 'Prescriptions_2',
     '/Profile': 'Profile',
-    '/ViewPrescription': 'ViewPrescription',
+    '/ViewPrescription': 'View Prescription',
     '/NoPatient': 'NoPatient',
+    '/waiting_list': 'Waiting List',
+    '/charts': 'Tests',
+    '/charts': 'QRCode',
 
     // Add other routes and their corresponding titles here
   };
