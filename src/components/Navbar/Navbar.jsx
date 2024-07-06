@@ -26,6 +26,8 @@ const Navbar = () => {
     '/charts': 'Tests',
     '/QRCode': 'QRCode',
     '/UploadTests': 'Upload Tests',
+    '/X_Rays': 'X_Rays',
+    
     
 
     // Add other routes and their corresponding titles here
@@ -108,7 +110,7 @@ const Navbar = () => {
                   <p className='m-0'>@{userDet ? userDet.username : ''}</p>
                 </div>
                 {
-                  dropShow && <div className="position-absolute top-100 bg-dark mt-2 px-4 py-2 rounded-4">
+                  dropShow && <div className="profiles position-absolute top-100 bg-dark mt-2 px-4 py-2 rounded-4">
 
                     {
                       profiles && <div className="">
