@@ -11,8 +11,29 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setCurrentProfile, setType } from '../../redux/slices/UserSlice';
 import Search from '../search/Search';
 import { FaXmark } from 'react-icons/fa6';
+import { useLocation } from 'react-router-dom';
 const Navbar = () => {
+  const location = useLocation();
+  const pageTitles = {
+    '/Posters': 'Posters',
+    '/AddPrescription': 'Add Prescription',
+    '/Prescriptions': 'Prescriptions',
+    '/Prescriptions_2': 'Prescriptions List',
+    '/Profile': 'Profile',
+    '/ViewPrescription/': 'View Prescription',
+    '/NoPatient': 'NoPatient',
+    '/waiting_list': 'Waiting List',
+    '/charts': 'Tests',
+    '/QRCode': 'QRCode',
+    '/UploadTests': 'Upload Tests',
+    '/X_Rays': 'X_Rays',
+    
+    
 
+    // Add other routes and their corresponding titles here
+  };
+
+  const currentPage = pageTitles[location.pathname] || 'Page';
 
   const dispatch = useDispatch();
 
@@ -57,7 +78,7 @@ const Navbar = () => {
   return (
     <>
       <nav className='d-flex justify-content-between align-items-center'>
-        <h2 className='m-0'>Tests</h2>
+        <h2 className='m-0'>{currentPage}</h2>
         {/* search com */}
         {
           searchPop && <div className="d-flex position-relative">
@@ -91,7 +112,7 @@ const Navbar = () => {
                   <p className='m-0'>@{userDet ? userDet.username : ''}</p>
                 </div>
                 {
-                  dropShow && <div className="position-absolute top-100 bg-dark mt-2 px-4 py-2 rounded-4">
+                  dropShow && <div className="profiles position-absolute top-100 mt-2 rounded-4">
 
                     {
                       profiles && <div className="">
@@ -105,7 +126,7 @@ const Navbar = () => {
                           style={{
                             cursor: 'pointer'
                           }}
-                          className="text-warning fw-bold text-nowrap border-4 p-1">
+                          className="profile text-warning fw-bold text-nowrap">
                           <img src={imageProfile} style={{
                             width: "40px",
                             height: '40px',
@@ -125,7 +146,7 @@ const Navbar = () => {
                           style={{
                             cursor: 'pointer'
                           }}
-                          className="text-success fw-bold text-nowrap border-4 p-1">
+                          className="profile text-success fw-bold text-nowrap">
                           <img src={imageProfile} style={{
                             width: "40px",
                             height: '40px',
@@ -150,7 +171,7 @@ const Navbar = () => {
                               color: 'orange'
 
                             }}
-                            className="fw-bold text-nowrap border-4 p-1">
+                            className="profile fw-bold text-nowrap">
                             <img src={imageProfile} style={{
                               width: "40px",
                               height: '40px',
@@ -165,11 +186,11 @@ const Navbar = () => {
                     <div
                       onClick={() => setAddProfileShow(true)}
                       style={{
-                        cursor: 'pointer'
+                        cursor: 'pointer', padding:"0.4rem 1.2rem"
                       }}
                       className='d-flex align-items-center border-top'>
 
-                      <IoMdAddCircle className='me-1' /> <p className='m-0 text-nowrap py-2'>add profile</p>
+                      <IoMdAddCircle style={{ color:"#000" }} className='me-1' /> <p className='m-0 text-nowrap text-black py-2'>add profile</p>
                     </div>
 
                   </div>
