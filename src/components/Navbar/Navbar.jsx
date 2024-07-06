@@ -27,6 +27,7 @@ const Navbar = () => {
     '/QRCode': 'QRCode',
     '/UploadTests': 'Upload Tests',
     '/X_Rays': 'X_Rays',
+    '/userInfo': 'User Info'
     
     
 
