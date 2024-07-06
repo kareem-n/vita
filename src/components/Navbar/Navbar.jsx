@@ -110,7 +110,7 @@ const Navbar = () => {
                   <p className='m-0'>@{userDet ? userDet.username : ''}</p>
                 </div>
                 {
-                  dropShow && <div className="profiles position-absolute top-100 mt-2 px-4 py-2 rounded-4">
+                  dropShow && <div className="profiles position-absolute top-100 mt-2 rounded-4">
 
                     {
                       profiles && <div className="">
@@ -144,7 +144,7 @@ const Navbar = () => {
                           style={{
                             cursor: 'pointer'
                           }}
-                          className="text-success fw-bold text-nowrap">
+                          className="profile text-success fw-bold text-nowrap">
                           <img src={imageProfile} style={{
                             width: "40px",
                             height: '40px',
@@ -169,7 +169,7 @@ const Navbar = () => {
                               color: 'orange'
 
                             }}
-                            className="fw-bold text-nowrap">
+                            className="profile fw-bold text-nowrap">
                             <img src={imageProfile} style={{
                               width: "40px",
                               height: '40px',
@@ -184,7 +184,7 @@ const Navbar = () => {
                     <div
                       onClick={() => setAddProfileShow(true)}
                       style={{
-                        cursor: 'pointer'
+                        cursor: 'pointer', padding:"0.5rem 1.5rem"
                       }}
                       className='d-flex align-items-center border-top'>
 
