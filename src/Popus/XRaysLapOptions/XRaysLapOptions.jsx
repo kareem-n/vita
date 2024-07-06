@@ -39,6 +39,10 @@ const XRaysLapOptions = ({ setPopup }) => {
             <img src={image_02} alt="" />
             <h3>General info</h3>
           </Link>
+          <Link to={'/Prescriptions_2'} className="option">
+            <img src={image_05} alt="" />
+            <h3>Prescriptions</h3>
+          </Link>
           <Link to={'/'} className='option'>
             <img src={uploadTest} alt="" />
             <h3>Upload X_Ray</h3>
