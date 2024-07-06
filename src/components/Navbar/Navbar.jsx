@@ -23,7 +23,7 @@ const Navbar = () => {
     '/ViewPrescription/': 'View Prescription',
     '/NoPatient': 'NoPatient',
     '/waiting_list': 'Waiting List',
-    '/charts': 'Tests',
+    '/Charts': 'Tests',
     '/QRCode': 'QRCode',
     '/UploadTests': 'Upload Tests',
     '/X_Rays': 'X_Rays',
