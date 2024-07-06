@@ -18,13 +18,15 @@ const Navbar = () => {
     '/Posters': 'Posters',
     '/AddPrescription': 'Add Prescription',
     '/Prescriptions': 'Prescriptions',
-    '/Prescriptions_2': 'Prescriptions_2',
+    '/Prescriptions_2': 'Prescriptions List',
     '/Profile': 'Profile',
     '/ViewPrescription': 'View Prescription',
     '/NoPatient': 'NoPatient',
     '/waiting_list': 'Waiting List',
     '/charts': 'Tests',
-    '/charts': 'QRCode',
+    '/QRCode': 'QRCode',
+    '/UploadTests': 'Upload Tests',
+    
 
     // Add other routes and their corresponding titles here
   };
