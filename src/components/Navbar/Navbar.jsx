@@ -110,7 +110,7 @@ const Navbar = () => {
                   <p className='m-0'>@{userDet ? userDet.username : ''}</p>
                 </div>
                 {
-                  dropShow && <div className="profiles position-absolute top-100 bg-dark mt-2 px-4 py-2 rounded-4">
+                  dropShow && <div className="profiles position-absolute top-100 mt-2 px-4 py-2 rounded-4">
 
                     {
                       profiles && <div className="">
@@ -124,7 +124,7 @@ const Navbar = () => {
                           style={{
                             cursor: 'pointer'
                           }}
-                          className="text-warning fw-bold text-nowrap border-4 p-1">
+                          className="profile text-warning fw-bold text-nowrap">
                           <img src={imageProfile} style={{
                             width: "40px",
                             height: '40px',
@@ -144,7 +144,7 @@ const Navbar = () => {
                           style={{
                             cursor: 'pointer'
                           }}
-                          className="text-success fw-bold text-nowrap border-4 p-1">
+                          className="text-success fw-bold text-nowrap">
                           <img src={imageProfile} style={{
                             width: "40px",
                             height: '40px',
@@ -169,7 +169,7 @@ const Navbar = () => {
                               color: 'orange'
 
                             }}
-                            className="fw-bold text-nowrap border-4 p-1">
+                            className="fw-bold text-nowrap">
                             <img src={imageProfile} style={{
                               width: "40px",
                               height: '40px',
@@ -188,7 +188,7 @@ const Navbar = () => {
                       }}
                       className='d-flex align-items-center border-top'>
 
-                      <IoMdAddCircle className='me-1' /> <p className='m-0 text-nowrap py-2'>add profile</p>
+                      <IoMdAddCircle style={{ color:"#000" }} className='me-1' /> <p className='m-0 text-nowrap text-black py-2'>add profile</p>
                     </div>
 
                   </div>

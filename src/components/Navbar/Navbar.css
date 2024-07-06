@@ -64,5 +64,9 @@ nav{
 .profiles{
   width: 220px;
   left: -60%;
-
+  background-color: #ffffff;
+  .profile{
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #000;
+  }
 }
