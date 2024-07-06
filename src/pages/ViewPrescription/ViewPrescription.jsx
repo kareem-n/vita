@@ -10,7 +10,7 @@ const ViewPrescription = () => {
 
   const nav = useNavigate();
 
-  const { type, accessP } = useSelector(state => state.user);
+  const { type, accessP ,currentProfile } = useSelector(state => state.user);
 
   const [data, setData] = useState(null);
 
@@ -42,6 +42,20 @@ const ViewPrescription = () => {
         setData(res.data);
       })
     }
+    else if (type === "xray_lab" || type === "pharmacy" || type === "test_lab") {
+      axios.get(`https://vitaapp.azurewebsites.net/Test-Lab/get-prescription?ID=${id}&laboratoryName=${currentProfile}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        setData(res.data);
+        // setDataForDoctor(res.data);
+        console.log(res.data);
+      }).catch(err => {
+        console.log(err);
+      })
+    }
+
 
   }, []);
 
@@ -68,10 +82,17 @@ const ViewPrescription = () => {
               <h3>Medicine: </h3>
               <ul>
                 {
-                  data.medicines.map((item, key) => <li key={key}>
-                    {item.medicine}
-                    <p>- {item.note}</p>
-                  </li>
+                  data.medicines.map((item, key) =>
+                    item.medicine && <>
+                      <li key={key}>
+                        {item.medicine}
+                        <p>- {item.note}</p>
+
+                      </li>
+                    </>
+
+
+
                   )
                 }
               </ul>
@@ -80,10 +101,12 @@ const ViewPrescription = () => {
               <h3>Tests: </h3>
               <ul>
                 {
-                  data.tests.map((item, key) => <li key={key}>
-                    {item.test}
-                    <p>- {item.note}</p>
-                  </li>
+                  data.tests.map((item, key) => item.test && <>
+                    <li key={key}>
+                      {item.test}
+                      <p>- {item.note}</p>
+                    </li>
+                  </>
                   )
                 }
               </ul>
@@ -93,10 +116,14 @@ const ViewPrescription = () => {
               <ul>
                 {
                   data.
-                    xrayes.map((item, key) => <li key={key}>
-                      {item.xray}
-                      <p>- {item.note}</p>
-                    </li>
+                    xrayes.map((item, key) =>
+                      item.xray && <>
+                        <li key={key}>
+                          {item.medicine}
+                          <p>- {item.note}</p>
+
+                        </li>
+                      </>
                     )
                 }
               </ul>

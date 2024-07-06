@@ -89,7 +89,7 @@ const Waiting_list = () => {
           setTimeout(() => {
             setData(tmp);
             setLoad(false);
-          }, 1500);
+          }, 2000);
 
           // setData(tmp);
 
@@ -121,6 +121,9 @@ const Waiting_list = () => {
             tmp.push(item);
             // setData(tmp)
 
+          }).catch(err => {
+            item = {...item}
+            tmp.push(item);
           })
 
         })
@@ -128,7 +131,7 @@ const Waiting_list = () => {
         setTimeout(() => {
           setData(tmp);
           setLoad(false);
-        }, 1500);
+        }, 2000);
 
         // setData(tmp);
 
@@ -143,6 +146,7 @@ const Waiting_list = () => {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
       }).then(res => {
+
         const tmp = [];
         res.data.map(item => {
           axios.get(`https://vitaapp.azurewebsites.net/users/auth/get-image?username=${item.username}`, {
@@ -158,6 +162,9 @@ const Waiting_list = () => {
             tmp.push(item);
             // setData(tmp)
 
+          }).catch(err => {
+            item = {...item}
+            tmp.push(item);
           })
 
         })
@@ -165,7 +172,7 @@ const Waiting_list = () => {
         setTimeout(() => {
           setData(tmp);
           setLoad(false);
-        }, 1500);
+        }, 2000);
         // setData(tmp);
 
       })

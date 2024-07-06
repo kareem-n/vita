@@ -10,7 +10,7 @@ import DoctorOptions from '../DoctorOptions/DoctorOptions'
 import axios from 'axios'
 import Loader from './../../components/loader/Loader';
 
-const PatientAccess = ({ }) => {
+const PatientAccess = ({ setselfff, setshowtmp, setSelff }) => {
   const { type, accessP, currentProfile } = useSelector(state => state.user);
 
 
@@ -60,18 +60,21 @@ const PatientAccess = ({ }) => {
             tmp.push(item);
             // setData(tmp)
 
+          }).catch(err => {
+            item = {...item}
+            tmp.push(item);
           })
 
         })
         setTimeout(() => {
           setData(tmp);
           setLoad(false);
-        }, 1000);
+        }, 2000);
       })
     }
 
 
-    if (type === 'xray_lab' || type === "test_lab" || type ==="pharmacy") {
+    if (type === 'xray_lab' || type === "test_lab" || type === "pharmacy") {
       axios.get(`https://vitaapp.azurewebsites.net/Organization/get-list-of-connections?organizationName=${currentProfile}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
@@ -92,13 +95,16 @@ const PatientAccess = ({ }) => {
             tmp.push(item);
             // setData(tmp)
 
+          }).catch(err => {
+            item = {...item}
+            tmp.push(item);
           })
 
         })
         setTimeout(() => {
           setData(tmp);
           setLoad(false);
-        }, 1000);
+        }, 2000);
       })
     }
 
@@ -107,7 +113,10 @@ const PatientAccess = ({ }) => {
 
   const navigate = useNavigate()
   const hide = () => {
+    // setSelff(false)
     setPopup(false)
+    setshowtmp(false)
+    // setselfff(false)
     navigate('/NoPatient')
   }
   if (popup) {

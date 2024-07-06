@@ -12,7 +12,7 @@ const Prescriptions_2 = () => {
   const [data, setData] = useState(null);
   const [dataForDoctor, setDataForDoctor] = useState(null);
 
-  const { type, accessP } = useSelector(state => state.user);
+  const { type, accessP ,currentProfile } = useSelector(state => state.user);
 
   const nav = useNavigate();
 
@@ -36,6 +36,18 @@ const Prescriptions_2 = () => {
 
     } else if (type === "doctor") {
       axios.get(`https://vitaapp.azurewebsites.net/doctors/get-all-prescriptions-sorted-by-Date?patientName=${accessP}`, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("user")}`
+        }
+      }).then(res => {
+        setDataForDoctor(res.data);
+        console.log(0);
+      }).catch(err => {
+        console.log(err);
+      })
+    }
+     else if (type === "xray_lab" || type === "pharmacy" || type === "test_lab" ) {
+      axios.get(`https://vitaapp.azurewebsites.net/Organization/get-all-prescriptions-sorted-by-DoctorName?organizationName=${currentProfile}&patientName=${accessP}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }

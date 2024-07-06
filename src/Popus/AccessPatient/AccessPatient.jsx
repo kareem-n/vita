@@ -50,7 +50,7 @@ const AccessPatient = ({ setPopup }) => {
       }
 
       {
-        showtmp && <PatientAccess setPopup={setPopup} />
+        showtmp && <PatientAccess setSelff={setshowtmp} setshowtmp={setshowtmp}  setselfff={setself} setPopup={setPopup} />
       }
     </>
   )

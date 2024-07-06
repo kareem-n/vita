@@ -25,6 +25,8 @@ const Navbar = () => {
   const [profiles, setProfiles] = useState(null);
 
 
+  
+
   function getA() {
 
     axios.get("https://vitaapp.azurewebsites.net/users/auth/get-list-of-profiles",
