@@ -16,10 +16,13 @@ const Navbar = () => {
   const location = useLocation();
   const pageTitles = {
     '/Posters': 'Posters',
-    '/tests': 'Tests',
-    '/about': 'About Us',
-    '/contact': 'Contact',
-    '/services': 'Services',
+    '/AddPrescription': 'AddPrescription',
+    '/Prescriptions': 'Prescriptions',
+    '/Prescriptions_2': 'Prescriptions_2',
+    '/Profile': 'Profile',
+    '/ViewPrescription': 'ViewPrescription',
+    '/NoPatient': 'NoPatient',
+
     // Add other routes and their corresponding titles here
   };
 
