@@ -143,7 +143,7 @@ const Charts = () => {
           }
 
           <div className="">
-            patient name : {data[0].patientName}
+            patient name : {data[0]?.patientName}
           </div>
           <div className="charts">
             {data.map((box, index) => (
