@@ -20,7 +20,7 @@ const Navbar = () => {
     '/Prescriptions': 'Prescriptions',
     '/Prescriptions_2': 'Prescriptions List',
     '/Profile': 'Profile',
-    '/ViewPrescription': 'View Prescription',
+    '/ViewPrescription/': 'View Prescription',
     '/NoPatient': 'NoPatient',
     '/waiting_list': 'Waiting List',
     '/charts': 'Tests',
