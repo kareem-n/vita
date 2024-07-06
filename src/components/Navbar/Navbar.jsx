@@ -12,7 +12,17 @@ import { setCurrentProfile, setType } from '../../redux/slices/UserSlice';
 import Search from '../search/Search';
 import { FaXmark } from 'react-icons/fa6';
 const Navbar = () => {
+  const location = useLocation();
+  const pageTitles = {
+    '/': 'Home',
+    '/tests': 'Tests',
+    '/about': 'About Us',
+    '/contact': 'Contact',
+    '/services': 'Services',
+    // Add other routes and their corresponding titles here
+  };
 
+  const currentPage = pageTitles[location.pathname] || 'Page';
 
   const dispatch = useDispatch();
 
@@ -55,7 +65,7 @@ const Navbar = () => {
   return (
     <>
       <nav className='d-flex justify-content-between align-items-center'>
-        <h2 className='m-0'>Tests</h2>
+        <h2 className='m-0'>{currentPage}</h2>
         {/* search com */}
         {
           searchPop && <div className="d-flex position-relative">
