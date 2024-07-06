@@ -33,6 +33,8 @@ const DocOp = ({ popup, setPopup }) => {
 
 
 
+
+
   // if (type === "doctor" && !accessP) {
   //   nav('/nopatient')
   //   return <NoPatient />

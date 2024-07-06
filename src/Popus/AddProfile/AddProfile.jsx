@@ -1,6 +1,6 @@
 import './AddProfile.css'
 import { FaXmark } from 'react-icons/fa6'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Link, useNavigate } from "react-router-dom";
 import { InputSubmit } from '../../components/Buttons/Buttons';
 import axios from 'axios';
@@ -218,11 +218,18 @@ const AddProfile = ({ setAddProfileShow }) => {
     setPopup(false);
     setAddProfileShow(false)
   }
-  if (popup) {
-    document.body.style.overflow = 'hidden'
-  } else {
-    document.body.style.overflow = 'auto'
-  }
+
+  useEffect(() => {
+    if (popup) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'auto';
+    }
+    return () => {
+      document.body.style.overflow = 'auto'; // Clean up on unmount
+    };
+  }, [popup]);
+
 
   return (
     <>

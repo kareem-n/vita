@@ -29,15 +29,17 @@ const Sidebar = () => {
   const [popup, setPopup] = useState(false)
 
 
-  useEffect(() => {
 
+  useEffect(() => {
     if (popup) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-
-  }, [popup])
+    return () => {
+      document.body.style.overflow = 'auto'; // Clean up on unmount
+    };
+  }, [popup]);
 
 
 
@@ -93,7 +95,7 @@ const Sidebar = () => {
           <TestLapOptions setPopup={setPopup} />
         </div> : <AccessPatient setPopup={setPopup} />)
       }
-      
+
       {
         (popup && type === "xray_lab") && (accessP ? <div className="">
           <XRaysLapOptions setPopup={setPopup} />

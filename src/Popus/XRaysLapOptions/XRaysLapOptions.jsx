@@ -35,15 +35,15 @@ const XRaysLapOptions = ({ setPopup }) => {
             <img src={image_01} alt="" />
             <h3>Close patient</h3>
           </Link>
-          <Link to={'/userInfo'} className="option">
+          <Link onClick={() => setPopup(false)} to={'/userInfo'} className="option">
             <img src={image_02} alt="" />
             <h3>General info</h3>
           </Link>
-          <Link to={'/Prescriptions_2'} className="option">
+          <Link onClick={() => setPopup(false)} to={'/Prescriptions_2'} className="option">
             <img src={image_05} alt="" />
             <h3>Prescriptions</h3>
           </Link>
-          <Link to={'/'} className='option'>
+          <Link onClick={() => setPopup(false)} to={'/'} className='option'>
             <img src={uploadTest} alt="" />
             <h3>Upload Test</h3>
           </Link>

@@ -29,8 +29,6 @@ const DoctorOptions = ({ setPopup }) => {
     // nav('/nopatient');
   }
 
-
-
   // if (type === "doctor" && !accessP) {
   //   nav('/nopatient')
   //   return <NoPatient />
