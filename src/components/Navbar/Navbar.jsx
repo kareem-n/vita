@@ -184,7 +184,7 @@ const Navbar = () => {
                     <div
                       onClick={() => setAddProfileShow(true)}
                       style={{
-                        cursor: 'pointer', padding:"0.5rem 1.5rem"
+                        cursor: 'pointer', padding:"0.4rem 1.2rem"
                       }}
                       className='d-flex align-items-center border-top'>
 
