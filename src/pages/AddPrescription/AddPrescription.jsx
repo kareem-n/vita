@@ -246,7 +246,7 @@ const AddPrescription = () => {
         }} name="" id="" cols="30" rows="10" placeholder='Note...'></textarea>
       </div>
 
-      <button onClick={handleSubmit} type="submit" className='add'>Addddd</button>
+      <button onClick={handleSubmit} type="submit" className='add'>Add</button>
     </form>
   )
 }

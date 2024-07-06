@@ -45,7 +45,7 @@ const XRaysLapOptions = ({ setPopup }) => {
           </Link>
           <Link onClick={() => setPopup(false)} to={'/'} className='option'>
             <img src={uploadTest} alt="" />
-            <h3>Upload Test</h3>
+            <h3>Upload X_Ray</h3>
           </Link>
         </div>
         <div className="close">
