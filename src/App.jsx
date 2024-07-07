@@ -63,7 +63,6 @@ function App() {
       },
       responseType: 'arraybuffer',
     }).then(data => {
-
       const base64 = convertArrayBufferToBase64(data.data);
       const image = `data:image/jpeg;base64,${base64}`;
       dispatch(setUserImage(image));
@@ -126,14 +125,15 @@ function App() {
   }
 
 
-  const HomeAccess = ({ children }) => {
+  // const HomeAccess = ({ children }) => {
 
+  //   if (localStorage.getItem("user")) {
+  //     return children;
+  //   } else {
+  //     return <Navigate to={'/login'} />;
+  //   }
 
-    if (localStorage.getItem("user")) {
-      return <Navigate to={'/Posters'} />;
-    }
-
-  }
+  // }
 
 
 
@@ -148,7 +148,7 @@ function App() {
       }
 
       <Routes>
-        <Route path="/" element={<HomeAccess><Home /></HomeAccess>
+        <Route path="/" element={<ProtectRoute><Home /></ProtectRoute>
         } />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
