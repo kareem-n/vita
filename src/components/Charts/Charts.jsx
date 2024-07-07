@@ -158,7 +158,7 @@ const Charts = () => {
             catItems && <ContentHead getData={getData} items={catItems} />
           }
 
-          <div className="alert alert-success m-auto" style={{ width:'1446px' }}>
+          <div className="alert alert-success m-auto" style={{ width:'1250px' }}>
             patient name : {data[0]?.patientName}
           </div>
           <div className="charts">
