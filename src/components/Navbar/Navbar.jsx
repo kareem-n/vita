@@ -28,8 +28,8 @@ const Navbar = () => {
     '/UploadTests': 'Upload Tests',
     '/X_Rays': 'X_Rays',
     '/userInfo': 'User Info'
-    
-    
+
+
 
     // Add other routes and their corresponding titles here
   };
@@ -47,7 +47,17 @@ const Navbar = () => {
   const [profiles, setProfiles] = useState(null);
 
 
-  
+
+  const convertArrayBufferToBase64 = (buffer) => {
+    let binary = '';
+    const bytes = new Uint8Array(buffer);
+    const len = bytes.byteLength;
+    for (let i = 0; i < len; i++) {
+      binary += String.fromCharCode(bytes[i]);
+    }
+    return window.btoa(binary);
+  };
+
 
   function getA() {
 
@@ -57,8 +67,38 @@ const Navbar = () => {
           Authorization: `Bearer ${localStorage.getItem("user")}`
         }
       })
+
       .then(res => {
-        setProfiles(res.data);
+        // setProfiles(res.data);
+        const tmp = [];
+        res.data.organizationDTOList?.map(item => {
+          axios.get(`https://vitaapp.azurewebsites.net/Organization/get-profile-picture?organizationName=${item.organizationName}`, {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user")}`
+            },
+            responseType: 'arraybuffer'
+          }).then(res => {
+            const base64 = convertArrayBufferToBase64(res.data);
+            const image = `data:image/jpeg;base64,${base64}`;
+
+
+              // console.log( { ...item, image });
+            item = { ...item, image };
+            tmp.push(item);
+          }).catch(err => {
+            item = { ...item }
+            tmp.push(item);
+          })
+
+
+          // console.log({ ...res.data, ['organizationDTOList']: tmp });
+          console.log(res.data);
+          setTimeout(() => {
+            setProfiles({ ...res.data, ['organizationDTOList']: tmp });
+          }, 2000);
+
+        }
+        )
       })
       .catch(err => {
         console.log(err);
@@ -173,7 +213,7 @@ const Navbar = () => {
 
                             }}
                             className="profile fw-bold text-nowrap">
-                            <img src={imageProfile} style={{
+                            <img src={item.image ? item.image : imageProfile} style={{
                               width: "40px",
                               height: '40px',
                               border: '4px solid orange'
@@ -187,11 +227,11 @@ const Navbar = () => {
                     <div
                       onClick={() => setAddProfileShow(true)}
                       style={{
-                        cursor: 'pointer', padding:"0.4rem 1.2rem"
+                        cursor: 'pointer', padding: "0.4rem 1.2rem"
                       }}
                       className='d-flex align-items-center border-top'>
 
-                      <IoMdAddCircle style={{ color:"#000" }} className='me-1' /> <p className='m-0 text-nowrap text-black py-2'>add profile</p>
+                      <IoMdAddCircle style={{ color: "#000" }} className='me-1' /> <p className='m-0 text-nowrap text-black py-2'>add profile</p>
                     </div>
 
                   </div>
