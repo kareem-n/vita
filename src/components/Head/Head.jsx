@@ -12,11 +12,7 @@ const Head = (props) => {
 
 const ContentHead = ({ items, getData }) => {
   return (
-    <div className="head d-flex justify-content-between align-items-center">
-      {/* <div className="btns d-flex gap-2">
-        <FirstBtn>Date</FirstBtn>
-        <SecondBtn>Name</SecondBtn>
-      </div> */}
+    <div className="head d-flex justify-content-end">
       <select onChange={(e) => {
         getData(e.target.value)
       }} defaultValue="Category">
