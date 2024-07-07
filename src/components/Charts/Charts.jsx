@@ -11,27 +11,6 @@ import { useNavigate } from 'react-router-dom';
 // import Head, { ContentHead } from '../../components/Head/Head';
 
 const Charts = () => {
-  const [boxCount, setBoxCount] = useState(3);
-  const [boxes, setBoxes] = useState([]);
-
-  useEffect(() => {
-    const initialBoxState = Array(boxCount).fill({ isFlipped: false, isRedBorder: false });
-    setBoxes(initialBoxState);
-  }, [boxCount]);
-
-  const handleFlip = (index) => {
-    const newBoxes = [...boxes];
-    newBoxes[index] = { ...newBoxes[index], isFlipped: !newBoxes[index].isFlipped };
-    setBoxes(newBoxes);
-  };
-
-  const handleDoubleClick = (index) => {
-    const newBoxes = [...boxes];
-    newBoxes[index] = { ...newBoxes[index], isRedBorder: !newBoxes[index].isRedBorder };
-    setBoxes(newBoxes);
-  };
-
-  
   const nav = useNavigate();
 
   const { type, accessP } = useSelector(state => state.user);
@@ -129,6 +108,25 @@ const Charts = () => {
 
   }, [type])
 
+  const [boxCount, setBoxCount] = useState(3);
+  const [boxes, setBoxes] = useState([]);
+
+  useEffect(() => {
+    const initialBoxState = Array(boxCount).fill({ isFlipped: false, isRedBorder: false });
+    setBoxes(initialBoxState);
+  }, [boxCount]);
+
+  const handleFlip = (index) => {
+    const newBoxes = [...boxes];
+    newBoxes[index] = { ...newBoxes[index], isFlipped: !newBoxes[index].isFlipped };
+    setBoxes(newBoxes);
+  };
+
+  const handleDoubleClick = (index) => {
+    const newBoxes = [...boxes];
+    newBoxes[index] = { ...newBoxes[index], isRedBorder: !newBoxes[index].isRedBorder };
+    setBoxes(newBoxes);
+  };
 
   // useEffect(() => {
   //   const initialBoxState = Array(boxCount).fill({ isFlipped: false, isRedBorder: false });
