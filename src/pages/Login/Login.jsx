@@ -11,7 +11,7 @@ import { useState } from "react";
 import Joi from "joi";
 import Loader from "../../components/loader/Loader";
 import { useDispatch } from "react-redux";
-import { setUser, setUserDet, setUserImage } from "../../redux/slices/UserSlice";
+import { setType, setUser, setUserDet, setUserImage } from "../../redux/slices/UserSlice";
 import axios from "axios";
 
 const Login = () => {
@@ -90,11 +90,16 @@ const Login = () => {
       axios.post("https://vitaapp.azurewebsites.net/login", loginForm).then(res => {
         setLoading(false);
 
-        console.log(res.data);
+        if (!res.data.defaultUser) {
+          localStorage.setItem("userP", 'admin');
+          dispatch(setType("admin"))
+        } else {
+          localStorage.setItem("userP", 'patient');
+        }
 
         dispatch(setUser(res.data.token));
         localStorage.setItem("user", res.data.token);
-        localStorage.setItem("userP", 'patient');
+        // localStorage.setItem("userP", 'patient');
 
         axios.get("https://vitaapp.azurewebsites.net/users/auth/get-profile-image", {
           headers: {
@@ -115,8 +120,14 @@ const Login = () => {
         }).then(data => {
           // console.log(data.data);
           dispatch(setUserDet(data.data));
-          navigate('/Posters')
         })
+
+        if (!res.data.defaultUser) {
+
+          navigate('/Dashboard')
+        } else {
+          navigate('/Posters')
+        }
 
 
 

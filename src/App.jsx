@@ -125,15 +125,13 @@ function App() {
   }
 
 
-  // const HomeAccess = ({ children }) => {
+  const HomeAccess = ({ children }) => {
 
-  //   if (localStorage.getItem("user")) {
-  //     return children;
-  //   } else {
-  //     return <Navigate to={'/login'} />;
-  //   }
+    if (localStorage.getItem("user")) {
+      return children;
+    } 
 
-  // }
+  }
 
 
 
@@ -141,7 +139,7 @@ function App() {
     <>
 
       {
-        user ? <>
+        (user && type !=="admin") ? <>
           <Navbar />
           <Sidebar />
         </> : ''
