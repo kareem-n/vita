@@ -153,11 +153,6 @@ const UploadTests = () => {
     // }
 
   }
-
-
-
-
-
   return (
     <div className='UploadTests'>
       <div className="container">

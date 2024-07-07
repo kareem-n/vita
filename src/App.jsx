@@ -31,6 +31,7 @@ import QRCodee from './Popus/QRCode/QRCode'
 import Dashboard from './pages/Dashboard/Dashboard'
 import UploadTests from './pages/UploadTests/UploadTests'
 import DocPresc from './pages/docPresc/DocPresc'
+import Admin from './pages/Admin/Admin'
 
 
 function App() {
@@ -180,6 +181,7 @@ function App() {
         <Route path="/Posters" element={<Posters />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/UploadTests" element={<UploadTests />} />
+        <Route path="/Admin" element={<Admin />} />
       </Routes>
 
 
