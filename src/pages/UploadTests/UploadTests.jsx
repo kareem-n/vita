@@ -153,18 +153,10 @@ const UploadTests = () => {
     // }
 
   }
-
-
-
-
-
   return (
     <div className='UploadTests'>
       <div className="container">
         <div className="upload">
-          <div className="heading text-center p-3">
-            <h3 style={{ color:'#0F0F0F' }}>Upload Tests</h3>
-          </div>
           <form onSubmit={handleSubmit} action="">
             <div className="file">
               <img src={uploadFile} alt="" />
