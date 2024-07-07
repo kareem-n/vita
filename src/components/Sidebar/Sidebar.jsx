@@ -66,6 +66,14 @@ const Sidebar = () => {
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
             <Link to="/QRCode"><MdOutlineQrCodeScanner /></Link>
           </div>
+
+          {
+            localStorage.getItem("isAdmin") && <div>
+              kareem
+            </div>
+          }
+
+
           <Link className="logout" onClick={() => {
             localStorage.clear();
             dispatch(setUser(null))

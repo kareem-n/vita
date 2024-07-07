@@ -9,6 +9,7 @@ import iconuser from '../../assets/images/iconuser.png';
 import signout from '../../assets/images/signout.png';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -87,6 +88,7 @@ const Dashboard = () => {
 
   const [Last, setLast] = useState(null)
 
+  const nav = useNavigate();
 
   return (
     <section className="dashboard">
@@ -158,7 +160,16 @@ const Dashboard = () => {
                   <img src={iconuser} alt="" />
                   <span>Profile</span>
                 </div>
-                <div className="box" >
+                <div
+                  onClick={() => {
+
+                    localStorage.clear();
+                    nav('/login')
+
+                  }}
+                  className="box" style={{
+                    cursor:'pointer'
+                  }} >
                   <img src={signout} alt="" />
                   <span>Signout</span>
                 </div>
@@ -379,12 +390,12 @@ const Dashboard = () => {
               <div className="progressGander d-flex justify-content-center align-items-center flex-wrap">
                 <div className="the-progress">
                   <h5 style={{ color: '#20AEF3' }}>{Last['Test-Gender']['Males']}</h5>
-                  <span style={{ height: Last['Test-Gender']['Males']+"%", background: '#20AEF3' }}></span>
+                  <span style={{ height: Last['Test-Gender']['Males'] + "%", background: '#20AEF3' }}></span>
                   <h6 style={{ color: '#20AEF3' }}>Males</h6>
                 </div>
                 <div className="the-progress">
                   <h5 style={{ color: '#F2C8ED' }}>{Last['Test-Gender']['Females']}</h5>
-                  <span style={{ height: Last['Test-Gender']['Females']+"%", background: '#F2C8ED' }}></span>
+                  <span style={{ height: Last['Test-Gender']['Females'] + "%", background: '#F2C8ED' }}></span>
                   <h6 style={{ color: '#F2C8ED' }}>females</h6>
                 </div>
               </div>
@@ -396,37 +407,37 @@ const Dashboard = () => {
               <div className="progressAges d-flex justify-content-center align-items-center flex-wrap">
                 <div className="the-progress">
                   <h5 style={{ color: '#66EDDB' }}>{Last['Test-Age']['~10']}</h5>
-                  <span style={{ height: Last['Test-Age']['~10']+"%" }}></span>
+                  <span style={{ height: Last['Test-Age']['~10'] + "%" }}></span>
                   <h6 style={{ color: '#66EDDB' }}>~10</h6>
                 </div>
                 <div className="the-progress">
                   <h5 style={{ color: '#66EDDB' }}>{Last['Test-Age']['~20']}</h5>
-                  <span style={{ height: Last['Test-Age']['~20']+"%" }}></span>
+                  <span style={{ height: Last['Test-Age']['~20'] + "%" }}></span>
                   <h6 style={{ color: '#66EDDB' }}>~20</h6>
                 </div>
                 <div className="the-progress">
                   <h5 style={{ color: '#66EDDB' }}>{Last['Test-Age']['~30']}</h5>
-                  <span style={{ height: Last['Test-Age']['~30']+"%" }}></span>
+                  <span style={{ height: Last['Test-Age']['~30'] + "%" }}></span>
                   <h6 style={{ color: '#66EDDB' }}>~30</h6>
                 </div>
                 <div className="the-progress">
                   <h5 style={{ color: '#66EDDB' }}>{Last['Test-Age']['~40']}</h5>
-                  <span style={{ height: Last['Test-Age']['~40']+"%" }}></span>
+                  <span style={{ height: Last['Test-Age']['~40'] + "%" }}></span>
                   <h6 style={{ color: '#66EDDB' }}>~40</h6>
                 </div>
                 <div className="the-progress">
                   <h5 style={{ color: '#66EDDB' }}>{Last['Test-Age']['~50']}</h5>
-                  <span style={{ height: Last['Test-Age']['~50']+"%" }}></span>
+                  <span style={{ height: Last['Test-Age']['~50'] + "%" }}></span>
                   <h6 style={{ color: '#66EDDB' }}>~50</h6>
                 </div>
                 <div className="the-progress">
                   <h5 style={{ color: '#66EDDB' }}>{Last['Test-Age']['~60']}</h5>
-                  <span style={{ height: Last['Test-Age']['~60']+"%" }}></span>
+                  <span style={{ height: Last['Test-Age']['~60'] + "%" }}></span>
                   <h6 style={{ color: '#66EDDB' }}>~60</h6>
                 </div>
                 <div className="the-progress">
                   <h5 style={{ color: '#66EDDB' }}>{Last['Test-Age']['+20']}</h5>
-                  <span style={{ height: Last['Test-Age']['+60']+"%" }}></span>
+                  <span style={{ height: Last['Test-Age']['+60'] + "%" }}></span>
                   <h6 style={{ color: '#66EDDB' }}>+60</h6>
                 </div>
               </div>

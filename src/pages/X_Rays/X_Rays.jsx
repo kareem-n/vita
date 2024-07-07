@@ -62,7 +62,6 @@ const X_Rays = () => {
 
       <div className="x_raysInfo d-grid">
 
-
         {
           loader ? <div className="w-100 d-flex justify-content-center align-items-center">
             <Bars />
