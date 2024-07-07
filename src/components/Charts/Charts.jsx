@@ -14,6 +14,24 @@ const Charts = () => {
   const [boxCount, setBoxCount] = useState(3);
   const [boxes, setBoxes] = useState([]);
 
+  useEffect(() => {
+    const initialBoxState = Array(boxCount).fill({ isFlipped: false, isRedBorder: false });
+    setBoxes(initialBoxState);
+  }, [boxCount]);
+
+  const handleFlip = (index) => {
+    const newBoxes = [...boxes];
+    newBoxes[index] = { ...newBoxes[index], isFlipped: !newBoxes[index].isFlipped };
+    setBoxes(newBoxes);
+  };
+
+  const handleDoubleClick = (index) => {
+    const newBoxes = [...boxes];
+    newBoxes[index] = { ...newBoxes[index], isRedBorder: !newBoxes[index].isRedBorder };
+    setBoxes(newBoxes);
+  };
+
+  
   const nav = useNavigate();
 
   const { type, accessP } = useSelector(state => state.user);
@@ -177,8 +195,8 @@ const Charts = () => {
             ))}
           </div>
         </div> : <div style={{
-          margin: '400px' // message of no data 
-        }} className="bg-danger">no data</div>)
+          width: '500px', display:'flex' // message of no data 
+        }} className="alert alert-danger">no data</div>)
       }
 
 
