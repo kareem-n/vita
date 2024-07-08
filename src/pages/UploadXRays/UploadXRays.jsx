@@ -14,9 +14,8 @@ const UploadXRays = () => {
               <img src={uploadFile} alt="" />
               <input type="file" />
             </div>
-            <h5 className='my-3'>Uploading - <span> 3/3 files</span></h5>
             <div className="fileNotUpload">
-              <p className='m-0'>tests_file.csv</p>
+              <p className='m-0'>tests_file.png</p>
               <div className="icon">
                 <CgClose/>
               </div>
@@ -26,7 +25,7 @@ const UploadXRays = () => {
               <h5>Uploaded</h5>
               <div className="content">
                 <div className="fileName">
-                  <p className='m-0'>tests_file.csv</p>
+                  <p className='m-0'>tests_file.png</p>
                   <div className="icon">
                     <FaTrashAlt/>
                   </div>
@@ -40,7 +39,7 @@ const UploadXRays = () => {
 
               <div className="content">
                 <div className="fileName">
-                  <p className='m-0'>tests_file.csv</p>
+                  <p className='m-0'>tests_file.png</p>
                   <div className="icon">
                     <FaTrashAlt/>
                   </div>
