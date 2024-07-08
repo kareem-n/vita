@@ -30,7 +30,7 @@ const AccessPatient = ({ setPopup }) => {
               <img src={Eye} alt="" />
               <h3>access patient</h3>
             </Link>
-            <Link to={'/'} className='box'>
+            <Link to={'/UploadPost'} className='box'>
               <img src={uploadPost} alt="" />
               <h3>Upload Post</h3>
             </Link>

@@ -75,7 +75,7 @@ const DocOp = ({ popup, setPopup }) => {
                   <img src={image_06} alt="" />
                   <h3>Add prescription</h3>
                 </Link>
-                <Link onClick={() => setPopup(false)} to={'/'} className='option'>
+                <Link onClick={() => setPopup(false)} to={'/UploadPost'} className='option'>
                   <img src={uploadPost} alt="" />
                   <h3>Upload Post</h3>
                 </Link>
