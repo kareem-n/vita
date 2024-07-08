@@ -158,7 +158,7 @@ const UploadTests = () => {
       <div className="container">
         <div className="upload">
           <form onSubmit={handleSubmit} action="">
-            <h3 className='text-center mb-3'>Upload X_Rays</h3>
+            <h3 className='text-center mb-3'>Upload Test</h3>
             <div className="file">
               <img src={uploadFile} alt="" />
               <input
