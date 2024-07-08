@@ -91,10 +91,22 @@ const Login = () => {
         setLoading(false);
 
         if (!res.data.defaultUser) {
-          localStorage.setItem("userP", 'admin');
-          dispatch(setType("admin"))
+
+          if (res.data.admin) {
+            localStorage.setItem("userP", 'admin');
+            dispatch(setType("admin"))
+            return
+          }
+
+          localStorage.setItem("userP", 'big');
+          // dispatch(setType("big"))
         } else {
+          if (res.data.admin) {
+            localStorage.setItem("isAdmin", '1');
+            // dispatch(setType("admin"))
+          }
           localStorage.setItem("userP", 'patient');
+          dispatch(setType("patient"))
         }
 
         dispatch(setUser(res.data.token));
@@ -122,10 +134,18 @@ const Login = () => {
           dispatch(setUserDet(data.data));
         })
 
+
+        // console.log(res.data);
+
         if (!res.data.defaultUser) {
 
+          if (res.data.admin) {
+            navigate('/Admin')
+            return
+          }
           navigate('/Dashboard')
         } else {
+        
           navigate('/Posters')
         }
 

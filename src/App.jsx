@@ -140,7 +140,7 @@ function App() {
     <>
 
       {
-        (user && type !=="admin") ? <>
+        (user && type !=="big") ? <>
           <Navbar />
           <Sidebar />
         </> : ''

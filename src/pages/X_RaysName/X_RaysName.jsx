@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Bars } from 'react-loader-spinner';
 const X_RaysName = () => {
 
 
@@ -13,7 +14,6 @@ const X_RaysName = () => {
   const { type, accessP } = useSelector(state => state.user);
 
   const { id, name } = useParams();
-
 
   const convertArrayBufferToBase64 = (buffer) => {
     let binary = '';
@@ -26,6 +26,7 @@ const X_RaysName = () => {
   };
 
   const [img, setImg] = useState(null)
+
 
   const nav = useNavigate();
 
@@ -64,19 +65,61 @@ const X_RaysName = () => {
   }, [])
 
 
+  const [Loader, setLoader] = useState(false)
+  const [ModelResult, setModelResult] = useState(false)
+
+
   return (
     <div className='X_RaysName'>
       <div className="container">
+
         <div className="heading text-center pt-4">
           <h2>{name}</h2>
+
         </div>
         <div className="imagesName mt-4 d-flex justify-content-start align-items-center gap-3 flex-wrap">
           <div className="imageName">
+            {
+              name === "bones" && <div
+
+                onClick={() => {
+
+                  setLoader(true)
+                  axios.get("https://vitaapp.azurewebsites.net/users/auth/predict?category=bones&ID=1", {
+                    headers: {
+                      Authorization: ` Bearer ${localStorage.getItem("user")}`
+                    }
+                  })
+                    .then(res => {
+                      console.log(res.data);
+                      setModelResult(res.data)
+                      setLoader(false)
+                    })
+
+                }}
+
+
+                style={{
+                  cursor: 'pointer',
+                  backgroundColor: 'red',
+                  padding: '10px',
+                  position: 'absolute',
+                  transform: 'translate(-50% ,-50%)',
+                  borderRadius: '50%'
+                }}>??</div>
+            }
             <img src={img} alt="" />
             <h6 className='mt-3 mb-0 text-center'>{name}</h6>
+            <h6 className='mt-3 mb-0 text-center text-success'>{ModelResult.predicted_class}</h6>
           </div>
         </div>
       </div>
+
+      {
+        Loader && <div className=" position-absolute w-100 h-100 top-0 bottom-0 d-flex justify-content-center align-items-center">
+          <Bars />
+        </div>
+      }
     </div>
   )
 }
