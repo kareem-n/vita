@@ -1,5 +1,5 @@
 import './UploadXRays.css'
-import uploadFile from '../../assets/images/File upload area.png';
+import uploadFile from '../../assets/images/File upload xray.png';
 import { CgClose } from "react-icons/cg";
 import { FaTrashAlt } from "react-icons/fa";
 
@@ -21,8 +21,6 @@ const UploadXRays = () => {
                 <CgClose/>
               </div>
             </div>
-            <p>This document is too large. Please only upload files less than 5MB.</p>
-
 
             <div className="uploaded d-flex justify-content-start align-items-start flex-column">
               <h5>Uploaded</h5>
