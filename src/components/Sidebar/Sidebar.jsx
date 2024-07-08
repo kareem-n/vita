@@ -18,7 +18,7 @@ import PatientOptions from './../../Popus/PatientOptions/PatientOptions';
 import AccessPatient from '../../Popus/AccessPatient/AccessPatient';
 import XRaysLapOptions from '../../Popus/XRaysLapOptions/XRaysLapOptions';
 import TestLapOptions from '../../Popus/TestLapOptions/TestLapOptions';
-
+import Rectangle from '../../assets/images/Rectangle 13.png'
 const Sidebar = () => {
 
   const { type, accessP } = useSelector(state => state.user);
@@ -58,21 +58,23 @@ const Sidebar = () => {
             {/* <Link to={type === "doctor" ? "/NoPatient" : '/userInfo'}><TiHome /></Link> */}
             <Link to="/Profile"><FaUser /></Link>
 
-
-
-
             <Link onClick={() => { setPopup(true) }}><AiOutlineAppstore /></Link>
 
             <Link to="/waiting_list"><FaTelegramPlane /></Link>
             <Link to="/QRCode"><MdOutlineQrCodeScanner /></Link>
           </div>
-          <Link className="logout" onClick={() => {
-            localStorage.clear();
-            dispatch(setUser(null))
-            dispatch(setUserDet(null));
-          }} to={'/login'}>
-            <IoMdLogOut />
-          </Link>
+          <div className="logout">
+            <Link onClick={() => {
+              localStorage.clear();
+              dispatch(setUser(null))
+              dispatch(setUserDet(null));
+            }} to={'/login'}>
+              <IoMdLogOut />
+            </Link>
+            <Link>
+              <img src={Rectangle} alt="" />
+            </Link>
+          </div>
         </div>
       </div>
 
