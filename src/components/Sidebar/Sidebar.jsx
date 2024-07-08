@@ -71,9 +71,12 @@ const Sidebar = () => {
             }} to={'/login'}>
               <IoMdLogOut />
             </Link>
-            <Link>
-              <img src={Rectangle} alt="" />
-            </Link>
+            {
+              localStorage.getItem("isAdmin") && <Link to={'/'}>
+                <img src={Rectangle} alt="" />
+              </Link>
+            }
+
           </div>
         </div>
       </div>
