@@ -181,9 +181,14 @@ const Profile = () => {
 
   };
 
+
+
+  const [persSuccess, setpersSuccess] = useState(false);
+
   const handlePersonalSubmit = (e) => {
     e.preventDefault();
 
+    setpersSuccess(null)
 
     if (imagePersonalDetails) {
       const formImg = new FormData;
@@ -196,7 +201,8 @@ const Profile = () => {
         }
       }).then(res => {
         console.log(res.data);
-        window.location.reload();
+        setpersSuccess(res.data)
+        // window.location.reload();
       }).catch(err => {
         console.log(err);
       })
@@ -230,7 +236,7 @@ const Profile = () => {
         .then(res => {
           setLoader(false);
           setErrors(null);
-
+          setpersSuccess(res.data)
           console.log(res.data);
           // window.location.reload() ;
           // localStorage.setItem("user", res.data.token);
@@ -343,6 +349,11 @@ const Profile = () => {
               ))}
             </div>
             <div className="tab-content">
+
+              {
+                persSuccess && <div className="py-2 px-4 my-5 bg-success text-white">{
+                  persSuccess}</div>
+              }
               {activeTab === 0 && modiData &&
                 <form onSubmit={handlePersonalSubmit}>
                   {
@@ -475,7 +486,14 @@ const Profile = () => {
                 </form>
               }
 
+              {
+                OrgSuccess && <div className="my-5 bg-success text-white py-2 px-4 rounded-3">{OrgSuccess}</div>
+              }
+
               {(activeTab >= 1 && orgCData) &&
+
+
+
 
 
                 <form onSubmit={handleOrgSubmit} className="org_1">
@@ -484,10 +502,7 @@ const Profile = () => {
                     success msg on org update
                   
                   */}
-                  {
-                    OrgSuccess &&
-                    <div className="">{OrgSuccess}</div>
-                  }
+
                   <div className="inputImage" onClick={handleImageClickOrg_1}>
                     {imageOrg_1 ? (
                       <img src={URL.createObjectURL(imageOrg_1)} width="180px" />
@@ -498,36 +513,36 @@ const Profile = () => {
                     <img src={edit} className="edit" />
 
                   </div>
-                    <div className="d-flex flex-column ">
-                      <div className="formInputs">
-                        <div className="inputs">
+                  <div className="d-flex flex-column ">
+                    <div className="formInputs">
+                      <div className="inputs">
 
-                          <div className="input">
-                            <label htmlFor="mobile">Mobile Number</label>
-                            <input onChange={(e) => {
-                              handleOrgChange(e)
-                            }} type="number" defaultValue={orgCData?.phone} name="phone" id="mobile" placeholder="Enter Your Mobile Number" />
-                          </div>
-                          <div className="input">
-                            <label htmlFor="Email">Location</label>
-                            <input onChange={(e) => {
-                              handleOrgChange(e)
-                            }} type="text" defaultValue={orgCData?.location} name="location" id="location" placeholder="Enter Your location Address" />
-                          </div>
-                          <div className="input">
-                            <label htmlFor="Email">Email Address</label>
-                            <input onChange={(e) => {
-                              handleOrgChange(e)
-                            }} type="email" defaultValue={orgCData?.email} name="email" id="Email" placeholder="Enter Your Email Address" />
-                          </div>
-
-
-
+                        <div className="input">
+                          <label htmlFor="mobile">Mobile Number</label>
+                          <input onChange={(e) => {
+                            handleOrgChange(e)
+                          }} type="number" defaultValue={orgCData?.phone} name="phone" id="mobile" placeholder="Enter Your Mobile Number" />
                         </div>
+                        <div className="input">
+                          <label htmlFor="Email">Location</label>
+                          <input onChange={(e) => {
+                            handleOrgChange(e)
+                          }} type="text" defaultValue={orgCData?.location} name="location" id="location" placeholder="Enter Your location Address" />
+                        </div>
+                        <div className="input">
+                          <label htmlFor="Email">Email Address</label>
+                          <input onChange={(e) => {
+                            handleOrgChange(e)
+                          }} type="email" defaultValue={orgCData?.email} name="email" id="Email" placeholder="Enter Your Email Address" />
+                        </div>
+
+
+
                       </div>
-                      <InputSubmit>Save</InputSubmit>
-                      
                     </div>
+                    <InputSubmit>Save</InputSubmit>
+
+                  </div>
                 </form>
               }
               {/* {activeTab === 2 && <div>Content for Tab 3</div>} */}

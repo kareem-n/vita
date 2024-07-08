@@ -28,6 +28,8 @@ const AddProfile = ({ setAddProfileShow }) => {
   const [isTest, setisTest] = useState(false);
 
 
+  const [success, setsuccess] = useState(null)
+
   const handleChange = (e) => {
     const { name, value } = e.target;
 
@@ -98,6 +100,9 @@ const AddProfile = ({ setAddProfileShow }) => {
     if (Object.keys(validationErrors).length === 0) {
       // navigate('/waiting_list')
       setLoad(true);
+      // setErrors(null);
+      setExErr(null)
+      setsuccess(null)
       switch (formData.profileType) {
         case 'doctor':
           axios.post(`https://vitaapp.azurewebsites.net/users/auth/add-doctor-profile`, {
@@ -112,7 +117,8 @@ const AddProfile = ({ setAddProfileShow }) => {
             }
             // console.log(res.data);
             setLoad(false)
-            window.location.reload();
+            setsuccess(res.data)
+            // window.location.reload();
           }).catch(err => {
             setLoad(false);
             setExErr(err.response.data);
@@ -125,11 +131,10 @@ const AddProfile = ({ setAddProfileShow }) => {
               Authorization: `Bearer ${localStorage.getItem("user")}`
             }
           }).then(res => {
-            if (res.data === false) {
-              setExErr("Already in type");
-            } else {
-              window.location.reload();
-            }
+
+            setsuccess(res.data)
+            // window.location.reload();
+
             setLoad(false)
           }).catch(err => {
             setLoad(false);
@@ -147,12 +152,10 @@ const AddProfile = ({ setAddProfileShow }) => {
               Authorization: `Bearer ${localStorage.getItem("user")}`
             }
           }).then(res => {
-            if (res.data === false) {
-              setExErr("Already in type");
-            }
-            console.log(res.data);
+            setsuccess(res.data)
+
             setLoad(false)
-            window.location.reload();
+            // window.location.reload();
           }).catch(err => {
             setLoad(false);
             setExErr(err.response.data);
@@ -169,12 +172,10 @@ const AddProfile = ({ setAddProfileShow }) => {
               Authorization: `Bearer ${localStorage.getItem("user")}`
             }
           }).then(res => {
-            if (res.data === false) {
-              setExErr("Already in type");
-            }
-            console.log(res.data);
+            setsuccess(res.data)
+
             setLoad(false)
-            window.location.reload();
+            // window.location.reload();
           }).catch(err => {
             console.log(555);
             setLoad(false);
@@ -192,11 +193,10 @@ const AddProfile = ({ setAddProfileShow }) => {
               Authorization: `Bearer ${localStorage.getItem("user")}`
             }
           }).then(res => {
-            if (res.data === false) {
-              setExErr("Already in type");
-            }
+            setsuccess(res.data)
+
             setLoad(false)
-            window.location.reload();
+            // window.location.reload();
           }).catch(err => {
             setLoad(false);
             setExErr(err.response.data);
@@ -216,7 +216,8 @@ const AddProfile = ({ setAddProfileShow }) => {
   const [popup, setPopup] = useState(true);
   const hide = () => {
     setPopup(false);
-    setAddProfileShow(false)
+    setAddProfileShow(false) ;
+    window.location.reload() 
   }
 
   useEffect(() => {
@@ -241,6 +242,11 @@ const AddProfile = ({ setAddProfileShow }) => {
             {
               exErr && <div className="bg-danger text-white rounded-2 p-2 mb-2">
                 {exErr}
+              </div>
+            }
+            {
+              success && <div className="bg-success text-white rounded-2 p-2 mb-2">
+                {success}
               </div>
             }
             <form onSubmit={handleSubmit}>
