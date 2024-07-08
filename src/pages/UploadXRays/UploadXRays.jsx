@@ -1,5 +1,5 @@
 import './UploadXRays.css'
-import uploadFile from '../../assets/images/File upload area.png';
+import uploadFile from '../../assets/images/File upload xray.png';
 import { CgClose } from "react-icons/cg";
 import { FaTrashAlt } from "react-icons/fa";
 
@@ -14,21 +14,18 @@ const UploadXRays = () => {
               <img src={uploadFile} alt="" />
               <input type="file" />
             </div>
-            <h5 className='my-3'>Uploading - <span> 3/3 files</span></h5>
             <div className="fileNotUpload">
-              <p className='m-0'>tests_file.csv</p>
+              <p className='m-0'>tests_file.png</p>
               <div className="icon">
                 <CgClose/>
               </div>
             </div>
-            <p>This document is too large. Please only upload files less than 5MB.</p>
-
 
             <div className="uploaded d-flex justify-content-start align-items-start flex-column">
               <h5>Uploaded</h5>
               <div className="content">
                 <div className="fileName">
-                  <p className='m-0'>tests_file.csv</p>
+                  <p className='m-0'>tests_file.png</p>
                   <div className="icon">
                     <FaTrashAlt/>
                   </div>
@@ -42,7 +39,7 @@ const UploadXRays = () => {
 
               <div className="content">
                 <div className="fileName">
-                  <p className='m-0'>tests_file.csv</p>
+                  <p className='m-0'>tests_file.png</p>
                   <div className="icon">
                     <FaTrashAlt/>
                   </div>
