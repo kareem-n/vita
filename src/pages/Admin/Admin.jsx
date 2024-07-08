@@ -6,7 +6,7 @@ const Admin = () => {
       <section className="Admin" id="Admin">
         <div className="container">
           <div className="form">
-            <h3 className="text-center mb-3">Add Account</h3>
+            <h3 className="text-center mb-3" style={{ 'font-family': 'sans-serif' }}>Add Account</h3>
             <form action="">
               <input type="text" placeholder="organization name" required/>
               <input type="text" placeholder="username" required/>

@@ -30,6 +30,8 @@ import Posters from './pages/Posters/Posters'
 import QRCodee from './Popus/QRCode/QRCode'
 import Dashboard from './pages/Dashboard/Dashboard'
 import UploadTests from './pages/UploadTests/UploadTests'
+import UploadXRays from './pages/UploadXRays/UploadXRays'
+import UploadPost from './pages/UploadPost/UploadPost'
 import DocPresc from './pages/docPresc/DocPresc'
 import Admin from './pages/Admin/Admin'
 
@@ -186,6 +188,8 @@ function App() {
         <Route path="/Posters" element={<Posters />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/UploadTests" element={<UploadTests />} />
+        <Route path="/UploadXRays" element={<UploadXRays />} />
+        <Route path="/UploadPost" element={<UploadPost />} />
         <Route path="/Admin" element={<Admin />} />
       </Routes>
 
