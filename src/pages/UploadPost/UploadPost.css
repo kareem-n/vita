@@ -1,0 +1,99 @@
+.UploadPost{
+  width: calc(100% - 90px);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  margin-top: 94px;
+  margin-left: auto;
+  margin-top: 98px;
+  height: 100vh;
+  .upload{
+    max-width: 600px;
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    padding-top: 50px;
+    form{
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 7px;
+      h4{
+        color: #676767;
+        margin: 0;
+        font-family: monospace;
+      }
+      h3{
+        color: #0C68CF;
+        font-family: monospace;
+      }
+      .file{
+        p{
+          margin-bottom: 5px;
+          font-weight: 600;
+        font-family: monospace;
+
+        }
+        img{
+          position: absolute;
+        }
+        input{
+          cursor: pointer;
+          position: relative;
+          opacity: 0;
+          width: 480px;
+          height: 220px;
+        }
+      }
+      .Num{
+        input{
+          width: 80px;
+          background: #fff;
+          border: 0;
+          box-shadow: 0 0 3px #ddd;
+          height: 30px;
+          border-radius: 5px;
+          border: 1px solid #0C68CF;
+          outline: none;
+          padding-left: 10px;
+          &:focus{
+            border: 1px solid #0C68CF;
+          }
+          &::-webkit-inner-spin-button,
+          &::-webkit-outer-spin-button {
+            -webkit-appearance: auto !important;
+            appearance: auto !important;
+          }
+          +p{
+            color: rgb(238, 0, 0);
+            font-size: 13px;
+            font-weight: 500;
+          }
+        }
+      }
+      .pay{
+        .btn{
+          max-width: 80px;
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background: #0C68CF;
+          color: #fff;
+        }
+      }
+      input[type="submit"]{
+        background-color: #0C68CF;
+        width: 100%;
+        padding: 12px;
+        border: 0;
+        border-radius: 7px;
+        color: #fff;
+        font-weight: 600;
+        max-width: 150px;
+        display: block;
+        margin: auto;
+        margin-top: 30px;
+      }
+    }
+  }
+}
