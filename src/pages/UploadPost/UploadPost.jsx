@@ -1,5 +1,5 @@
 import './UploadPost.css'
-import uploadFile from '../../assets/images/File upload area.png';
+import uploadFile from '../../assets/images/File upload post.png';
 import { CgClose } from "react-icons/cg";
 import { FaTrashAlt } from "react-icons/fa";
 

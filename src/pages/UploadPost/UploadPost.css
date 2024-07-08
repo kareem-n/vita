@@ -30,11 +30,13 @@
         p{
           margin-bottom: 5px;
           font-weight: 600;
-        font-family: monospace;
-
+          font-family: monospace; 
         }
         img{
           position: absolute;
+          left: 50%;
+          top: 50%;
+          transform: translate(-29%, -60%);
         }
         input{
           cursor: pointer;
