@@ -10,6 +10,8 @@ import signout from '../../assets/images/signout.png';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { setUser } from '../../redux/slices/UserSlice';
 
 
 
@@ -89,6 +91,7 @@ const Dashboard = () => {
   const [Last, setLast] = useState(null)
 
   const nav = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <section className="dashboard">
@@ -162,10 +165,10 @@ const Dashboard = () => {
                 </div>
                 <div
                   onClick={() => {
-
                     localStorage.clear();
+                    dispatch(setUser(null))
                     nav('/login')
-
+                    // window.location.reload();
                   }}
                   className="box" style={{
                     cursor: 'pointer'

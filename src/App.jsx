@@ -145,7 +145,7 @@ function App() {
     <>
 
       {
-        (user && type !== "big") ? <>
+        (user && localStorage.getItem('userP') !== "big") ? <>
           <Navbar />
           <Sidebar />
         </> : ''

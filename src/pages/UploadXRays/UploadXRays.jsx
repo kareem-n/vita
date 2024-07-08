@@ -13,7 +13,7 @@ const UploadXRays = () => {
 
   const { type, accessP, currentProfile } = useSelector(state => state.user)
 
-  const nav =useNavigate() ;
+  const nav = useNavigate();
 
   const [ImgData, setImgData] = useState(null)
   const [Cat, setCat] = useState(null)
@@ -70,6 +70,9 @@ const UploadXRays = () => {
         setSuccessMsg(res.data)
         setLoading(false)
         console.log(res.data);
+      }).catch(err => {
+        setErrorMsg('something went wrong, try again ')
+        setLoading(false)
       })
 
       // console.log(type, currentProfile, accessP);
