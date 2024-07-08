@@ -30,7 +30,15 @@ const AccessPatient = ({ setPopup }) => {
               <img src={Eye} alt="" />
               <h3>access patient</h3>
             </Link>
-            <Link to={'/UploadPost'} className='box'>
+            <Link to={'/UploadPost'}
+              onClick={()=>{
+                if (setPopup) {
+                  setPopup(false)
+                }else {
+                  setself(false)
+                }
+              }}
+            className='box'>
               <img src={uploadPost} alt="" />
               <h3>Upload Post</h3>
             </Link>
