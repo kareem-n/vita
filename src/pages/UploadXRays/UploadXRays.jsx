@@ -32,8 +32,19 @@ const UploadXRays = () => {
                 </div>
                 <select defaultValue="Category" className='category' id='Category' name='Category'>
                   <option value="Category" disabled>Category</option>
-                  <option value="Category_1">Category 1</option>
-                  <option value="Category_2">Category 2</option>
+                  <option value="Brain">Brain</option>
+                  <option value="Skull">Skull</option>
+                  <option value="Eyes">Eyes</option>
+                  <option value="Ears, Nose, and Throat">Ears, Nose, and Throat</option>
+                  <option value="Dental">Dental</option>
+                  <option value="Chest-Lungs">Chest-Lungs</option>
+                  <option value="Chest-Breasts">Chest-Breasts</option>
+                  <option value="Abdominal">Abdominal</option>
+                  <option value="Pelvis">Pelvis</option>
+                  <option value="Bones">Bones</option>
+                  <option value="Joints">Joints</option>
+                  <option value="Spine">Spine</option>
+                  <option value="Whole Body">Whole Body</option>
                 </select>
               </div>
 
@@ -46,8 +57,19 @@ const UploadXRays = () => {
                 </div>
                 <select defaultValue="Category" className='category' id='Category' name='Category'>
                   <option value="Category" disabled>Category</option>
-                  <option value="Category_1">Category 1</option>
-                  <option value="Category_2">Category 2</option>
+                  <option value="Brain">Brain</option>
+                  <option value="Skull">Skull</option>
+                  <option value="Eyes">Eyes</option>
+                  <option value="Ears, Nose, and Throat">Ears, Nose, and Throat</option>
+                  <option value="Dental">Dental</option>
+                  <option value="Chest-Lungs">Chest-Lungs</option>
+                  <option value="Chest-Breasts">Chest-Breasts</option>
+                  <option value="Abdominal">Abdominal</option>
+                  <option value="Pelvis">Pelvis</option>
+                  <option value="Bones">Bones</option>
+                  <option value="Joints">Joints</option>
+                  <option value="Spine">Spine</option>
+                  <option value="Whole Body">Whole Body</option>
                 </select>
               </div>
             </div>
