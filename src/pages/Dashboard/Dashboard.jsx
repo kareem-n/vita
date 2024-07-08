@@ -168,7 +168,7 @@ const Dashboard = () => {
 
                   }}
                   className="box" style={{
-                    cursor:'pointer'
+                    cursor: 'pointer'
                   }} >
                   <img src={signout} alt="" />
                   <span>Signout</span>
@@ -237,111 +237,23 @@ const Dashboard = () => {
                     </thead>
                     <tbody>
 
-
-                      <tr>
-
-
-                        <th scope="row">1</th>
-                        <td>{testList?.testsList[0]}</td>
-                        <td style={{ width: '40%' }}>
-                          <div className="the-progress">
-                            <span style={{ width: testList && calc('01') + '%', backgroundColor: '#FCB859' }}></span>
-                          </div>
-                        </td>
-                        <td style={{ display: 'flex', justifyContent: 'center' }}>
-                          <div className="numProgress" style={{ backgroundColor: '#fcb8596b', border: "1px solid #FCB859" }}>{
-                            testList?.testsList.map(list => {
-                              if (StaticData.topAbnormalTests['01'][list] !== undefined) {
-                                return (StaticData.topAbnormalTests['01'][list][0])
-                              }
-                            })
-                          }</div>
-                        </td>
-                      </tr>
+                      {
+                        StaticData.topAbnormalTests.map((item, key) => <tr key={key}>
+                          <th scope="row">1</th>
+                          <td>{item.name}</td>
+                          <td style={{ width: '40%' }}>
+                            <div className="the-progress">
+                              <span style={{ width: item.value + '%', backgroundColor: '#FCB859' }}></span>
+                            </div>
+                          </td>
+                          <td style={{ display: 'flex', justifyContent: 'center' }}>
+                            <div className="numProgress" style={{ backgroundColor: '#fcb8596b', border: "1px solid #FCB859" }}>{item.value}</div>
+                          </td>
+                        </tr>)
+                      }
 
 
-                      <tr>
-                        <th scope="row">2</th>
-                        <td>{testList?.testsList[1]}</td>
-                        <td style={{ width: '40%' }}>
-                          <div className="the-progress">
 
-                            <span style={{
-                              width: testList && calc('02') + '%'
-                              , backgroundColor: '#66DDCE'
-                            }}></span>
-                          </div>
-                        </td>
-                        <td style={{ display: 'flex', justifyContent: 'center' }}>
-                          <div className="numProgress" style={{ backgroundColor: 'rgb(102 221 206 / 53%)', border: "1px solid #66DDCE" }}>{
-                            testList?.testsList.map(list => {
-                              if (StaticData.topAbnormalTests['02'][list] !== undefined) {
-                                return (StaticData.topAbnormalTests['02'][list][0])
-                              }
-                            })
-                          }</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">3</th>
-                        <td>{testList?.testsList[2]}</td>
-                        <td style={{ width: '40%' }}>
-                          <div className="the-progress">
-                            <span style={{
-                              width: testList && calc('03') + '%', backgroundColor: '#28AEF3'
-                            }}></span>
-                          </div>
-                        </td>
-                        <td style={{ display: 'flex', justifyContent: 'center' }}>
-                          <div className="numProgress" style={{ backgroundColor: 'rgb(40 174 243 / 50%)', border: "1px solid #28AEF3" }}>{
-                            testList?.testsList.map(list => {
-                              if (StaticData.topAbnormalTests['03'][list] !== undefined) {
-                                return (StaticData.topAbnormalTests['03'][list][0])
-                              }
-                            })
-                          }</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>{testList?.testsList[3]}</td>
-                        <td style={{ width: '40%' }}>
-                          <div className="the-progress">
-                            <span style={{
-                              width: testList && calc('04') + '%', backgroundColor: '#F2C8ED'
-                            }}></span>
-                          </div>
-                        </td>
-                        <td style={{ display: 'flex', justifyContent: 'center' }}>
-                          <div className="numProgress" style={{ backgroundColor: 'rgb(242 200 237 / 53%)', border: "1px solid #F2C8ED" }}>{
-                            testList?.testsList.map(list => {
-                              if (StaticData.topAbnormalTests['04'][list] !== undefined) {
-                                return (StaticData.topAbnormalTests['04'][list][0])
-                              }
-                            })
-                          }</div>
-                        </td>
-                      </tr>
-                      <tr>
-                        <th scope="row">4</th>
-                        <td>{testList?.testsList[4]}</td>
-                        <td style={{ width: '40%' }}>
-                          <div className="the-progress">
-                            <span style={{
-                              width: testList && calc('05') + '%', backgroundColor: '#F2C8ED'
-                            }}></span>
-                          </div>
-                        </td>
-                        <td style={{ display: 'flex', justifyContent: 'center' }}>
-                          <div className="numProgress" style={{ backgroundColor: 'rgb(242 200 237 / 53%)', border: "1px solid #F2C8ED" }}>{
-                            testList?.testsList.map(list => {
-                              if (StaticData.topAbnormalTests['05'][list] !== undefined) {
-                                return (StaticData.topAbnormalTests['05'][list][0])
-                              }
-                            })
-                          }</div>
-                        </td>
-                      </tr>
                     </tbody>
                   </table>
                 </div>
