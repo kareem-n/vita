@@ -128,9 +128,12 @@ function App() {
 
   const HomeAccess = ({ children }) => {
 
-    if (localStorage.getItem("user")) {
+    if (!localStorage.getItem("user")) {
       return children;
-    } 
+    }else {
+      return <Navigate to={'/Posters'} />;
+
+    }
 
   }
 
@@ -140,14 +143,16 @@ function App() {
     <>
 
       {
-        (user && type !=="big") ? <>
+        (user && type !== "big") ? <>
           <Navbar />
           <Sidebar />
         </> : ''
       }
 
       <Routes>
-        <Route path="/" element={<ProtectRoute><Home /></ProtectRoute>
+        <Route path="/" element={<ProtectRoute> <HomeAccess>
+          <Home />
+        </HomeAccess></ProtectRoute>
         } />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
