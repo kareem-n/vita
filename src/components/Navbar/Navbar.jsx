@@ -30,6 +30,7 @@ const Navbar = () => {
     "/UploadXRays": "Upload XRays",
     "/UploadPost": "Upload Post",
     "/X_Rays": "X_Rays",
+    "/bones": "X_Rays Bones",
     "/userInfo": "User Info",
     "/Admin": "Admin",
 
