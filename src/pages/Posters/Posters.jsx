@@ -8,10 +8,10 @@ const Posters = () => {
   // حالة لكل مربع
   const [liked, setLiked] = useState(Array(15).fill(false));
 
-  const handleDoubleClick = (index) => {
+  const handleDoubleClick = (key) => {
     setLiked((prevLiked) => {
       const newLiked = [...prevLiked];
-      newLiked[index] = !newLiked[index];
+      newLiked[key] = !newLiked[key];
       return newLiked;
     });
   };
@@ -91,10 +91,10 @@ const Posters = () => {
           {Posters &&
             Posters.map((item, key) => (
               <div
-                // key={}
+                key={key}
                 className="box"
-                key={index}
-                onDoubleClick={() => handleDoubleClick(index)}
+                // key={index}
+                onDoubleClick={() => handleDoubleClick(key)}
               >
                 <img src={item.image} alt="" />
                 <p>Vita</p>
