@@ -34,7 +34,7 @@ const Posters = () => {
         `https://vitaapp.azurewebsites.net/users/auth/get-posters?page=0&size=3`,
         {
           headers: {
-            Authorization: `Bearer ${localStorage.getItem("user")}}`,
+            Authorization: `Bearer ${localStorage.getItem("user")}`,
           },
         }
       )
@@ -43,7 +43,6 @@ const Posters = () => {
 
         res.data?.map((item) => {
           if (item.id) {
-            // console.log(localStorage.getItem("user") );
             axios
               .get(
                 `https://vitaapp.azurewebsites.net/users/auth/get-poster-image?ID=${item.id}`,
@@ -52,18 +51,11 @@ const Posters = () => {
                     Authorization: `Bearer ${localStorage.getItem("user")}`,
                   },
                   responseType: "arraybuffer",
-
                 }
               )
               .then((ress2) => {
-                console.log(ress2.data);
-
                 const base64 = convertArrayBufferToBase64(ress2.data);
-
-                // console.log(base64);
                 const image = `data:image/jpeg;base64,${base64}`;
-
-                // const ttt = ress2.data
                 item = { ...item, image };
                 tmp.push(item);
               })
@@ -72,13 +64,9 @@ const Posters = () => {
                 tmp.push(item);
               });
           }
-
-          // console.log({ ...res.data, ['organizationDTOList']: tmp });
-          // console.log(res.data);
         });
 
         setTimeout(() => {
-          console.log(tmp);
           setPosters(tmp);
         }, 2000);
       });
@@ -93,13 +81,12 @@ const Posters = () => {
               <div
                 key={key}
                 className="box"
-                // key={index}
                 onDoubleClick={() => handleDoubleClick(key)}
               >
                 <img src={item.image} alt="" />
                 <p>Vita</p>
                 <div className="iconHeart">
-                  <FaHeart style={{ color: "red" }} />
+                  <FaHeart style={{ color: liked[key] ? "red" : "white" }} />
                 </div>
               </div>
             ))}
