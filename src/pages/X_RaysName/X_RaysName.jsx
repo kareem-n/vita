@@ -8,7 +8,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Bars } from "react-loader-spinner";
 import { string } from "joi";
-import { PiCompassRose } from "react-icons/pi";
+import { FaCompass } from "react-icons/fa";
 
 const X_RaysName = () => {
   const { type, accessP } = useSelector((state) => state.user);
@@ -80,7 +80,7 @@ const X_RaysName = () => {
         </div>
         <div className="imagesName mt-4 d-flex justify-content-start align-items-center gap-3 flex-wrap">
           <div className="imageName">
-            {(name === "bones" || name === "chest-Lungs") && (
+            {(name === "bones" || name === "Chest-Lungs") && (
               <div
                 onClick={() => {
                   setLoader(true);
@@ -117,7 +117,7 @@ const X_RaysName = () => {
                   alignItems:"center"
                 }}
               >
-                <PiCompassRose/>
+                <FaCompass style={{ color:"#fff" }}/>
               </div>
             )}
             <img src={img} alt="" />
