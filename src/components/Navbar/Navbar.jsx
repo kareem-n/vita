@@ -16,6 +16,7 @@ const Navbar = () => {
   const location = useLocation();
   const pageTitles = {
     "/Posters": "Posters",
+    "/posters": "Posters",
     "/AddPrescription": "Add Prescription",
     "/Prescriptions": "Prescriptions",
     "/Prescriptions_2": "Prescriptions List",

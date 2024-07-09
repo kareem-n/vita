@@ -115,19 +115,19 @@ const UploadXRays = () => {
                   }}
                   defaultValue="Category" className='category' id='Category' name='Category'>
                   <option value="Category" disabled>Category</option>
-                  <option value="Brain">Brain</option>
-                  <option value="Skull">Skull</option>
-                  <option value="Eyes">Eyes</option>
-                  <option value="Ears, Nose, and Throat">Ears, Nose, and Throat</option>
-                  <option value="Dental">Dental</option>
-                  <option value="Chest-Lungs">Chest-Lungs</option>
-                  <option value="Chest-Breasts">Chest-Breasts</option>
-                  <option value="Abdominal">Abdominal</option>
-                  <option value="Pelvis">Pelvis</option>
-                  <option value="Bones">Bones</option>
-                  <option value="Joints">Joints</option>
-                  <option value="Spine">Spine</option>
-                  <option value="Whole Body">Whole Body</option>
+                  <option value="brain">brain</option>
+                  <option value="skull">skull</option>
+                  <option value="eyes">eyes</option>
+                  <option value="ears, nose, and throat">ears, nose, and throat</option>
+                  <option value="dental">dental</option>
+                  <option value="chest-Lungs">chest-Lungs</option>
+                  <option value="chest-Breasts">chest-Breasts</option>
+                  <option value="abdominal">abdominal</option>
+                  <option value="pelvis">pelvis</option>
+                  <option value="bones">bones</option>
+                  <option value="joints">joints</option>
+                  <option value="spine">spine</option>
+                  <option value="whole Body">whole Body</option>
                 </select>
               </div>
               {
