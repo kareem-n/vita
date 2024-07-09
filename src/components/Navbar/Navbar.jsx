@@ -15,7 +15,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const Navbar = () => {
   const location = useLocation();
   const pageTitles = {
-    "/posters": "Posters",
+    "/Posters": "Posters",
     "/AddPrescription": "Add Prescription",
     "/Prescriptions": "Prescriptions",
     "/Prescriptions_2": "Prescriptions List",
