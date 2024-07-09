@@ -218,8 +218,13 @@ const Waiting_list = () => {
                             headers: {
                               Authorization: `Bearer ${localStorage.getItem("user")}`
                             }
-                          }).then(() => {
-                            window.location.reload();
+                          }).then((res) => {
+
+                            console.log(res.data);
+
+                            // window.location.reload();
+
+
                           })
                         } else {
 

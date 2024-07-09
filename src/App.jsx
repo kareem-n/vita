@@ -18,7 +18,6 @@ import AddPrescription from './pages/AddPrescription/AddPrescription'
 import ViewPrescription from './pages/ViewPrescription/ViewPrescription'
 import Profile from './pages/Profile/Profile'
 import { useDispatch, useSelector } from 'react-redux'
-import { useEffect } from 'react'
 import { setCurrentProfile, setType, setUser, setUserDet, setUserImage } from './redux/slices/UserSlice'
 import axios from 'axios'
 import DocName from './pages/DocName/DocName'
@@ -34,6 +33,7 @@ import UploadXRays from './pages/UploadXRays/UploadXRays'
 import UploadPost from './pages/UploadPost/UploadPost'
 import DocPresc from './pages/docPresc/DocPresc'
 import Admin from './pages/Admin/Admin'
+import { useEffect } from 'react'
 
 
 function App() {
@@ -57,8 +57,6 @@ function App() {
   };
 
   useEffect(() => {
-
-
 
     axios.get("https://vitaapp.azurewebsites.net/users/auth/get-profile-image", {
       headers: {

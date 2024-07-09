@@ -1,52 +1,57 @@
-import './UploadTests.css'
-import uploadFile from '../../assets/images/File upload area.png';
+import "./UploadTests.css";
+import uploadFile from "../../assets/images/File upload area.png";
 import { CgClose } from "react-icons/cg";
-import Papa from 'papaparse';
-import { useEffect, useState } from 'react';
-import Joi from 'joi';
-import axios from 'axios';
-import { useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import Papa from "papaparse";
+import { useEffect, useState } from "react";
+import Joi from "joi";
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const UploadTests = () => {
-
-
   const [data, setdata] = useState(null);
-  const [fileName, setFileName] = useState(null)
-  const requiredHeaders = ["category", "code", "description", "units", "value", "is_abnormal"];
+  const [fileName, setFileName] = useState(null);
+  const requiredHeaders = [
+    "category",
+    "code",
+    "description",
+    "units",
+    "value",
+    "is_abnormal",
+  ];
   const nav = useNavigate();
-
 
   const [Errors, setErrors] = useState(null);
 
-  const { type, accessP, currentProfile } = useSelector(state => state.user);
-
+  const { type, accessP, currentProfile } = useSelector((state) => state.user);
 
   const handleFileChnage = (e) => {
     const { name, value, files } = e.target;
     console.log(name, files[0]);
-    setFileName(files[0].name)
+    setFileName(files[0].name);
     Papa.parse(files[0], {
       complete: (results) => {
         const headers = results.meta.fields;
-        const missingHeaders = requiredHeaders.filter(header => !headers.includes(header));
+        const missingHeaders = requiredHeaders.filter(
+          (header) => !headers.includes(header)
+        );
 
         if (missingHeaders.length > 0) {
-          setErrors(`Missing headers: ${missingHeaders.join(', ')}`);
+          setErrors(`Missing headers: ${missingHeaders.join(", ")}`);
           return;
         }
 
-        const rowsWithMissingValues = results.data.filter(row => {
+        const rowsWithMissingValues = results.data.filter((row) => {
           // Filter out completely empty rows
-          const isEmptyRow = requiredHeaders.every(header => !row[header]);
+          const isEmptyRow = requiredHeaders.every((header) => !row[header]);
           if (isEmptyRow) return false;
 
           // Check if any required header is missing a value
-          return requiredHeaders.some(header => !row[header]);
+          return requiredHeaders.some((header) => !row[header]);
         });
 
         if (rowsWithMissingValues.length > 0) {
-          setErrors('seems like some fields is empty');
+          setErrors("seems like some fields is empty");
           return;
         }
 
@@ -59,91 +64,75 @@ const UploadTests = () => {
       header: true,
       skipEmptyLines: true,
     });
-  }
-
+  };
 
   const validOBJ = (dt) => {
-
     const schema = Joi.object({
       category: Joi.string().required().messages({
-        'string.empty': 'category is required'
+        "string.empty": "category is required",
       }),
       code: Joi.string().required().messages({
-        'string.empty': 'category is required'
+        "string.empty": "category is required",
       }),
       description: Joi.string().required().messages({
-        'string.empty': 'category is required'
+        "string.empty": "category is required",
       }),
       units: Joi.string().required().messages({
-        'string.empty': 'category is required'
+        "string.empty": "category is required",
       }),
       value: Joi.string().required().messages({
-        'string.empty': 'category is required'
+        "string.empty": "category is required",
       }),
       is_abnormal: Joi.string().required().messages({
-        'string.empty': 'category is required'
+        "string.empty": "category is required",
       }),
+    });
 
-    })
-
-    return schema.validate(dt, { abortEarly: false })
-
-  }
-
+    return schema.validate(dt, { abortEarly: false });
+  };
 
   useEffect(() => {
-
     if (!type) {
-      nav("/noPatient")
+      nav("/noPatient");
     }
+  }, [type]);
 
-
-  }, [type])
-
-
-
-  const [success, setsuccess] = useState(null)
+  const [success, setsuccess] = useState(null);
   // const [missingKey, setMissingKey] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-
-
-
-
-
     console.log(type, accessP);
 
-
-
-    data.map(item => {
+    data.map((item) => {
       // console.log(item);
       // const validResult = validOBJ(item) ;
 
       console.log(item);
 
-      item['patientName'] = accessP;
+      item["patientName"] = accessP;
 
-      axios.post(`https://vitaapp.azurewebsites.net/Test-Lab/add-test-result?laboratoryName=${currentProfile}`, item, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("user")}`
-        }
-      }).then(res => {
-        console.log(res.data);
-        setsuccess(res.data)
-      })
-        .catch(err => {
-          console.log(err);
+      axios
+        .post(
+          `https://vitaapp.azurewebsites.net/Test-Lab/add-test-result?laboratoryName=${currentProfile}`,
+          item,
+          {
+            headers: {
+              Authorization: `Bearer ${localStorage.getItem("user")}`,
+            },
+          }
+        )
+        .then((res) => {
+          console.log(res.data);
+          setsuccess(res.data);
         })
-
-
-    })
-
-
+        .catch((err) => {
+          console.log(err);
+        });
+    });
 
     // console.log(data);
-
 
     // console.log(validOBJ);
 
@@ -151,44 +140,76 @@ const UploadTests = () => {
     //   console.log(validateItems(data));
     //   setMissingKey(validateItems(data)[0].missingKeys);
     // }
-
-  }
+  };
   return (
-    <div className='UploadTests'>
+    <div className="UploadTests">
       <div className="container">
         <div className="upload">
           <form onSubmit={handleSubmit} action="">
-            <h3 className='text-center mb-3'>Upload Test</h3>
+            <h3 className="text-center mb-3">Upload Test</h3>
             <div className="file">
               <img src={uploadFile} alt="" />
-              <input
-                onChange={handleFileChnage}
-                name='file'
-                type="file" />
+              <input onChange={handleFileChnage} name="file" type="file" />
             </div>
-            <h5 className='my-3'>Uploading - <span> {fileName ? '1' : '0'}/1 files</span></h5>
-            <div style={{
-              border: Errors ? "1px solid red" : success && '2px solid green'
-            }} className="fileName">
-              <p className='m-0'>{fileName ? fileName : '__.csv'}</p>
+            <h5 className="my-3">
+              Uploading - <span> {fileName ? "1" : "0"}/1 files</span>
+            </h5>
+            <div
+              style={{
+                border: Errors ? "1px solid red" : success && "2px solid green",
+              }}
+              className="fileName"
+            >
+              <p className="m-0">{fileName ? fileName : "__.csv"}</p>
               <div className="icon">
                 <CgClose />
               </div>
             </div>
 
-            {
-              Errors && <div className="text-danger">{Errors}</div>
-            }
-            {
-              success && <div className="text-success">{success}</div>
-            }
+            <div
+              onClick={() => {
+                axios
+                  .get(
+                    "https://vitaapp.azurewebsites.net/Test-Lab/get-test-template",
+                    {
+                      headers: {
+                        Authorization: `Bearer ${localStorage.getItem(
+                          "user"
+                        )}}`,
+                      },
+                      responseType: "blob",
+                    }
+                  )
+                  .then((res) => {
+                    console.log(res.data);
 
-            <input disabled={Errors ? true : false} type="submit" value='UPLOAD FILES' />
+                    const blob = new Blob([res.data], {
+                      type: res.headers["content-type"],
+                    });
+
+                    // Create a link element, use it to download the file, then remove it
+                    const link = document.createElement("a");
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'downloaded-file.csv';
+                    link.click();
+                  });
+              }}
+            >
+              Donwload standard template
+            </div>
+            {Errors && <div className="text-danger">{Errors}</div>}
+            {success && <div className="text-success">{success}</div>}
+
+            <input
+              disabled={Errors ? true : false}
+              type="submit"
+              value="UPLOAD FILES"
+            />
           </form>
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default UploadTests;
