@@ -8,6 +8,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { Bars } from "react-loader-spinner";
 import { string } from "joi";
+import { PiCompassRose } from "react-icons/pi";
+
 const X_RaysName = () => {
   const { type, accessP } = useSelector((state) => state.user);
 
@@ -103,14 +105,14 @@ const X_RaysName = () => {
                 }}
                 style={{
                   cursor: "pointer",
-                  backgroundColor: "red",
+                  backgroundColor: "var(--main-color)",
                   padding: "10px",
                   position: "absolute",
                   transform: "translate(-50% ,-50%)",
                   borderRadius: "50%",
                 }}
               >
-                ??
+                <PiCompassRose/>
               </div>
             )}
             <img src={img} alt="" />
