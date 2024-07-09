@@ -120,11 +120,11 @@ const UploadXRays = () => {
                   <option value="Eyes">Eyes</option>
                   <option value="Ears, Nose, and Throat">Ears, Nose, and Throat</option>
                   <option value="Dental">Dental</option>
-                  <option value="Chest-Lungs">Chest-Lungs</option>
+                  <option value="chest-Lungs">chest-Lungs</option>
                   <option value="Chest-Breasts">Chest-Breasts</option>
                   <option value="Abdominal">Abdominal</option>
                   <option value="Pelvis">Pelvis</option>
-                  <option value="Bones">Bones</option>
+                  <option value="bones">bones</option>
                   <option value="Joints">Joints</option>
                   <option value="Spine">Spine</option>
                   <option value="Whole Body">Whole Body</option>

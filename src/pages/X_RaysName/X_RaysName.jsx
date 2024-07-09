@@ -80,7 +80,7 @@ const X_RaysName = () => {
         </div>
         <div className="imagesName mt-4 d-flex justify-content-start align-items-center gap-3 flex-wrap">
           <div className="imageName">
-            {(name === "bones" || name === "Chest-Lungs") && (
+            {(name === "bones" || name === "chest-Lungs") && (
               <div
                 onClick={() => {
                   setLoader(true);
