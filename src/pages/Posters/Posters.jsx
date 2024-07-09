@@ -91,9 +91,9 @@ const Posters = () => {
           {Posters &&
             Posters.map((item, key) => (
               <div
-                key={key}
+                // key={}
                 className="box"
-                // key={index}
+                key={index}
                 onDoubleClick={() => handleDoubleClick(index)}
               >
                 <img src={item.image} alt="" />
