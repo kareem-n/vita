@@ -110,6 +110,11 @@ const X_RaysName = () => {
                   position: "absolute",
                   transform: "translate(-50% ,-50%)",
                   borderRadius: "50%",
+                  width: "40px",
+                  height: "40px",
+                  display: "flex",
+                  justifyContent:"center",
+                  alignItems:"center"
                 }}
               >
                 <PiCompassRose/>
